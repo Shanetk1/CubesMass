@@ -4,6 +4,7 @@
 
 class Timer
 {
+public:
 	Timer();
 	~Timer();
 	void Start();

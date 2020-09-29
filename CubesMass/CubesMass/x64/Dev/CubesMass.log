@@ -1,6 +1,2 @@
-﻿  Main.cpp
-  SceneManager.cpp
-  Timer.cpp
-  Window.cpp
-  Generating Code...
+﻿  Scene1.cpp
   CubesMass.vcxproj -> C:\dev\CubesMass\CubesMass\x64\Dev\CubesMass.exe
