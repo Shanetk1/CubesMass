@@ -1,11 +1,19 @@
 #include <string>
-#include "Window.h"
+#include "SceneManager.h"
 
 int main(int argc, char * args[])
 {
-	Window* newWindow = new Window(780, 640);
-	newWindow->OnCreate();
-	newWindow->OnDestroy();
+	std::string name = { "Cube's Mass Game Engine" };
+
+
+	//Main Loop
+	SceneManager* gsm = new SceneManager();
+
+	if (gsm)
+	{
+
+	}
+
 
 	return 0;
 }

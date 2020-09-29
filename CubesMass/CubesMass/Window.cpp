@@ -1,9 +1,9 @@
 #include "Window.h"
 
-Window::Window(int _width, int _height)
+Window::Window()
 {
-	width = _width;
-	height = _height;
+	width = 0;
+	height = 0;
 	window = nullptr;
 	screenSurface = nullptr;
 }
@@ -15,7 +15,7 @@ SDL_Window* Window::getWindow()
 {
 	return window;
 }
-bool Window::OnCreate()
+bool Window::OnCreate(std::string name_, int width_, int height_)
 {
 	
 	if (SDL_Init(SDL_INIT_VIDEO) < 0)
@@ -24,7 +24,7 @@ bool Window::OnCreate()
 		return false;
 	}
 
-	window = SDL_CreateWindow("Window", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, SDL_WINDOW_SHOWN);
+	window = SDL_CreateWindow(name_.c_str(), SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width_, height_, SDL_WINDOW_SHOWN);
 	if (window == nullptr)
 	{
 		printf("Window could not be created! SDL_Error: %s\n", SDL_GetError());

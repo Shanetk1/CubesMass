@@ -11,9 +11,9 @@ private:
 	SDL_Surface* screenSurface;
 
 public:
-	Window(int _width, int _height);
+	Window();
 	~Window();
-	bool OnCreate();
+	bool OnCreate(std::string name_,int _width, int _height);
 	void OnDestroy();
 	SDL_Window* getWindow();
 
