@@ -5,7 +5,7 @@ Window::Window()
 	width = 0;
 	height = 0;
 	window = nullptr;
-	screenSurface = nullptr;
+	renderer = nullptr;
 }
 Window::~Window()
 {
@@ -14,6 +14,10 @@ Window::~Window()
 SDL_Window* Window::getWindow()
 {
 	return window;
+}
+SDL_Renderer* Window::getRenderer()
+{
+	return renderer;
 }
 bool Window::OnCreate(std::string name_, int width_, int height_)
 {
@@ -30,24 +34,26 @@ bool Window::OnCreate(std::string name_, int width_, int height_)
 		printf("Window could not be created! SDL_Error: %s\n", SDL_GetError());
 		return false;
 	}
-
-	screenSurface = SDL_GetWindowSurface(window);
-	if (screenSurface == nullptr)
+	
+	//Might not be necessary, might be put into camera class
+	renderer = SDL_CreateRenderer(window, -1, 0);
+	if (renderer)
 	{
-		printf("Surface could not be created! SDL_Error: %s\n", SDL_GetError());
-		return false;
+		SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+		printf("Renderer created for our window");
 	}
+
 	return true;
 }
 void Window::OnDestroy()
 {
-	if (screenSurface)
-	{
-		SDL_FreeSurface(screenSurface);
-	}
-	if (window)
-	{
-		SDL_DestroyWindow(window);
-	}
+//	if (screenSurface)
+//	{
+//		SDL_FreeSurface(screenSurface);
+//	}
+	if (renderer) { SDL_DestroyRenderer(renderer); }
+	if (window)   {SDL_DestroyWindow(window);}
+
+
 	SDL_Quit();
 }

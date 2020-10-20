@@ -96,7 +96,7 @@ bool SceneManager::InitializeScene()
 	}
 
 	
-	currentScene = new Scene1();
+	currentScene = new Scene1(window->getRenderer());
 	return currentScene->OnCreate();
 
 

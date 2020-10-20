@@ -2,13 +2,14 @@
 #define WINDOW_H
 
 #include <SDL.h>
+#include <SDL_image.h>
 #include <string>
 class Window
 {
 private:
 	int width, height;
 	SDL_Window* window;
-	SDL_Surface* screenSurface;
+	SDL_Renderer* renderer;
 
 public:
 	Window();
@@ -16,6 +17,7 @@ public:
 	bool OnCreate(std::string name_,int _width, int _height);
 	void OnDestroy();
 	SDL_Window* getWindow();
+	SDL_Renderer* getRenderer();
 
 
 };
