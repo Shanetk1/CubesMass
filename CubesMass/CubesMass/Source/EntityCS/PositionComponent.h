@@ -2,23 +2,31 @@
 #define POSITIONCOMPONENT_H
 
 #include "Components.h"
+#include "../Vector.h"
 
 class PositionComponent : public Component
 {
 private:
-	float xPos, yPos = 0.f;
 
 
 public:
-	float x() { return xPos; }
-	float y() { return yPos; }
+	Vector2 position;
 
+	PositionComponent(float x, float y)
+	{
+		position.x = x;
+		position.x = y;
 
-	void Init() override { xPos = 0; yPos = 0; };
-	void Update() override { xPos++; yPos++; }
+	}
+	PositionComponent() 
+	{
+		position.x = 0.f;
+		position.y = 0.f;
+	}
+	void Init() override {};
+	void Update() override {};
+	void Render() override {};
 
-
-	void setPosition(float x, float y) { xPos = x; yPos = y; }
 
 };
 

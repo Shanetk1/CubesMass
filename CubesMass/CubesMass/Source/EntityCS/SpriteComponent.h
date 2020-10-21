@@ -6,23 +6,34 @@
 
 #include "Components.h"
 #include <SDL.h>
+#include "../TextureLoader.h"
+
 
 class SpriteComponent : public Component
 {
 
 
 private:
-	PositionComponent* position;
+	PositionComponent* positionComp;
 	SDL_Texture* texture;
 	SDL_Rect srcRect, destRect;
 
 public:
-	SpriteComponent();
-	SpriteComponent(const char* fileName);
+	SpriteComponent() = default;
+	SpriteComponent(const char* fileName) 
+	{
 
+		setTexture(fileName);
+	};
+	//Function looks bad but used to change texture on the fly, and used by constructor
+	void setTexture(const char* fileName)
+	{
+		
+		texture = TextureLoader::LoadTexture(fileName);
+	}
 	void Init() override
 	{
-		position = &entity->getComponent<PositionComponent>();
+		positionComp = &entity->getComponent<PositionComponent>();
 
 		srcRect.x = srcRect.y = 0;
 		srcRect.w = srcRect.h = 32;
@@ -32,13 +43,14 @@ public:
 	void Update() override
 	{
 
-		destRect.y = position->y();
-		destRect.x = position->x();
+		//Because sdl rect val's are integer
+		destRect.y = (int)positionComp->position.x;
+		destRect.x = (int)positionComp->position.y;
 
 	}
 	void Render() override
 	{
-		//TextureLoader::LoadTexture();
+		TextureLoader::Draw(texture, srcRect, destRect);
 	}
 
 

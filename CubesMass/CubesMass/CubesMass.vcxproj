@@ -97,6 +97,7 @@
     <ClInclude Include="Source\SceneManager.h" />
     <ClInclude Include="Source\TextureLoader.h" />
     <ClInclude Include="Source\Timer.h" />
+    <ClInclude Include="Source\Vector.h" />
     <ClInclude Include="Source\Window.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

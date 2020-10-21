@@ -14,11 +14,14 @@ public:
 	virtual void Render()const override;
 	virtual void HandleEvents(const SDL_Event& sdlEvent) override;
 
+
+
+	static SDL_Renderer* renderer;
 private:
 	
 	//A thought is I could make the renderer static so instead of 
 	//Every class needing to be sent it I could just access it from the global scope...
-	SDL_Renderer* renderer = nullptr;
+//	SDL_Renderer* renderer = nullptr;
 
 
 

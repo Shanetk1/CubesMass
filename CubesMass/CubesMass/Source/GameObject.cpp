@@ -4,7 +4,7 @@
 GameObject::GameObject(const char* fileName, SDL_Renderer* renderer_, float x, float y)
 {
 	renderer = renderer_;
-	texture = TextureLoader::LoadTexture(fileName, renderer_);
+	texture = TextureLoader::LoadTexture(fileName);
 	if (texture == nullptr)
 	{
 		//printf("Bad texture, not created");
