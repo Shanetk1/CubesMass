@@ -31,6 +31,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Dev|x64'">
     <PlatformToolset>v142</PlatformToolset>
@@ -49,8 +50,12 @@
     <LibraryPath>C:\GameDev\SDL2-2.0.12\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\GameDev\SDL2-2.0.12\include;C:\SDL2_image-devel-2.0.5-VC\SDL2_image-2.0.5\include;$(IncludePath)</IncludePath>
+    <IncludePath>C:\SDL2_image-devel-2.0.5-VC\SDL2_image-2.0.5\include;C:\GameDev\SDL2-2.0.12\include;$(IncludePath)</IncludePath>
     <LibraryPath>C:\GameDev\SDL2-2.0.12\lib\x64;C:\SDL2_image-devel-2.0.5-VC\SDL2_image-2.0.5\lib\x64;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>C:\SDL2_image-devel-2.0.5-VC\SDL2_image-2.0.5\include;C:\GameDev\SDL2-2.0.12\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\SDL2_image-devel-2.0.5-VC\SDL2_image-2.0.5\lib\x86;C:\GameDev\SDL2-2.0.12\lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dev|x64'">
     <Link>
@@ -60,29 +65,39 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Link>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_Image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Link>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\SDL2_image-devel-2.0.5-VC\SDL2_image-2.0.5\lib\x86;C:\GameDev\SDL2-2.0.12\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Camera.cpp" />
-    <ClCompile Include="GameObject.cpp" />
-    <ClCompile Include="Main.cpp" />
-    <ClCompile Include="Scene1.cpp" />
-    <ClCompile Include="SceneManager.cpp" />
-    <ClCompile Include="TextureLoader.cpp" />
-    <ClCompile Include="Timer.cpp" />
-    <ClCompile Include="Window.cpp" />
+    <ClCompile Include="Source\Camera.cpp" />
+    <ClCompile Include="Source\GameObject.cpp" />
+    <ClCompile Include="Source\Main.cpp" />
+    <ClCompile Include="Source\Scene1.cpp" />
+    <ClCompile Include="Source\SceneManager.cpp" />
+    <ClCompile Include="Source\TextureLoader.cpp" />
+    <ClCompile Include="Source\Timer.cpp" />
+    <ClCompile Include="Source\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Camera.h" />
-    <ClInclude Include="GameObject.h" />
-    <ClInclude Include="Scene.h" />
-    <ClInclude Include="Scene1.h" />
-    <ClInclude Include="SceneManager.h" />
-    <ClInclude Include="TextureLoader.h" />
-    <ClInclude Include="Timer.h" />
-    <ClInclude Include="Window.h" />
+    <ClInclude Include="Source\Camera.h" />
+    <ClInclude Include="Source\EntityCS\Components.h" />
+    <ClInclude Include="Source\EntityCS\EntityCS.h" />
+    <ClInclude Include="Source\EntityCS\PositionComponent.h" />
+    <ClInclude Include="Source\EntityCS\SpriteComponent.h" />
+    <ClInclude Include="Source\GameObject.h" />
+    <ClInclude Include="Source\Scene.h" />
+    <ClInclude Include="Source\Scene1.h" />
+    <ClInclude Include="Source\SceneManager.h" />
+    <ClInclude Include="Source\TextureLoader.h" />
+    <ClInclude Include="Source\Timer.h" />
+    <ClInclude Include="Source\Window.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
