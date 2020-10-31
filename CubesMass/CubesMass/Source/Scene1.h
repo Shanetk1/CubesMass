@@ -2,6 +2,7 @@
 #define SCENE1_H
 #include "Scene.h"
 struct SDL_Renderer;
+struct SDL_Rect;
 class GameObject;
 class Scene1 : public Scene
 {
@@ -15,13 +16,10 @@ public:
 	virtual void HandleEvents(const SDL_Event& sdlEvent) override;
 
 
-
 	static SDL_Renderer* renderer;
+	static SDL_Rect camera;
 private:
-	
-	//A thought is I could make the renderer static so instead of 
-	//Every class needing to be sent it I could just access it from the global scope...
-//	SDL_Renderer* renderer = nullptr;
+
 
 
 

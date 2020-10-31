@@ -2,8 +2,6 @@
 
 struct Vector2
 {
-	//Gonna be a long what just simple vector math stuff with some friends if your familiar with that
-
 	float x, y = 0.f;
 
 	Vector2() { x = y = 0.f; };

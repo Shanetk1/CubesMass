@@ -87,9 +87,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Camera.h" />
+    <ClInclude Include="Source\EntityCS\ColliderComponent.h" />
     <ClInclude Include="Source\EntityCS\Components.h" />
     <ClInclude Include="Source\EntityCS\EntityCS.h" />
-    <ClInclude Include="Source\EntityCS\PositionComponent.h" />
+    <ClInclude Include="Source\EntityCS\KeyBoardController.h" />
+    <ClInclude Include="Source\EntityCS\TransformComponent.h" />
     <ClInclude Include="Source\EntityCS\SpriteComponent.h" />
     <ClInclude Include="Source\GameObject.h" />
     <ClInclude Include="Source\Scene.h" />

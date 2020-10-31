@@ -51,6 +51,10 @@ void SceneManager::Run()
 
 		SDL_Delay(timer->GetSleepTime(fps));
 	}
+	
+
+
+	currentScene->OnDestroy();
 
 }
 
