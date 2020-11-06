@@ -5,13 +5,14 @@
 #include <algorithm>
 #include <bitset>
 #include <array>
+#include <SDL.h>
 
 
 
 //Forward declarations
 class Component;
 class Entity;
-
+class Manager;
 
 
 
@@ -19,10 +20,14 @@ class Entity;
 using ComponentID = std::size_t;
 //Used to give component id 
 
+//Our group size (Only controlled by manager)
+using Group = std::size_t;
+
 //Component ID getter
-inline ComponentID getComponentTypeID()
+inline ComponentID getNewComponentTypeID()
 {
-	static ComponentID lastID = 0;
+	//u means unsigned
+	static ComponentID lastID = 0u;
 	return lastID++;
 
 }
@@ -31,20 +36,24 @@ inline ComponentID getComponentTypeID()
 template <typename T> inline ComponentID getComponentTypeID() noexcept
 {
 	static_assert (std::is_base_of<Component, T>::value, "");
-	static ComponentID typeID = getComponentTypeID();
+	static ComponentID typeID = getNewComponentTypeID();
 	return typeID;
 
 
 }
+
+//Max group and component size is 32
 constexpr std::size_t maxComponents = 32;
-
-
+constexpr std::size_t maxGroups = 32;
 
 //Look up c++ bitset to help understand this...
 //Basically it stores bits with only 2 values true or false
 //This is cause a bit is either a 1 or a 0 (On or off)
 //This is an array of bits
 using ComponentBitSet = std::bitset<maxComponents>;
+using GroupBitSet = std::bitset<maxGroups>;
+
+
 
 
 
@@ -76,8 +85,17 @@ private:
 	ComponentArray componentArray;
 	ComponentBitSet componentBitSet;
 
+	//
+	GroupBitSet groupbitSet;
+
+	//Reference to Manager
+	Manager& manager;
+	
 
 public:
+
+	Entity(Manager& manager_) : manager(manager_){}
+
 	void Update()
 	{
 		//Go through list of components attached and call Update at every sequence
@@ -101,6 +119,18 @@ public:
 
 	bool isActive() const { return Active; }
 	void OnDestroy() { Active = false; }
+
+
+	bool hasGroup(Group group_)
+	{
+		return groupbitSet[group_];
+	}
+	void addGroup(Group group_);
+	void delGroup(Group group_)
+	{
+		groupbitSet[group_] = false;
+	}
+
 
 	//Calls our getComponentTypeID and returns 
 	template <typename T> bool hasComponent() const
@@ -161,6 +191,11 @@ class Manager
 private:
 	std::vector<std::unique_ptr<Entity>> entities;
 	//Holds a list of entities
+
+	//An array of vectors of type entities pointers and sets the size to maxGroups called grouped Entities;
+	//Each array will have an array of entity pointers
+	std::array<std::vector<Entity*>, maxGroups> groupedEntities;
+	
 public:
 	void Update()
 	{
@@ -177,15 +212,38 @@ public:
 
 	void Refresh()
 	{
+		for (auto i(0u); i < maxGroups; i++)//Move through each of our GROUPS NOT WHATS IN OUR GROUP
+		{
+
+			auto& v(groupedEntities[i]);
+			v.erase(
+			std::remove_if(std::begin(v), std::end(v), [i](Entity* entity_)
+				{
+					return !entity_->isActive() || entity_->hasGroup(i);
+				}),
+				std::end(v));
+			//Above removes entities from group
+		}
+
 		entities.erase(std::remove_if(std::begin(entities), std::end(entities), [](const std::unique_ptr<Entity> &mEntity)
 		{
 			return !mEntity->isActive();
 		}),
 			std::end(entities));
 	}
+	void addToGroup(Entity* entity_, Group group_)
+	{
+		groupedEntities[group_].emplace_back(entity_);
+
+	}
+	std::vector<Entity*>& getGroup(Group group_)
+	{
+		return groupedEntities[group_];
+	}
+
 	Entity& addEntity()
 	{
-		Entity* e = new Entity();
+		Entity* e = new Entity(*this);
 		std::unique_ptr<Entity> uPtr{ e };
 		entities.emplace_back(std::move(uPtr));
 		return *e;
