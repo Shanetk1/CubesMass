@@ -25,8 +25,8 @@ public:
 	SpriteComponent(const char* fileName) 
 	{
 		//Default h,w to 32 pixels to actually render something
-		height = 64;
-		width = 64;
+		height = 32;
+		width = 32;
 		setTexture(fileName);
 	}
 	~SpriteComponent()

@@ -24,6 +24,11 @@ public:
 	{
 		tag = tag_;
 	}
+	void setColliderSize(int height_, int width_)
+	{
+		height = height_;
+		width = width_;
+	}
 	void Init() override
 	{
 
@@ -39,6 +44,9 @@ public:
 		if (entity->hasComponent<SpriteComponent>())
 		{
 			//Sets our collision rectangle to our width and height of our sprite
+			//Doensn't really work will look into...
+
+
 			spriteComp = &entity->getComponent<SpriteComponent>();
 			collider.h = spriteComp->height;
 			collider.w = spriteComp->width;
@@ -52,9 +60,10 @@ public:
 
 		///Collider component should have height, width individually and use transforms scale instead of using sprite components....
 		/// 
-		collider.w = height * transform->scale.x;
-		collider.h = width * transform->scale.y;
+		collider.w = width * transform->scale.x;
+		collider.h = height * transform->scale.y;
 
+		//printf("collider w = %i", collider.w);
 	}
 
 

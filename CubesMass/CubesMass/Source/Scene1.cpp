@@ -3,6 +3,9 @@
 #include <SDL.h>
 #include "EntityCS/Components.h"
 #include "Camera.h"
+#include "Map.h"
+#include "Collision.h"
+Map* mapTest;
 
 SDL_Renderer* Scene1::renderer = nullptr;
 
@@ -21,6 +24,12 @@ Manager manager;
 //Every Entity is rendered, updated and you can add      
 //Components to entities to create functionality
 Entity& newPlayer(manager.addEntity());
+Entity& wall(manager.addEntity());
+
+enum groupList
+{
+	groupPlayer
+};
 
 
 Scene1::Scene1(SDL_Renderer* renderer_)
@@ -41,18 +50,34 @@ bool Scene1::OnCreate()
 
 
 
+
+
 	//Adding components to objects can be done onCreate ideally but also in Update if necessary
 	newPlayer.addComponent<TransformComponent>();
 	newPlayer.addComponent<SpriteComponent>("assets/Wooo.png");
 	newPlayer.addComponent<KeyBoardController>();
-	newPlayer.addComponent<ColliderComponent>();
+	newPlayer.addComponent<ColliderComponent>("player");
+	newPlayer.getComponent<ColliderComponent>().setColliderSize(32.f, 32.f);
+	//newPlayer.addGroup(groupPlayer);
 	//newPlayer.addComponent<TransformComponent, SpriteComponent, KeyBoardController, ColliderComponent>();
 	//***Note on the order of which they are added is important!!!!!!***\\
 
 	newPlayer.getComponent<ColliderComponent>();
 
 
+	wall.addComponent<TransformComponent>(Vector2(300.f,300.f), Vector2(1.f,1.f));
+	wall.addComponent<SpriteComponent>("assets/dirt.png");
+	wall.getComponent<SpriteComponent>().setSize(300.f, 20.f);
+	wall.addComponent<ColliderComponent>("wall");
+	wall.getComponent<ColliderComponent>().setColliderSize(300.f, 20.f);
+
+
+	//wall.getComponent<TransformComponent>().setScale(Vector2(2.f, 2.f));
 	//This value shouldnt just return true but I'm lazy sooo I'll change this later
+
+	//Add asset of map and size of map 16x16, 64x 64, etc
+	//mapTest = new Map();
+	//Map::loadMap();
 	return true;
 }
 
@@ -75,22 +100,21 @@ void Scene1::Update(const float deltaTime)
 
 
 	//instead of getting component every time you can store this value below are 2 ways of doing this
-	auto& myComp= newPlayer.getComponent<TransformComponent>();
-	TransformComponent& transform = newPlayer.getComponent<TransformComponent>();
+	//auto& myComp= newPlayer.getComponent<TransformComponent>();
+	//TransformComponent& transform = newPlayer.getComponent<TransformComponent>();
 	//Use this way though it is much more clear compared to the auto& version
+	
 	if (newPlayer.hasComponent<TransformComponent>())
 	{
-		printf("true");
+		//printf("true");
 	}
 
-	if (newPlayer.getComponent<TransformComponent>().position.x > 100)
+
+
+	if (Collision::AABB(newPlayer.getComponent<ColliderComponent>().collider, wall.getComponent<ColliderComponent>().collider))
 	{
-		newPlayer.getComponent<SpriteComponent>().setTexture("assets/Panda.png");
-
-
-	//	newPlayer.getComponent<TransformComponent>().setScale(Vector2(4.f,4.f));
+		printf("wall hit!!!!!");
 	}
-
 
 
 
@@ -98,6 +122,7 @@ void Scene1::Update(const float deltaTime)
 
 }
 
+auto& player(manager.getGroup(groupPlayer));
 void Scene1::Render() const
 {
 	//Necessary at the beginning 
@@ -106,8 +131,11 @@ void Scene1::Render() const
 	//Renders all our entities attached components
 	manager.Render();
 	
-	
-	
+	for (auto& p : player)
+	{
+		p->Render();
+	}
+
 
 	//Necessary at end
 	SDL_RenderPresent(renderer);
@@ -128,4 +156,11 @@ void Scene1::HandleEvents(const SDL_Event& sdlEvent)
 
 
 
+}
+
+
+void Scene1::addTile(int id, int x, int y)
+{
+	auto& tile(manager.addEntity());
+	tile.addComponent<TileComponent>(x,y, 32, 32, id);
 }

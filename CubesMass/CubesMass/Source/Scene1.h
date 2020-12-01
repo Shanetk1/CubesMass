@@ -18,6 +18,7 @@ public:
 
 	static SDL_Renderer* renderer;
 	static SDL_Rect camera;
+	static void addTile(int id, int x, int y);
 private:
 
 

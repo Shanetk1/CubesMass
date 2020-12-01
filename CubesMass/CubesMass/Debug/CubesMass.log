@@ -1,11 +1,2 @@
-﻿  Camera.cpp
-  EntityCS.cpp
-  GameObject.cpp
-  Main.cpp
-  Scene1.cpp
-  SceneManager.cpp
-  TextureLoader.cpp
-  Timer.cpp
-  Window.cpp
-  Generating Code...
+﻿  Scene1.cpp
   CubesMass.vcxproj -> C:\dev\CubesMass\CubesMass\Debug\CubesMass.exe

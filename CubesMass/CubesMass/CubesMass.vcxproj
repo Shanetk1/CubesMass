@@ -76,6 +76,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Collision.cpp" />
+    <ClCompile Include="Source\Map.cpp" />
     <ClCompile Include="Source\Camera.cpp" />
     <ClCompile Include="Source\EntityCS\EntityCS.cpp" />
     <ClCompile Include="Source\GameObject.cpp" />
@@ -87,6 +89,9 @@
     <ClCompile Include="Source\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\Collision.h" />
+    <ClInclude Include="Source\EntityCS\TileComponent.h" />
+    <ClInclude Include="Source\Map.h" />
     <ClInclude Include="Source\Camera.h" />
     <ClInclude Include="Source\EntityCS\ColliderComponent.h" />
     <ClInclude Include="Source\EntityCS\Components.h" />
