@@ -77,6 +77,8 @@ public:
 class Entity
 {
 private:
+	//Reference to Manager
+	Manager& manager;
 	bool Active = true;
 
 	//a list of components that are attached to me!
@@ -88,8 +90,6 @@ private:
 	//
 	GroupBitSet groupBitSet;
 
-	//Reference to Manager
-	Manager& manager;
 	
 
 public:
