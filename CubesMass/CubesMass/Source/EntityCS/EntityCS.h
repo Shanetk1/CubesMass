@@ -38,8 +38,6 @@ template <typename T> inline ComponentID getComponentTypeID() noexcept
 	static_assert (std::is_base_of<Component, T>::value, "");
 	static ComponentID typeID = getNewComponentTypeID();
 	return typeID;
-
-
 }
 
 //Max group and component size is 32
@@ -74,6 +72,7 @@ public:
 	virtual ~Component() {}
 	
 };
+
 class Entity
 {
 private:
@@ -181,7 +180,9 @@ public:
 		return *static_cast<T*>(ptr);
 		//basically gets our component based off templace class given
 
+			
 	}
+
 
 
 };
@@ -214,14 +215,15 @@ public:
 	{
 		for (auto i(0u); i < maxGroups; i++)//Move through each of our GROUPS NOT WHATS IN OUR GROUP
 		{
-
+			
 			auto& v(groupedEntities[i]);
 			v.erase(
-			std::remove_if(std::begin(v), std::end(v), [i](Entity* entity_)
+			std::remove_if(std::begin(v), std::end(v), 
+			[i](Entity* entity_)
 				{
-					return !entity_->isActive() || entity_->hasGroup(i);
+					return !entity_->isActive() || !entity_->hasGroup(i);
 				}),
-				std::end(v));
+				std::end(v));//*/
 			//Above removes entities from group
 		}
 
@@ -239,6 +241,7 @@ public:
 	std::vector<Entity*>& getGroup(Group group_)
 	{
 		return groupedEntities[group_];
+
 	}
 
 	Entity& addEntity()

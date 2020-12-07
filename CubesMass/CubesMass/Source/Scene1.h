@@ -1,6 +1,8 @@
 #ifndef SCENE1_H
 #define SCENE1_H
 #include "Scene.h"
+#include <iostream>
+#include <vector>
 struct SDL_Renderer;
 struct SDL_Rect;
 class GameObject;
@@ -19,6 +21,16 @@ public:
 	static SDL_Renderer* renderer;
 	static SDL_Rect camera;
 	static void addTile(int id, int x, int y);
+
+
+	enum groupLabels : std::size_t
+	{
+		groupMap,
+		groupPlayer,
+		groupColliders,
+		groupProjectiles
+	};
+
 private:
 
 

@@ -26,10 +26,7 @@ Manager manager;
 Entity& newPlayer(manager.addEntity());
 Entity& wall(manager.addEntity());
 
-enum groupList
-{
-	groupPlayer
-};
+
 
 
 Scene1::Scene1(SDL_Renderer* renderer_)
@@ -54,10 +51,13 @@ bool Scene1::OnCreate()
 
 	//Adding components to objects can be done onCreate ideally but also in Update if necessary
 	newPlayer.addComponent<TransformComponent>();
-	newPlayer.addComponent<SpriteComponent>("assets/Wooo.png");
+	newPlayer.addComponent<SpriteComponent>("assets/testAnim.png", 2, 100);
 	newPlayer.addComponent<KeyBoardController>();
 	newPlayer.addComponent<ColliderComponent>("player");
 	newPlayer.getComponent<ColliderComponent>().setColliderSize(32.f, 32.f);
+	newPlayer.addGroup(groupPlayer);
+	//newPlayer.getComponent<TransformComponent>().setScale(Vector2(2.f,2.f));
+
 	//newPlayer.addGroup(groupPlayer);
 	//newPlayer.addComponent<TransformComponent, SpriteComponent, KeyBoardController, ColliderComponent>();
 	//***Note on the order of which they are added is important!!!!!!***\\
@@ -70,7 +70,7 @@ bool Scene1::OnCreate()
 	wall.getComponent<SpriteComponent>().setSize(300.f, 20.f);
 	wall.addComponent<ColliderComponent>("wall");
 	wall.getComponent<ColliderComponent>().setColliderSize(300.f, 20.f);
-
+	wall.addGroup(groupColliders);
 
 	//wall.getComponent<TransformComponent>().setScale(Vector2(2.f, 2.f));
 	//This value shouldnt just return true but I'm lazy sooo I'll change this later
@@ -80,7 +80,6 @@ bool Scene1::OnCreate()
 	//Map::loadMap();
 	return true;
 }
-
 void Scene1::OnDestroy()
 {
 	SDL_DestroyRenderer(renderer);
@@ -122,20 +121,41 @@ void Scene1::Update(const float deltaTime)
 
 }
 
-auto& player(manager.getGroup(groupPlayer));
+auto& tiles(manager.getGroup(Scene1::groupMap));
+auto& players(manager.getGroup(Scene1::groupPlayer));
+auto& colliders(manager.getGroup(Scene1::groupColliders));
+auto& projectiles(manager.getGroup(Scene1::groupProjectiles));
 void Scene1::Render() const
 {
 	//Necessary at the beginning 
+
+
+
+
 	SDL_RenderClear(renderer);
 
 	//Renders all our entities attached components
-	manager.Render();
+	//manager.Render();
 	
-	for (auto& p : player)
+	for (auto& t : tiles)
+	{
+		t->Render();
+	}
+
+	for (auto& c : colliders)
+	{
+		c->Render();
+	}
+
+	for (auto& p : players)
 	{
 		p->Render();
 	}
 
+	for (auto& p : projectiles)
+	{
+		p->Render();
+	}
 
 	//Necessary at end
 	SDL_RenderPresent(renderer);
