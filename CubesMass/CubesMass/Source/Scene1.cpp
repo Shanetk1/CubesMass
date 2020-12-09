@@ -47,8 +47,11 @@ bool Scene1::OnCreate()
 
 
 
+	mapTest = new Map();
 
 
+
+	mapTest->loadMap("assets/map.txt", 16.f, 16.f);
 	//Adding components to objects can be done onCreate ideally but also in Update if necessary
 	newPlayer.addComponent<TransformComponent>();
 	newPlayer.addComponent<SpriteComponent>("assets/testAnim.png", 2, 100);
@@ -135,8 +138,8 @@ void Scene1::Render() const
 	SDL_RenderClear(renderer);
 
 	//Renders all our entities attached components
-	//manager.Render();
-	
+	manager.Render();
+	/*
 	for (auto& t : tiles)
 	{
 		t->Render();
@@ -155,7 +158,7 @@ void Scene1::Render() const
 	for (auto& p : projectiles)
 	{
 		p->Render();
-	}
+	}*/
 
 	//Necessary at end
 	SDL_RenderPresent(renderer);
