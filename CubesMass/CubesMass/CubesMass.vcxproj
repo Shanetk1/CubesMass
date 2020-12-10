@@ -54,8 +54,8 @@
     <LibraryPath>C:\GameDev\SDL2-2.0.12\lib\x64;C:\SDL2_image-devel-2.0.5-VC\SDL2_image-2.0.5\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>C:\dev\CubesMass\CubesMass\Dependencies\SDL2-2.0.12\include;C:\dev\CubesMass\CubesMass\Dependencies\SDL2_image-2.0.5\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\dev\CubesMass\CubesMass\Dependencies\SDL2_image-2.0.5\lib\x86;C:\dev\CubesMass\CubesMass\Dependencies\SDL2-2.0.12\lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)\Dependencies\SDL2-2.0.12\include;$(SolutionDir)\Dependencies\SDL2_image-2.0.5\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)\Dependencies\SDL2_image-2.0.5\lib\x86\include;$(SolutionDir)\Dependencies\SDL2-2.0.12\lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dev|x64'">
     <Link>
@@ -72,7 +72,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Link>
       <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>C:\dev\CubesMass\CubesMass\Dependencies\SDL2_image-2.0.5\lib\x86;C:\dev\CubesMass\CubesMass\Dependencies\SDL2-2.0.12\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)\Dependencies\SDL2_image-2.0.5\lib\x86;$(SolutionDir)\Dependencies\SDL2-2.0.12\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>

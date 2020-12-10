@@ -6,7 +6,7 @@
 #include "Map.h"
 #include "Collision.h"
 Map* mapTest;
-const char* mapFile = "assets/32x32_map_tile v1.0.png";
+const char* mapFile = "assets/32x32noBG.png";
 //This is where you put the tileset to use 
 
 SDL_Renderer* Scene1::renderer = nullptr;
@@ -59,7 +59,7 @@ bool Scene1::OnCreate()
 	//Adding components to objects can be done onCreate ideally but also in Update if necessary
 	newPlayer.addComponent<TransformComponent>();
 	newPlayer.addComponent<KeyBoardController>();
-	newPlayer.addComponent<SpriteComponent>("assets/testAnim.png", true);
+	newPlayer.addComponent<SpriteComponent>("C:/dev/CubesMass/CubesMass/CubesMass/assets/testAnim.png", true);
 	newPlayer.addComponent<ColliderComponent>("player");
 	newPlayer.getComponent<ColliderComponent>().setColliderSize(32.f, 32.f);
 	newPlayer.addGroup(groupPlayer);
