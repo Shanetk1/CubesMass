@@ -6,16 +6,19 @@ class KeyBoardController : public Component
 {
 	//Basically a movement component via keyboard input//
 
-
+	//RENDER FLIPPING DOESN'T WORK BECAUE OF DEPENDANT ON SPRITE COMPONENT EXISTING BEFORE INIT
 
 private:
 	TransformComponent* transform;
 	float speed;
 	Vector2 velocity;
+
+	SpriteComponent* sprite;
 public:
 	void Init() override
 	{
 		transform = &entity->getComponent<TransformComponent>();
+		sprite = &entity->getComponent<SpriteComponent>();
 		velocity = Vector2(0.f);
 		speed = 3.0f;
 	}
@@ -49,6 +52,7 @@ public:
 				break;
 			case SDLK_a:
 				velocity.x = -1;
+				sprite->flip = SDL_FLIP_HORIZONTAL;
 				break;
 			case SDLK_d:
 				velocity.x = 1;
@@ -71,6 +75,7 @@ public:
 				break;
 			case SDLK_a:
 				velocity.x = 0;
+				sprite->flip = SDL_FLIP_NONE;
 				break;
 			case SDLK_d:
 				velocity.x = 0;

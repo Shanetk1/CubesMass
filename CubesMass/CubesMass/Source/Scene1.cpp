@@ -6,6 +6,8 @@
 #include "Map.h"
 #include "Collision.h"
 Map* mapTest;
+const char* mapFile = "assets/32x32_map_tile v1.0.png";
+//This is where you put the tileset to use 
 
 SDL_Renderer* Scene1::renderer = nullptr;
 
@@ -48,14 +50,16 @@ bool Scene1::OnCreate()
 
 
 	mapTest = new Map();
+	mapTest->loadMap("assets/map.txt", 10.f, 2.f);
+	//Size of map
+	//Will change 
+	//This is the # values of the map not the actual tile set!
 
-
-
-	mapTest->loadMap("assets/map.txt", 16.f, 16.f);
+	 
 	//Adding components to objects can be done onCreate ideally but also in Update if necessary
 	newPlayer.addComponent<TransformComponent>();
-	newPlayer.addComponent<SpriteComponent>("assets/testAnim.png", 2, 100);
 	newPlayer.addComponent<KeyBoardController>();
+	newPlayer.addComponent<SpriteComponent>("assets/testAnim.png", true);
 	newPlayer.addComponent<ColliderComponent>("player");
 	newPlayer.getComponent<ColliderComponent>().setColliderSize(32.f, 32.f);
 	newPlayer.addGroup(groupPlayer);
@@ -96,7 +100,7 @@ void Scene1::Update(const float deltaTime)
 	manager.Refresh();
 	manager.Update();
 	
-
+	
 
 	//Below you add logic to the game example below will change sprite once player reaches a certain position
 
@@ -138,8 +142,8 @@ void Scene1::Render() const
 	SDL_RenderClear(renderer);
 
 	//Renders all our entities attached components
-	manager.Render();
-	/*
+	//manager.Render();
+	
 	for (auto& t : tiles)
 	{
 		t->Render();
@@ -158,7 +162,7 @@ void Scene1::Render() const
 	for (auto& p : projectiles)
 	{
 		p->Render();
-	}*/
+	}
 
 	//Necessary at end
 	SDL_RenderPresent(renderer);
@@ -182,8 +186,9 @@ void Scene1::HandleEvents(const SDL_Event& sdlEvent)
 }
 
 
-void Scene1::addTile(int id, int x, int y)
+void Scene1::addTile(int srcX, int srcY, int xPos, int yPos)
 {
 	auto& tile(manager.addEntity());
-	tile.addComponent<TileComponent>(x,y, 32, 32, id);
+	tile.addComponent<TileComponent>(srcX, srcY, xPos, yPos, mapFile);
+	tile.addGroup(groupMap);
 }

@@ -6,52 +6,36 @@
 class TileComponent : public Component
 {
 public: 
-	TransformComponent* transform;
-	SpriteComponent* sprite;
-
-	SDL_Rect tileRect;
-	int tileID;
-	char* path;
+	SDL_Texture* tex;
+	SDL_Rect srcRect, dstRect;
 
 	TileComponent() = default;
 
-	TileComponent(int x, int y, int w, int h, int id)
+	TileComponent(int Srcx, int Srcy, int Posx, int Posy, const char* path)
 	{
-		tileRect.x = x;
+		tex = TextureLoader::LoadTexture(path);
 
-		tileRect.y = y;
+		srcRect.x = Srcx;
+		srcRect.y = Srcy;
 
-		tileRect.w = w;
-		tileRect.h = h;
-		tileID = id;
+		srcRect.w = srcRect.h = 32;
 
-		switch (tileID)
-		{
-		case 0: 
-			path = ("assets/water.png");
+		dstRect.x = Posx;
+		dstRect.y = Posy;
 
-			break;
-		case 1:
-			path = ("assets/grass.png");
-			break;
-		case 2:
-			path = ("assets/dirt.png");
-			break;
-		default:
-			break;
-		}
+		dstRect.w = dstRect.h = 32;
 
+	}
+	~TileComponent()
+	{
+		SDL_DestroyTexture(tex);
+	}
+	void Render() override
+	{
+		TextureLoader::Draw(tex, srcRect, dstRect, SDL_FLIP_NONE);
 	}
 
 
-	void Init() override
-	{
-		entity->addComponent<TransformComponent>(Vector2(tileRect.x, tileRect.y), Vector2(1.f, 1.f));
-		transform = &entity->getComponent<TransformComponent>();
-
-		entity->addComponent<SpriteComponent>(path);
-		sprite = &entity->getComponent<SpriteComponent>();
-	}
 };
 
 

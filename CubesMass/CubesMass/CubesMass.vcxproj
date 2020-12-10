@@ -89,6 +89,7 @@
     <ClCompile Include="Source\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\Animation.h" />
     <ClInclude Include="Source\Collision.h" />
     <ClInclude Include="Source\EntityCS\TileComponent.h" />
     <ClInclude Include="Source\Map.h" />

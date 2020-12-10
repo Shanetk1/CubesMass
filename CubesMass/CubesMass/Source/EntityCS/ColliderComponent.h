@@ -4,6 +4,7 @@
 #include "Components.h"
 #include <string>
 #include <SDL.h>
+#include "../Scene1.h"
 
 class ColliderComponent : public Component
 {
@@ -18,6 +19,8 @@ public:
 	TransformComponent* transform;
 	SpriteComponent* spriteComp = nullptr;
 
+	bool debug = false;
+
 	int height, width = 0;
 	ColliderComponent() = default;
 	ColliderComponent(std::string tag_)
@@ -28,6 +31,10 @@ public:
 	{
 		height = height_;
 		width = width_;
+	}
+	void changeDebug(bool cng)
+	{
+		debug = cng;
 	}
 	void Init() override
 	{
@@ -55,21 +62,31 @@ public:
 	void Update() override
 	{
 
-		collider.x = transform->position.x;
-		collider.y = transform->position.y;
+		collider.x = (int)transform->position.x;
+		collider.y = (int)transform->position.y;
 
 		///Collider component should have height, width individually and use transforms scale instead of using sprite components....
 		/// 
 		collider.w = width * transform->scale.x;
 		collider.h = height * transform->scale.y;
 
-		//printf("collider w = %i", collider.w);
+
 	}
 
 
 	void Render() override
 	{
+		if (debug)
+		{
+			const SDL_Rect* help;
+			help = &collider;
+			
 
+
+			SDL_SetRenderDrawColor(Scene1::renderer,255, 0, 0, 255);
+			SDL_RenderDrawRect(Scene1::renderer, help);
+			SDL_SetRenderDrawColor(Scene1::renderer, 255,255,255,255);
+		}
 	}
 
 	//*This will be a container class basically detailing the BoundingBox for our collision detection*\\

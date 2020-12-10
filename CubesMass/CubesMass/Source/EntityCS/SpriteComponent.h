@@ -5,6 +5,8 @@
 #include <SDL.h>
 #include "../TextureLoader.h"
 #include "../Scene1.h"
+#include "../Animation.h"
+#include <map>
 
 
 class SpriteComponent : public Component
@@ -12,6 +14,10 @@ class SpriteComponent : public Component
 public:
 	int height = 0;
 	int width = 0;
+	int animIndex = 0;
+
+	std::map<const char*, Animation> animations;
+	SDL_RendererFlip flip = SDL_FLIP_NONE;
 
 
 private:
@@ -19,6 +25,7 @@ private:
 	SDL_Texture* texture;
 	SDL_Rect srcRect, destRect;
 	
+
 	bool animated = false;
 	int frames = 0;
 	int speed = 100;
@@ -34,15 +41,23 @@ public:
 		width = 32;
 		setTexture(fileName);
 	}
-	SpriteComponent(const char* fileName, int frames_, int speed_)
+	SpriteComponent(const char* fileName, bool animated_)
 	{
 		//Default h,w to 32 pixels to actually render something
-		animated = true;
+		animated = animated_;
+
+		Animation idle = Animation(0, 100, 3);
+
+
+		animations.emplace("Idle",idle);
+
 		height = 32;
 		width = 32;
+
+		Play("Idle");
+
 		setTexture(fileName);
-		frames = frames_;
-		speed = speed_;
+
 	}
 
 	~SpriteComponent()
@@ -84,9 +99,10 @@ public:
 		if (animated)
 		{
 			srcRect.x = destRect.w * ((SDL_GetTicks() / speed) % frames);
+			srcRect.y = animIndex * srcRect.h;
 		}
 
-
+		
 
 		//Because sdl rect val's are integer
 		destRect.x = (int)TransformComp->position.x;
@@ -94,11 +110,16 @@ public:
 		destRect.w = srcRect.w * TransformComp->scale.x;
 		destRect.h = srcRect.h * TransformComp->scale.y;
 
-
 	}
 	void Render() override
 	{
-		TextureLoader::Draw(texture, srcRect, destRect);
+		TextureLoader::Draw(texture, srcRect, destRect, flip);
+	}
+	void Play(const char* animName)
+	{
+		frames = animations[animName].frames;
+		animIndex = animations[animName].index;
+		speed = animations[animName].speed;
 	}
 
 
