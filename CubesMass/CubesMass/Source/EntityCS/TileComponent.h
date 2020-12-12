@@ -8,7 +8,7 @@ class TileComponent : public Component
 public: 
 	SDL_Texture* tex;
 	SDL_Rect srcRect, dstRect;
-
+	Vector2 position;
 	TileComponent() = default;
 
 	TileComponent(int Srcx, int Srcy, int Posx, int Posy, const char* path)
@@ -23,7 +23,9 @@ public:
 		dstRect.x = Posx;
 		dstRect.y = Posy;
 
-		dstRect.w = dstRect.h = 32;
+		position.x = Posx;
+		position.y = Posy;
+		dstRect.w = dstRect.h = 64;
 
 	}
 	~TileComponent()
@@ -34,7 +36,11 @@ public:
 	{
 		TextureLoader::Draw(tex, srcRect, dstRect, SDL_FLIP_NONE);
 	}
-
+	void Update() override
+	{
+		dstRect.x = position.x - Scene1::camera.x;
+		dstRect.y = position.y - Scene1::camera.y;
+	}
 
 };
 

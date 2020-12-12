@@ -28,7 +28,10 @@ Manager manager;
 Entity& newPlayer(manager.addEntity());
 Entity& wall(manager.addEntity());
 
-
+auto& tiles(manager.getGroup(Scene1::groupMap));
+auto& players(manager.getGroup(Scene1::groupPlayer));
+auto& colliders(manager.getGroup(Scene1::groupColliders));
+auto& projectiles(manager.getGroup(Scene1::groupProjectiles));
 
 
 Scene1::Scene1(SDL_Renderer* renderer_)
@@ -50,16 +53,16 @@ bool Scene1::OnCreate()
 
 
 	mapTest = new Map();
-	mapTest->loadMap("assets/map.txt", 10.f, 2.f);
+	mapTest->loadMap("assets/map.txt", 25.f, 20.f);
 	//Size of map
 	//Will change 
 	//This is the # values of the map not the actual tile set!
 
 	 
 	//Adding components to objects can be done onCreate ideally but also in Update if necessary
-	newPlayer.addComponent<TransformComponent>();
+	newPlayer.addComponent<TransformComponent>(Vector2(400.f, 320.f), Vector2(4.f,4.f));
 	newPlayer.addComponent<KeyBoardController>();
-	newPlayer.addComponent<SpriteComponent>("C:/dev/CubesMass/CubesMass/CubesMass/assets/testAnim.png", true);
+	newPlayer.addComponent<SpriteComponent>("assets/testAnim.png", true);
 	newPlayer.addComponent<ColliderComponent>("player");
 	newPlayer.getComponent<ColliderComponent>().setColliderSize(32.f, 32.f);
 	newPlayer.addGroup(groupPlayer);
@@ -99,23 +102,27 @@ void Scene1::Update(const float deltaTime)
 	//Updates all our entities and all their attached components
 	manager.Refresh();
 	manager.Update();
-	
-	
 
-	//Below you add logic to the game example below will change sprite once player reaches a certain position
+	camera.x = newPlayer.getComponent<TransformComponent>().position.x - 400;
+	camera.y = newPlayer.getComponent<TransformComponent>().position.y - 320;
 
 
-	//instead of getting component every time you can store this value below are 2 ways of doing this
-	//auto& myComp= newPlayer.getComponent<TransformComponent>();
-	//TransformComponent& transform = newPlayer.getComponent<TransformComponent>();
-	//Use this way though it is much more clear compared to the auto& version
-	
-	if (newPlayer.hasComponent<TransformComponent>())
+	if (camera.x < 0)
 	{
-		//printf("true");
+		camera.x = 0;
 	}
-
-
+	if (camera.y < 0)
+	{
+		camera.y = 0;
+	}
+	if (camera.x > camera.w)
+	{
+		camera.x = camera.w;
+	}
+	if (camera.y > camera.h)
+	{
+		camera.y = camera.h;
+	}
 
 	if (Collision::AABB(newPlayer.getComponent<ColliderComponent>().collider, wall.getComponent<ColliderComponent>().collider))
 	{
@@ -128,10 +135,6 @@ void Scene1::Update(const float deltaTime)
 
 }
 
-auto& tiles(manager.getGroup(Scene1::groupMap));
-auto& players(manager.getGroup(Scene1::groupPlayer));
-auto& colliders(manager.getGroup(Scene1::groupColliders));
-auto& projectiles(manager.getGroup(Scene1::groupProjectiles));
 void Scene1::Render() const
 {
 	//Necessary at the beginning 

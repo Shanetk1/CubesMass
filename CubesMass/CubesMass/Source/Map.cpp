@@ -31,7 +31,7 @@ void Map::loadMap(std::string path, int sizeX, int sizeY)
 
 
 
-			Scene1::addTile(srcX, srcY, x * 32, y * 32);
+			Scene1::addTile(srcX, srcY, x * 64, y * 64);
 			mapFile.ignore();
 		}
 

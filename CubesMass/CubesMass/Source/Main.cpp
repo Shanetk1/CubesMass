@@ -9,7 +9,7 @@ int main(int argc, char * args[])
 	//Main Loop
 	SceneManager* gsm = new SceneManager();
 
-	if (gsm->Initialize(name, 1280, 720))
+	if (gsm->Initialize(name, 800, 600))
 	{
 		gsm->Run();
 	}

@@ -12,7 +12,7 @@ public:
 	Vector2 position = (0.f,0.f);
 	Vector2 rotation;
 	Vector2 scale = (1.f,1.f);
-
+	int speed = 5;
 	Vector2 velocity;//This isnt good cause transform should just have the values of pos, rotation and scale!
 	
 	/// Set position, set scale
@@ -20,6 +20,7 @@ public:
 	{
 		position = pos;
 		scale = scale_;
+
 	}
 
 	/// Sets everything to default values
@@ -47,7 +48,8 @@ public:
 	};
 	void Update() override 
 	{
-	
+		position.x += velocity.x * speed;
+		position.y += velocity.y * speed;
 	};
 	void Render() override {};
 

@@ -24,8 +24,8 @@ public:
 	}
 	void Update() override
 	{
-		transform->position.x += velocity.x * speed;
-		transform->position.y += velocity.y * speed;
+		//transform->position.x += velocity.x * speed;
+		//transform->position.y += velocity.y * speed;
 	}
 	void HandleEvents(const SDL_Event &sdlEvent) override
 	{
@@ -45,17 +45,17 @@ public:
 			switch (sdlEvent.key.keysym.sym)
 			{
 			case SDLK_w:
-				velocity.y = -1;
+				transform->velocity.y = -1;
 				break;
 			case SDLK_s:
-				velocity.y = 1;
+				transform->velocity.y = 1;
 				break;
 			case SDLK_a:
-				velocity.x = -1;
+				transform->velocity.x = -1;
 				sprite->flip = SDL_FLIP_HORIZONTAL;
 				break;
 			case SDLK_d:
-				velocity.x = 1;
+				transform->velocity.x = 1;
 				break;
 				default:
 					break;
@@ -68,17 +68,17 @@ public:
 			switch (sdlEvent.key.keysym.sym)
 			{
 			case SDLK_w:
-				velocity.y = 0;
+				transform->velocity.y = 0;
 				break;
 			case SDLK_s:
-				velocity.y = 0;
+				transform->velocity.y = 0;
 				break;
 			case SDLK_a:
-				velocity.x = 0;
+				transform->velocity.x = 0;
 				sprite->flip = SDL_FLIP_NONE;
 				break;
 			case SDLK_d:
-				velocity.x = 0;
+				transform->velocity.x = 0;
 				break;
 			default:
 				break;

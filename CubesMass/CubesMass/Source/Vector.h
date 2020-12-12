@@ -67,6 +67,12 @@ struct Vector2
 	{
 		return this->Multiply(vec);
 	}
+	inline Vector2& operator * (const float scalar)
+	{
+		this->x = this->x * scalar;
+		this->y = this->y * scalar;
+		return *this;
+	}
 
 
 

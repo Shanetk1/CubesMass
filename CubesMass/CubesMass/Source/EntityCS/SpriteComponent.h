@@ -105,8 +105,8 @@ public:
 		
 
 		//Because sdl rect val's are integer
-		destRect.x = (int)TransformComp->position.x;
-		destRect.y = (int)TransformComp->position.y;
+		destRect.x = (int)TransformComp->position.x - Scene1::camera.x;
+		destRect.y = (int)TransformComp->position.y - Scene1::camera.y;
 		destRect.w = srcRect.w * TransformComp->scale.x;
 		destRect.h = srcRect.h * TransformComp->scale.y;
 
