@@ -1,19 +1,16 @@
 #ifndef KEYBOARDCONTROLLER_H
 #define KEYBOARDCONTROLLER_H
-
 #include "Components.h"
 class KeyBoardController : public Component
 {
 	//Basically a movement component via keyboard input//
-
 	//RENDER FLIPPING DOESN'T WORK BECAUE OF DEPENDANT ON SPRITE COMPONENT EXISTING BEFORE INIT
-
 private:
-	TransformComponent* transform;
-	float speed;
-	Vector2 velocity;
+	TransformComponent* transform = nullptr;
+	float speed = 0;
+	Vector2 velocity = (0.f,0.f);
 
-	SpriteComponent* sprite;
+	SpriteComponent* sprite = nullptr;
 public:
 	void Init() override
 	{
@@ -51,8 +48,12 @@ public:
 				transform->velocity.y = 1;
 				break;
 			case SDLK_a:
+
+				
 				transform->velocity.x = -1;
-				sprite->flip = SDL_FLIP_HORIZONTAL;
+				if (sprite) {
+					sprite->flip = SDL_FLIP_HORIZONTAL;
+				}
 				break;
 			case SDLK_d:
 				transform->velocity.x = 1;
@@ -75,11 +76,15 @@ public:
 				break;
 			case SDLK_a:
 				transform->velocity.x = 0;
-				sprite->flip = SDL_FLIP_NONE;
+				if (sprite) {
+					sprite->flip = SDL_FLIP_NONE;
+				}
 				break;
 			case SDLK_d:
 				transform->velocity.x = 0;
 				break;
+			case SDLK_ESCAPE:
+				SDL_Quit();
 			default:
 				break;
 

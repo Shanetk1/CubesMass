@@ -30,12 +30,6 @@ public:
 		groupColliders,
 		groupProjectiles
 	};
-
-private:
-
-
-
-
 };
 
 

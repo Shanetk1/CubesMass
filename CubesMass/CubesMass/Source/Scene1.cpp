@@ -2,29 +2,23 @@
 #include "Scene1.h"
 #include <SDL.h>
 #include "EntityCS/Components.h"
-#include "Camera.h"
 #include "Map.h"
 #include "Collision.h"
+
+
 Map* mapTest;
 const char* mapFile = "assets/32x32noBG.png";
-//This is where you put the tileset to use 
+SDL_Texture* tex_;
+
 
 SDL_Renderer* Scene1::renderer = nullptr;
 
-//Camera is just a rectangle basically 
+
 SDL_Rect Scene1::camera = { 0,0,800, 640 };
 
-
-//Our entity manager (For components+entities)
-//This updates, renders our components
 Manager manager;
 
 
-//auto& newPlayer(manager.addEntity());
-
-//Entities hold are our baseline for creating gameObjects
-//Every Entity is rendered, updated and you can add      
-//Components to entities to create functionality
 Entity& newPlayer(manager.addEntity());
 Entity& wall(manager.addEntity());
 
@@ -33,46 +27,30 @@ auto& players(manager.getGroup(Scene1::groupPlayer));
 auto& colliders(manager.getGroup(Scene1::groupColliders));
 auto& projectiles(manager.getGroup(Scene1::groupProjectiles));
 
-
 Scene1::Scene1(SDL_Renderer* renderer_)
 {
-	//
 	renderer = renderer_;
-
-	
-
 }
 
 
 bool Scene1::OnCreate()
 {
-	//This is our initialization where everything will load in, and be set up
-
-
-
-
+	//Load our tileset here to when we parse our map file we send it the loaded texture address to create
+	//Every single tile component
+	tex_ = TextureLoader::LoadTexture(mapFile);
 
 	mapTest = new Map();
 	mapTest->loadMap("assets/map.txt", 25.f, 20.f);
-	//Size of map
-	//Will change 
-	//This is the # values of the map not the actual tile set!
 
-	 
-	//Adding components to objects can be done onCreate ideally but also in Update if necessary
-	newPlayer.addComponent<TransformComponent>(Vector2(400.f, 320.f), Vector2(4.f,4.f));
-	newPlayer.addComponent<KeyBoardController>();
+
+
+	newPlayer.addComponent<TransformComponent>(Vector2(400.f, 320.f), Vector2(1.f,1.f));
 	newPlayer.addComponent<SpriteComponent>("assets/testAnim.png", true);
+
+	newPlayer.addComponent<KeyBoardController>();
 	newPlayer.addComponent<ColliderComponent>("player");
 	newPlayer.getComponent<ColliderComponent>().setColliderSize(32.f, 32.f);
 	newPlayer.addGroup(groupPlayer);
-	//newPlayer.getComponent<TransformComponent>().setScale(Vector2(2.f,2.f));
-
-	//newPlayer.addGroup(groupPlayer);
-	//newPlayer.addComponent<TransformComponent, SpriteComponent, KeyBoardController, ColliderComponent>();
-	//***Note on the order of which they are added is important!!!!!!***\\
-
-	newPlayer.getComponent<ColliderComponent>();
 
 
 	wall.addComponent<TransformComponent>(Vector2(300.f,300.f), Vector2(1.f,1.f));
@@ -82,12 +60,7 @@ bool Scene1::OnCreate()
 	wall.getComponent<ColliderComponent>().setColliderSize(300.f, 20.f);
 	wall.addGroup(groupColliders);
 
-	//wall.getComponent<TransformComponent>().setScale(Vector2(2.f, 2.f));
-	//This value shouldnt just return true but I'm lazy sooo I'll change this later
 
-	//Add asset of map and size of map 16x16, 64x 64, etc
-	//mapTest = new Map();
-	//Map::loadMap();
 	return true;
 }
 void Scene1::OnDestroy()
@@ -99,14 +72,11 @@ void Scene1::OnDestroy()
 
 void Scene1::Update(const float deltaTime)
 {
-	//Updates all our entities and all their attached components
 	manager.Refresh();
 	manager.Update();
 
 	camera.x = newPlayer.getComponent<TransformComponent>().position.x - 400;
 	camera.y = newPlayer.getComponent<TransformComponent>().position.y - 320;
-
-
 	if (camera.x < 0)
 	{
 		camera.x = 0;
@@ -137,31 +107,22 @@ void Scene1::Update(const float deltaTime)
 
 void Scene1::Render() const
 {
-	//Necessary at the beginning 
-
-
-
-
 	SDL_RenderClear(renderer);
 
-	//Renders all our entities attached components
-	//manager.Render();
+
 	
 	for (auto& t : tiles)
 	{
 		t->Render();
 	}
-
 	for (auto& c : colliders)
 	{
 		c->Render();
 	}
-
 	for (auto& p : players)
 	{
 		p->Render();
 	}
-
 	for (auto& p : projectiles)
 	{
 		p->Render();
@@ -173,25 +134,13 @@ void Scene1::Render() const
 
 void Scene1::HandleEvents(const SDL_Event& sdlEvent)
 {
-
-	//This might change cause I don't like current input handling
 	manager.HandleEvenets(sdlEvent);
-	//But for now it will do
-
-
-
-	//Basically all our components with handle events will react to this
-
-
-
-
-
 }
 
 
 void Scene1::addTile(int srcX, int srcY, int xPos, int yPos)
 {
 	auto& tile(manager.addEntity());
-	tile.addComponent<TileComponent>(srcX, srcY, xPos, yPos, mapFile);
+	tile.addComponent<TileComponent>(srcX, srcY, xPos, yPos, tex_);
 	tile.addGroup(groupMap);
 }

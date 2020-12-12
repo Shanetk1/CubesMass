@@ -2,8 +2,6 @@
 
 bool Collision::AABB(const SDL_Rect& recA, const SDL_Rect& recB)
 {
-
-
     if 
     (
     recA.x + recA.w >= recB.x &&
@@ -12,9 +10,6 @@ bool Collision::AABB(const SDL_Rect& recA, const SDL_Rect& recB)
     recB.y + recB.h >= recA.y)
     {
         return true;
-
     }
-
-
     return false;
 }

@@ -5,6 +5,12 @@ class SceneManager
 {
 	//This class will be how our game runs, 
 	//Needs window and tick classes 
+private:
+	class Window* window = nullptr;
+	class Timer* timer = nullptr;
+	class Scene* currentScene = nullptr;
+	bool isRunning = false;
+	unsigned int fps = 0;
 public:
 	SceneManager();
 	~SceneManager();
@@ -12,15 +18,6 @@ public:
 	bool Initialize(std::string name_, int width_, int height_);
 	void GetEvents();
 	bool InitializeScene();
-private:
-	class Window* window;
-	class Timer* timer;
-	class Scene* currentScene;
-
-	bool isRunning;
-	unsigned int fps;
-
 
 };
-
 #endif // !SCENEMANAGER_H

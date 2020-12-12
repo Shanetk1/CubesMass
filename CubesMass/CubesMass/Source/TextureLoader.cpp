@@ -1,5 +1,4 @@
 #include "TextureLoader.h"
-
 SDL_Texture* TextureLoader::LoadTexture(const char* fileName)
 {
     //Create a surface I think or something from image yup

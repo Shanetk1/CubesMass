@@ -11,20 +11,11 @@
 
 class SpriteComponent : public Component
 {
-public:
-	int height = 0;
-	int width = 0;
-	int animIndex = 0;
-
-	std::map<const char*, Animation> animations;
-	SDL_RendererFlip flip = SDL_FLIP_NONE;
-
-
 private:
-	TransformComponent* TransformComp;
+	TransformComponent* transform = nullptr;
 	SDL_Texture* texture;
-	SDL_Rect srcRect, destRect;
-	
+	SDL_Rect sRect, dRect;
+
 
 	bool animated = false;
 	int frames = 0;
@@ -33,6 +24,14 @@ private:
 
 
 public:
+	int height = 0;
+	int width = 0;
+	int animIndex = 0;
+
+	std::map<const char*, Animation> animations;
+
+
+	SDL_RendererFlip flip = SDL_FLIP_NONE;
 	SpriteComponent() = default;
 	SpriteComponent(const char* fileName) 
 	{
@@ -78,18 +77,18 @@ public:
 		width = width_;
 
 		//Update our square only need to do here cause doing in update would be unnecessary
-		srcRect.w = width;
-		srcRect.h = height;
+		sRect.w = width;
+		sRect.h = height;
 
 
 	}
 	void Init() override
 	{
-		TransformComp = &entity->getComponent<TransformComponent>();
+		transform = &entity->getComponent<TransformComponent>();
 
-		srcRect.x = srcRect.y = 0;
-		srcRect.w = width;
-		srcRect.h = height;
+		sRect.x = sRect.y = 0;
+		sRect.w = width;
+		sRect.h = height;
 	
 
 	}
@@ -98,22 +97,22 @@ public:
 		
 		if (animated)
 		{
-			srcRect.x = destRect.w * ((SDL_GetTicks() / speed) % frames);
-			srcRect.y = animIndex * srcRect.h;
+			sRect.x = dRect.w * ((SDL_GetTicks() / speed) % frames);
+			sRect.y = animIndex * sRect.h;
 		}
 
 		
 
 		//Because sdl rect val's are integer
-		destRect.x = (int)TransformComp->position.x - Scene1::camera.x;
-		destRect.y = (int)TransformComp->position.y - Scene1::camera.y;
-		destRect.w = srcRect.w * TransformComp->scale.x;
-		destRect.h = srcRect.h * TransformComp->scale.y;
+		dRect.x = (int)transform->position.x - Scene1::camera.x;
+		dRect.y = (int)transform->position.y - Scene1::camera.y;
+		dRect.w = sRect.w * transform->scale.x;
+		dRect.h = sRect.h * transform->scale.y;
 
 	}
 	void Render() override
 	{
-		TextureLoader::Draw(texture, srcRect, destRect, flip);
+		TextureLoader::Draw(texture, sRect, dRect, flip);
 	}
 	void Play(const char* animName)
 	{
@@ -121,11 +120,6 @@ public:
 		animIndex = animations[animName].index;
 		speed = animations[animName].speed;
 	}
-
-
-
-public:
-
 };
 
 

@@ -3,9 +3,9 @@
 
 struct Animation
 {
-	int index;
-	int speed;
-	int frames;
+	int index = 0;
+	int speed = 0;
+	int frames = 0;
 
 	Animation(){}
 	Animation(int index_, int speed_, int frames_)

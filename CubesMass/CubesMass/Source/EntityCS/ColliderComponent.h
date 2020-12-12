@@ -12,16 +12,13 @@ class ColliderComponent : public Component
 public:
 
 	SDL_Rect collider;
-
 	//Used to check what we hit an (identifier)
-	std::string tag;
-
-	TransformComponent* transform;
-	SpriteComponent* spriteComp = nullptr;
-
+	std::string tag = "";
+	TransformComponent* transform = nullptr;
+	SpriteComponent* sprite = nullptr;
 	bool debug = false;
-
 	int height, width = 0;
+
 	ColliderComponent() = default;
 	ColliderComponent(std::string tag_)
 	{
@@ -54,9 +51,9 @@ public:
 			//Doensn't really work will look into...
 
 
-			spriteComp = &entity->getComponent<SpriteComponent>();
-			collider.h = spriteComp->height;
-			collider.w = spriteComp->width;
+			sprite = &entity->getComponent<SpriteComponent>();
+			collider.h = sprite->height;
+			collider.w = sprite->width;
 		}
 	}
 	void Update() override

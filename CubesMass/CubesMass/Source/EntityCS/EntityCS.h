@@ -61,7 +61,7 @@ using ComponentArray = std::array<Component*, maxComponents>;
 class Component
 {
 public:
-	Entity* entity;
+	Entity* entity = nullptr;
 	//Components will have a reference to what owns them
 
 

@@ -7,9 +7,8 @@
 class Window
 {
 private:
-	int width, height;
-	SDL_Window* window;
-	SDL_Renderer* renderer;
+	SDL_Window* window = nullptr;
+	SDL_Renderer* renderer = nullptr;
 
 public:
 	Window();
@@ -18,8 +17,6 @@ public:
 	void OnDestroy();
 	SDL_Window* getWindow();
 	SDL_Renderer* getRenderer();
-
-
 };
 
 

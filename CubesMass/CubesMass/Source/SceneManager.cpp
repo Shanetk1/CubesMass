@@ -11,7 +11,6 @@ SceneManager::SceneManager()
 	isRunning = false;
 }
 SceneManager::~SceneManager(){}
-
 bool SceneManager::Initialize(std::string name_, int width_, int height_)
 {
 	window = new Window();
@@ -19,24 +18,17 @@ bool SceneManager::Initialize(std::string name_, int width_, int height_)
 	{
 		return false;
 	}
-	
 	timer = new Timer();
 	if (timer == nullptr)
 	{
 		return false;
 	}
-
-
 	if (!InitializeScene())
 	{
 		return false;
 	}
-
 	return true;
 }
-
-
-
 void SceneManager::Run()
 {
 	timer->Start();
@@ -47,26 +39,18 @@ void SceneManager::Run()
 		currentScene->Update(timer->GetDeltaTime());
 		currentScene->Render();
 		GetEvents();//This includes currentscene->handlevents
-
-
 		SDL_Delay(timer->GetSleepTime(fps));
 	}
-	
-
-
 	currentScene->OnDestroy();
-
 }
 
 void SceneManager::GetEvents()
 {
 	//Create scene switching and control for closing/quitting the window
-
 	SDL_Event sdlEvent;
-
-
 	while (SDL_PollEvent(&sdlEvent))
 	{
+		currentScene->HandleEvents(sdlEvent);
 		if (sdlEvent.type == SDL_EventType::SDL_QUIT)
 		{
 			isRunning = false;//Set is running false then close window
@@ -86,23 +70,16 @@ void SceneManager::GetEvents()
 			default:
 				break;
 			}
-		currentScene->HandleEvents(sdlEvent);
 	}
 }
 
 bool SceneManager::InitializeScene()
 {
-
 	if (currentScene != nullptr)
 	{
 		delete currentScene;
 		currentScene = nullptr;
 	}
-
-	
 	currentScene = new Scene1(window->getRenderer());
 	return currentScene->OnCreate();
-
-
-
 }

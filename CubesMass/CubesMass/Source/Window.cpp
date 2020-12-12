@@ -2,8 +2,6 @@
 
 Window::Window()
 {
-	width = 0;
-	height = 0;
 	window = nullptr;
 	renderer = nullptr;
 }
