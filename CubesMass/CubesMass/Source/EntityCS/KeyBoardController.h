@@ -9,13 +9,10 @@ private:
 	TransformComponent* transform = nullptr;
 	float speed = 0;
 	Vector2 velocity = (0.f,0.f);
-
-	SpriteComponent* sprite = nullptr;
 public:
 	void Init() override
 	{
 		transform = &entity->getComponent<TransformComponent>();
-		sprite = &entity->getComponent<SpriteComponent>();
 		velocity = Vector2(0.f);
 		speed = 3.0f;
 	}
@@ -48,12 +45,7 @@ public:
 				transform->velocity.y = 1;
 				break;
 			case SDLK_a:
-
-				
 				transform->velocity.x = -1;
-				if (sprite) {
-					sprite->flip = SDL_FLIP_HORIZONTAL;
-				}
 				break;
 			case SDLK_d:
 				transform->velocity.x = 1;
@@ -76,9 +68,6 @@ public:
 				break;
 			case SDLK_a:
 				transform->velocity.x = 0;
-				if (sprite) {
-					sprite->flip = SDL_FLIP_NONE;
-				}
 				break;
 			case SDLK_d:
 				transform->velocity.x = 0;

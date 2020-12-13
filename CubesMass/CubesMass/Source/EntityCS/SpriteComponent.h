@@ -29,8 +29,6 @@ public:
 	int animIndex = 0;
 
 	std::map<const char*, Animation> animations;
-
-
 	SDL_RendererFlip flip = SDL_FLIP_NONE;
 	SpriteComponent() = default;
 	SpriteComponent(const char* fileName) 
@@ -44,21 +42,22 @@ public:
 	{
 		//Default h,w to 32 pixels to actually render something
 		animated = animated_;
-
-		Animation idle = Animation(0, 100, 3);
-
+		Animation idle = Animation(2, 200, 7);
+		Animation walkRight = Animation(11, 100, 9);
+		Animation walkUp = Animation(8, 100, 9);
+		Animation walkDown = Animation(10, 100, 9);
+		Animation walkAngled = Animation(11, 100, 9);
 
 		animations.emplace("Idle",idle);
-
-		height = 32;
-		width = 32;
-
+		animations.emplace("WalkRight", walkRight);
+		animations.emplace("WalkUp", walkUp);
+		animations.emplace("WalkDown", walkDown);
+		animations.emplace("WalkAngled", walkAngled);
+		height = 64;
+		width = 64;
 		Play("Idle");
-
 		setTexture(fileName);
-
 	}
-
 	~SpriteComponent()
 	{
 		SDL_DestroyTexture(texture);
@@ -67,7 +66,6 @@ public:
 	//Change texture should be used to update to a NEW texture
 	void setTexture(const char* fileName)
 	{
-		
 		texture = TextureLoader::LoadTexture(fileName);
 	}
 
@@ -75,39 +73,71 @@ public:
 	{
 		height = height_;
 		width = width_;
-
-		//Update our square only need to do here cause doing in update would be unnecessary
 		sRect.w = width;
 		sRect.h = height;
-
-
 	}
 	void Init() override
 	{
 		transform = &entity->getComponent<TransformComponent>();
-
 		sRect.x = sRect.y = 0;
 		sRect.w = width;
 		sRect.h = height;
-	
-
 	}
 	void Update() override
 	{
-		
 		if (animated)
 		{
 			sRect.x = dRect.w * ((SDL_GetTicks() / speed) % frames);
 			sRect.y = animIndex * sRect.h;
 		}
-
-		
-
 		//Because sdl rect val's are integer
 		dRect.x = (int)transform->position.x - Scene1::camera.x;
 		dRect.y = (int)transform->position.y - Scene1::camera.y;
 		dRect.w = sRect.w * transform->scale.x;
 		dRect.h = sRect.h * transform->scale.y;
+
+
+		if (transform->velocity.x == 0 && transform->velocity.y == 0)
+		{
+			Play("Idle");
+		}
+
+		if (transform->velocity.x > 0)
+		{
+			flip = SDL_FLIP_NONE;
+			Play("WalkRight");
+		}
+		else if (transform->velocity.x < 0)
+		{
+			flip = SDL_FLIP_HORIZONTAL;
+			Play("WalkRight");
+
+		}
+
+		if (transform->velocity.y > 0)
+		{
+			Play("WalkDown");
+			flip = SDL_FLIP_NONE;
+
+		}
+		else if (transform->velocity.y < 0)
+		{
+			Play("WalkUp");
+			flip = SDL_FLIP_NONE;
+		}
+
+
+		if (transform->velocity.x > 0 && transform->velocity.y > 0)
+		{
+			Play("WalkAngled");
+			flip = SDL_FLIP_NONE;
+		}
+		else if (transform->velocity.x < 0 && transform->velocity.y < 0)
+		{
+			Play("WalkAngled");
+			flip = SDL_FLIP_HORIZONTAL;
+		}
+
 
 	}
 	void Render() override

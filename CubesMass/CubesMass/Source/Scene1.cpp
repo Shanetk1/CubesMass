@@ -5,7 +5,6 @@
 #include "Map.h"
 #include "Collision.h"
 
-
 Map* mapTest;
 const char* mapFile = "assets/32x32noBG.png";
 SDL_Texture* tex_;
@@ -14,7 +13,7 @@ SDL_Texture* tex_;
 SDL_Renderer* Scene1::renderer = nullptr;
 
 
-SDL_Rect Scene1::camera = { 0,0,800, 640 };
+SDL_Rect Scene1::camera = { 0,0,800, 640 };//Used as our culling as well
 
 Manager manager;
 
@@ -42,16 +41,13 @@ bool Scene1::OnCreate()
 	mapTest = new Map();
 	mapTest->loadMap("assets/map.txt", 25.f, 20.f);
 
-
-
 	newPlayer.addComponent<TransformComponent>(Vector2(400.f, 320.f), Vector2(1.f,1.f));
-	newPlayer.addComponent<SpriteComponent>("assets/testAnim.png", true);
+	newPlayer.addComponent<SpriteComponent>("assets/download.png", true);
 
 	newPlayer.addComponent<KeyBoardController>();
 	newPlayer.addComponent<ColliderComponent>("player");
-	newPlayer.getComponent<ColliderComponent>().setColliderSize(32.f, 32.f);
+	newPlayer.getComponent<ColliderComponent>().setColliderSize(64.f, 64.f);
 	newPlayer.addGroup(groupPlayer);
-
 
 	wall.addComponent<TransformComponent>(Vector2(300.f,300.f), Vector2(1.f,1.f));
 	wall.addComponent<SpriteComponent>("assets/dirt.png");
@@ -60,6 +56,9 @@ bool Scene1::OnCreate()
 	wall.getComponent<ColliderComponent>().setColliderSize(300.f, 20.f);
 	wall.addGroup(groupColliders);
 
+
+
+	
 
 	return true;
 }
@@ -102,18 +101,30 @@ void Scene1::Update(const float deltaTime)
 
 
 
-
+	
 }
 
 void Scene1::Render() const
 {
 	SDL_RenderClear(renderer);
 
+	//If this obj.x < camera.x && obj.x > camera.x 
+	//&& obj.y < camera.y && obj.y > camera.y
 
+
+	//Need to cycle through all objs but for now just tiles
+	
 	
 	for (auto& t : tiles)
 	{
-		t->Render();
+		//This is some really basic culling idk if its good but it works, to test put the 74 numbers to 0
+		float x = t->getComponent<TileComponent>().position.x;
+		float y = t->getComponent<TileComponent>().position.y;
+		if ((x <= camera.x + camera.w && x + 0 >= camera.x && y <= camera.y + camera.h && y + 0 >= camera.y))
+		{
+			t->Render();
+		}
+
 	}
 	for (auto& c : colliders)
 	{

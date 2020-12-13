@@ -1,2 +1,11 @@
 ﻿  Scene1.cpp
+LINK : warning LNK4044: unrecognized option '/lSDL_mixer'; ignored
+  LINK : 0 new modules and 1 (out of 53) modules have changed since prior linking
+  Searching libraries
+      Searching C:\dev\CubesMass\CubesMass\\Dependencies\SDL2-2.0.12\lib\x86\SDL2.lib:
+  Finished searching libraries
+  Starting pass 2
+       Scene1.obj
+       MSVCRT.lib(loadcfg.obj)
+  Finished pass 2
   CubesMass.vcxproj -> C:\dev\CubesMass\CubesMass\Debug\CubesMass.exe

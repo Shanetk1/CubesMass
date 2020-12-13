@@ -16,7 +16,7 @@ public:
 	std::string tag = "";
 	TransformComponent* transform = nullptr;
 	SpriteComponent* sprite = nullptr;
-	bool debug = false;
+	bool debug = true;
 	int height, width = 0;
 
 	ColliderComponent() = default;
@@ -59,8 +59,8 @@ public:
 	void Update() override
 	{
 
-		collider.x = (int)transform->position.x;
-		collider.y = (int)transform->position.y;
+		collider.x = (int)transform->position.x - Scene1::camera.x;
+		collider.y = (int)transform->position.y - Scene1::camera.y;
 
 		///Collider component should have height, width individually and use transforms scale instead of using sprite components....
 		/// 

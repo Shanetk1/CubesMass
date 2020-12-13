@@ -7,11 +7,11 @@ class TileComponent : public Component
 {
 private: 
 	SDL_Texture* texture = nullptr;
-	SDL_Rect sRect, dRect;
-	Vector2 position = position;
-
+	SDL_Rect dRect;
 public:
+	Vector2 position = position;
 	TileComponent() = default;
+	SDL_Rect sRect;
 
 	TileComponent(int Srcx, int Srcy, int Posx, int Posy, SDL_Texture* tex_)
 	{

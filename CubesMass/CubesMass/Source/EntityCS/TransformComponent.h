@@ -43,13 +43,11 @@ public:
 	}
 
 	void Init() override 
-	{
-	
-	};
+	{};
 	void Update() override 
 	{
 		position.x += velocity.x * speed;
-		position.y += velocity.y * speed;
+		position.y += velocity.y * speed;//Don't really like doing this here
 	};
 	void Render() override {};
 
