@@ -30,6 +30,7 @@ public:
 		position.y = Posy;
 		dRect.w = dRect.h = 64;
 
+
 	}
 	~TileComponent()
 	{

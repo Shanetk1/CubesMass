@@ -20,7 +20,7 @@ public:
 
 	static SDL_Renderer* renderer;
 	static SDL_Rect camera;
-	static void addTile(int srcX, int srcY, int xPos, int yPos);
+	static void addTile(int srcX, int srcY, int xPos, int yPos, int coll);
 
 
 	enum groupLabels : std::size_t

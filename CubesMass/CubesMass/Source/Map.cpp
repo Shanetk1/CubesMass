@@ -8,7 +8,7 @@ void Map::loadMap(std::string path, int sizeX, int sizeY)
 	char tile;
 	std::fstream mapFile;
 	mapFile.open(path);
-	int srcX, srcY;
+	int srcX, srcY, srcZ;
 	for (int y = 0; y < sizeY; y++)
 	{
 		for (int x = 0; x < sizeX; x++)
@@ -17,7 +17,10 @@ void Map::loadMap(std::string path, int sizeX, int sizeY)
 			srcY = atoi(&tile) * 32; 
 			mapFile.get(tile);
 			srcX = atoi(&tile) * 32;
-			Scene1::addTile(srcX, srcY, x * 64, y * 64);
+			mapFile.get(tile);
+			srcZ = atoi(&tile);
+
+			Scene1::addTile(srcX, srcY, x * 64, y * 64, srcZ);
 			mapFile.ignore();
 		}
 	}

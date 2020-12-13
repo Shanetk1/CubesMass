@@ -13,7 +13,7 @@ SDL_Texture* tex_;
 SDL_Renderer* Scene1::renderer = nullptr;
 
 
-SDL_Rect Scene1::camera = { 0,0,800, 640 };//Used as our culling as well
+SDL_Rect Scene1::camera = { 0,0,800, 680 };//Used as our culling as well
 
 Manager manager;
 
@@ -71,8 +71,12 @@ void Scene1::OnDestroy()
 
 void Scene1::Update(const float deltaTime)
 {
+
+	Vector2 playerPos = newPlayer.getComponent<TransformComponent>().position;
 	manager.Refresh();
 	manager.Update();
+
+
 
 	camera.x = newPlayer.getComponent<TransformComponent>().position.x - 400;
 	camera.y = newPlayer.getComponent<TransformComponent>().position.y - 320;
@@ -93,9 +97,12 @@ void Scene1::Update(const float deltaTime)
 		camera.y = camera.h;
 	}
 
-	if (Collision::AABB(newPlayer.getComponent<ColliderComponent>().collider, wall.getComponent<ColliderComponent>().collider))
+	for (auto& c : colliders)
 	{
-		printf("wall hit!!!!!");
+		if (Collision::AABB(newPlayer.getComponent<ColliderComponent>().collider, c->getComponent<ColliderComponent>().collider))
+		{
+			newPlayer.getComponent<TransformComponent>().position = playerPos;
+		}
 	}
 
 
@@ -126,10 +133,6 @@ void Scene1::Render() const
 		}
 
 	}
-	for (auto& c : colliders)
-	{
-		c->Render();
-	}
 	for (auto& p : players)
 	{
 		p->Render();
@@ -149,9 +152,19 @@ void Scene1::HandleEvents(const SDL_Event& sdlEvent)
 }
 
 
-void Scene1::addTile(int srcX, int srcY, int xPos, int yPos)
+void Scene1::addTile(int srcX, int srcY, int xPos, int yPos, int coll)
 {
+
 	auto& tile(manager.addEntity());
 	tile.addComponent<TileComponent>(srcX, srcY, xPos, yPos, tex_);
+	if (coll > 0)
+	{
+		//Adding colliders to this is awkward because we need them to have a transform position
+		tile.addComponent<TransformComponent>(Vector2(xPos, yPos), Vector2(1.f,1.f));
+		tile.addComponent<ColliderComponent>("Collider help");
+		tile.getComponent<ColliderComponent>().setColliderSize(64.f, 64.f);
+		tile.addGroup(groupColliders);
+	}
+
 	tile.addGroup(groupMap);
 }

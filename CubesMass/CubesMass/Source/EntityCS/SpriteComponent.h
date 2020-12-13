@@ -127,17 +127,6 @@ public:
 		}
 
 
-		if (transform->velocity.x > 0 && transform->velocity.y > 0)
-		{
-			Play("WalkAngled");
-			flip = SDL_FLIP_NONE;
-		}
-		else if (transform->velocity.x < 0 && transform->velocity.y < 0)
-		{
-			Play("WalkAngled");
-			flip = SDL_FLIP_HORIZONTAL;
-		}
-
 
 	}
 	void Render() override

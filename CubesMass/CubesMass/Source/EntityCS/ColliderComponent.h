@@ -5,7 +5,7 @@
 #include <string>
 #include <SDL.h>
 #include "../Scene1.h"
-
+#include "TileComponent.h"
 class ColliderComponent : public Component
 {
 
@@ -36,11 +36,17 @@ public:
 	void Init() override
 	{
 
-		if (!entity->hasComponent<TransformComponent>())
+		if (!entity->hasComponent<TransformComponent>() && entity->hasComponent<TileComponent>())
 		{
-			entity->addComponent<TransformComponent>();
+			//entity->addComponent<TransformComponent>();
+			printf("No transform meaing this is a tilemap!");
+			collider = entity->getComponent<TileComponent>().sRect;
 		}
-		transform = &entity->getComponent<TransformComponent>();
+		else
+		{
+			transform = &entity->getComponent<TransformComponent>();
+		}
+		
 
 		//Can be smart here and check and see if we have a sprite component
 		//If so set our collider to the size of the sprite src box i think....
