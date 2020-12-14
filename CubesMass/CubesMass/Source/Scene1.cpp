@@ -13,7 +13,7 @@ SDL_Texture* tex_;
 SDL_Renderer* Scene1::renderer = nullptr;
 
 
-SDL_Rect Scene1::camera = { 0,0,800, 680 };//Used as our culling as well
+SDL_Rect Scene1::camera = { 0,0,800, 640 };//Used as our culling as well
 
 Manager manager;
 
@@ -54,7 +54,7 @@ bool Scene1::OnCreate()
 	wall.getComponent<SpriteComponent>().setSize(300.f, 20.f);
 	wall.addComponent<ColliderComponent>("wall");
 	wall.getComponent<ColliderComponent>().setColliderSize(300.f, 20.f);
-	wall.addGroup(groupColliders);
+	wall.addGroup(groupPlayer);
 
 
 
@@ -71,7 +71,6 @@ void Scene1::OnDestroy()
 
 void Scene1::Update(const float deltaTime)
 {
-
 	Vector2 playerPos = newPlayer.getComponent<TransformComponent>().position;
 	manager.Refresh();
 	manager.Update();

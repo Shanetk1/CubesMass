@@ -119,7 +119,6 @@ public:
 	bool isActive() const { return Active; }
 	void OnDestroy() { Active = false; }
 
-
 	bool hasGroup(Group group_)
 	{
 		return groupBitSet[group_];
@@ -155,6 +154,7 @@ public:
 
 
 
+		
 		//Places our component into the components vector list passes it uPtr since std::move argument is Args&&... args from T* comp
 		//Look up std::vector::emplace_back() for docs
 		components.emplace_back(std::move(uPtr));
@@ -215,8 +215,9 @@ public:
 	{
 		for (auto i(0u); i < maxGroups; i++)//Move through each of our GROUPS NOT WHATS IN OUR GROUP
 		{
-			
+	
 			auto& v(groupedEntities[i]);
+			
 			v.erase(
 			std::remove_if(std::begin(v), std::end(v), 
 			[i](Entity* entity_)
