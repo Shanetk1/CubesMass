@@ -39,7 +39,7 @@ bool Window::OnCreate(std::string name_, int width_, int height_)
 	if (renderer)
 	{
 		SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-		printf("Renderer created for our window");
+		//printf("Renderer created for our window");
 	}
 
 	return true;

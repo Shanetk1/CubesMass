@@ -66,7 +66,7 @@ public:
 
 
 	virtual void Init() {}
-	virtual void Update() {}
+	virtual void Update(const float deltaTime) {}
 	virtual void Render() {}
 	virtual void HandleEvents(const SDL_Event &sdlEvent){}
 	virtual ~Component() {}
@@ -95,10 +95,10 @@ public:
 
 	Entity(Manager& manager_) : manager(manager_){}
 
-	void Update()
+	void Update(const float deltaTime)
 	{
 		//Go through list of components attached and call Update at every sequence
-		for (auto& c : components) c->Update(); 
+		for (auto& c : components) c->Update(deltaTime);
 		
 
 	}
@@ -131,7 +131,7 @@ public:
 
 
 	//Calls our getComponentTypeID and returns 
-	template <typename T> bool hasComponent() const
+	template <typename T> bool hasComponent() const 
 	{
 		return componentBitSet[getComponentTypeID<T>()];
 		//Access a certain bit at[index] and will return if it is on 1 (true) or off 0 (false)
@@ -198,9 +198,9 @@ private:
 	std::array<std::vector<Entity*>, maxGroups> groupedEntities;
 	
 public:
-	void Update()
+	void Update(const float deltaTime)
 	{
-		for (auto& e : entities)e->Update();
+		for (auto& e : entities)e->Update(deltaTime);
 	}
 	void Render()
 	{

@@ -62,7 +62,7 @@ public:
 			collider.w = sprite->width;
 		}
 	}
-	void Update() override
+	void Update(const float deltaTime) override
 	{
 
 		collider.x = (int)transform->position.x - Scene1::camera.x;

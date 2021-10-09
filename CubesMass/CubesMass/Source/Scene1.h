@@ -3,6 +3,9 @@
 #include "Scene.h"
 #include <iostream>
 #include <vector>
+#include "TextureLoader.h"
+#include "Vector.h"
+#include "VMath.h"
 struct SDL_Renderer;
 struct SDL_Rect;
 class GameObject;
@@ -17,11 +20,11 @@ public:
 	virtual void Render()const override;
 	virtual void HandleEvents(const SDL_Event& sdlEvent) override;
 
-
 	static SDL_Renderer* renderer;
 	static SDL_Rect camera;
 	static void addTile(int srcX, int srcY, int xPos, int yPos, int coll);
 
+	static Vector2 playerPosition; 
 
 	enum groupLabels : std::size_t
 	{

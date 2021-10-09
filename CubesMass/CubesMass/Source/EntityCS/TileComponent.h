@@ -40,7 +40,7 @@ public:
 	{
 		TextureLoader::Draw(texture, sRect, dRect, SDL_FLIP_NONE);
 	}
-	void Update() override
+	void Update(const float deltaTime) override
 	{
 		dRect.x = position.x - Scene1::camera.x;
 		dRect.y = position.y - Scene1::camera.y;

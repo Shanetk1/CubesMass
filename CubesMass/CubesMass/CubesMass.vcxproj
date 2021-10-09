@@ -92,11 +92,13 @@
     <ClCompile Include="Source\SceneManager.cpp" />
     <ClCompile Include="Source\TextureLoader.cpp" />
     <ClCompile Include="Source\Timer.cpp" />
+    <ClCompile Include="Source\VMath.cpp" />
     <ClCompile Include="Source\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Animation.h" />
     <ClInclude Include="Source\Collision.h" />
+    <ClInclude Include="Source\EntityCS\AIController.h" />
     <ClInclude Include="Source\EntityCS\TileComponent.h" />
     <ClInclude Include="Source\Map.h" />
     <ClInclude Include="Source\EntityCS\ColliderComponent.h" />
@@ -108,9 +110,11 @@
     <ClInclude Include="Source\Scene.h" />
     <ClInclude Include="Source\Scene1.h" />
     <ClInclude Include="Source\SceneManager.h" />
+    <ClInclude Include="Source\SteeringOutput.h" />
     <ClInclude Include="Source\TextureLoader.h" />
     <ClInclude Include="Source\Timer.h" />
     <ClInclude Include="Source\Vector.h" />
+    <ClInclude Include="Source\VMath.h" />
     <ClInclude Include="Source\Window.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

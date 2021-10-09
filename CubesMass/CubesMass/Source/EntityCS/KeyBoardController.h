@@ -16,7 +16,7 @@ public:
 		velocity = Vector2(0.f);
 		speed = 3.0f;
 	}
-	void Update() override
+	void Update(const float deltaTime) override
 	{
 		//transform->position.x += velocity.x * speed;
 		//transform->position.y += velocity.y * speed;

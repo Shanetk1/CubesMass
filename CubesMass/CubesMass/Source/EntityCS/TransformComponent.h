@@ -10,10 +10,11 @@ private:
 
 public:
 	Vector2 position = (0.f,0.f);
-	Vector2 rotation = (0.f,0.f);
+	float rotation = 0.f;
 	Vector2 scale = (1.f,1.f);
 	int speed = 5;
 	Vector2 velocity = (0.f,0.f);//This isnt good cause transform should just have the values of pos, rotation and scale!
+	float orientation = 0.0f;
 	
 	/// Set position, set scale
 	TransformComponent(Vector2 pos, Vector2 scale_)
@@ -44,10 +45,27 @@ public:
 
 	void Init() override 
 	{};
-	void Update() override 
+	void Update(const float deltaTime) override
 	{
-		position.x += velocity.x * speed;
-		position.y += velocity.y * speed;//Don't really like doing this here
+		position.x += velocity.x * deltaTime;
+		position.y += velocity.y * deltaTime;//Don't really like doing this here
+
+
+		//This has no real functionality and it won't to be honest other than to be used as a dummy value used within AI scripts
+		
+		if (MATH::VMath::mag(velocity) > 0.0f)
+		{
+			orientation = atan2(-velocity.x, velocity.y);
+		}
+		else
+		{
+			orientation = orientation;
+		}
+
+
+		
+
+
 	};
 	void Render() override {};
 

@@ -5,6 +5,8 @@
 #include "Map.h"
 #include "Collision.h"
 
+
+
 Map* mapTest;
 const char* mapFile = "assets/32x32noBG.png";
 SDL_Texture* tex_;
@@ -12,14 +14,17 @@ SDL_Texture* tex_;
 
 SDL_Renderer* Scene1::renderer = nullptr;
 
+Vector2 Scene1::playerPosition = Vector2(0.f);
 
 SDL_Rect Scene1::camera = { 0,0,800, 640 };//Used as our culling as well
 
 Manager manager;
 
 
+
 Entity& newPlayer(manager.addEntity());
 Entity& wall(manager.addEntity());
+Entity& AITest(manager.addEntity());
 
 auto& tiles(manager.getGroup(Scene1::groupMap));
 auto& players(manager.getGroup(Scene1::groupPlayer));
@@ -29,6 +34,7 @@ auto& projectiles(manager.getGroup(Scene1::groupProjectiles));
 Scene1::Scene1(SDL_Renderer* renderer_)
 {
 	renderer = renderer_;
+	
 }
 
 
@@ -49,6 +55,20 @@ bool Scene1::OnCreate()
 	newPlayer.getComponent<ColliderComponent>().setColliderSize(64.f, 64.f);
 	newPlayer.addGroup(groupPlayer);
 
+	AITest.addComponent<TransformComponent>(Vector2(200.f, 180.f), Vector2(1.f, 1.f));
+	AITest.addComponent<SpriteComponent>("assets/download.png", true);
+
+	std::vector<Vector2*> patrol;
+
+	Vector2* pt1 = new Vector2(500.f, 180.f);
+	Vector2* pt2 = new Vector2(500.f, 650.f);
+	
+	patrol.push_back(pt1);
+	patrol.push_back(pt2);
+	AITest.addComponent<AIController>(patrol);
+
+	AITest.addGroup(groupPlayer);
+
 	wall.addComponent<TransformComponent>(Vector2(300.f,300.f), Vector2(1.f,1.f));
 	wall.addComponent<SpriteComponent>("assets/dirt.png");
 	wall.getComponent<SpriteComponent>().setSize(300.f, 20.f);
@@ -57,8 +77,12 @@ bool Scene1::OnCreate()
 	wall.addGroup(groupPlayer);
 
 
-
+	//Add AI component here
 	
+	pt1 = nullptr;
+	pt2 = nullptr;
+	delete pt1;
+	delete pt2;
 
 	return true;
 }
@@ -71,10 +95,15 @@ void Scene1::OnDestroy()
 
 void Scene1::Update(const float deltaTime)
 {
-	Vector2 playerPos = newPlayer.getComponent<TransformComponent>().position;
-	manager.Refresh();
-	manager.Update();
+	//Beginning of every frame update world information...
+	//I dont think this is necessary creating something where this will update once every 30 frames is more ideal....
+	
 
+	Vector2 playerPos = newPlayer.getComponent<TransformComponent>().position;
+	Scene1::playerPosition = playerPos;
+
+	manager.Refresh();
+	manager.Update(deltaTime);
 
 
 	camera.x = newPlayer.getComponent<TransformComponent>().position.x - 400;
@@ -95,7 +124,7 @@ void Scene1::Update(const float deltaTime)
 	{
 		camera.y = camera.h;
 	}
-
+	
 	for (auto& c : colliders)
 	{
 		if (Collision::AABB(newPlayer.getComponent<ColliderComponent>().collider, c->getComponent<ColliderComponent>().collider))
@@ -120,7 +149,7 @@ void Scene1::Render() const
 
 	//Need to cycle through all objs but for now just tiles
 	
-	
+
 	for (auto& t : tiles)
 	{
 		//This is some really basic culling idk if its good but it works, to test put the 74 numbers to 0
@@ -136,6 +165,7 @@ void Scene1::Render() const
 	{
 		p->Render();
 	}
+
 	for (auto& p : projectiles)
 	{
 		p->Render();

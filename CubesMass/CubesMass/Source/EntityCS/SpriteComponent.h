@@ -3,7 +3,6 @@
 
 #include "Components.h"
 #include <SDL.h>
-#include "../TextureLoader.h"
 #include "../Scene1.h"
 #include "../Animation.h"
 #include <map>
@@ -22,7 +21,6 @@ private:
 	int speed = 100;
 
 
-
 public:
 	int height = 0;
 	int width = 0;
@@ -37,6 +35,7 @@ public:
 		height = 32;
 		width = 32;
 		setTexture(fileName);
+		
 	}
 	SpriteComponent(const char* fileName, bool animated_)
 	{
@@ -83,7 +82,7 @@ public:
 		sRect.w = width;
 		sRect.h = height;
 	}
-	void Update() override
+	void Update(const float deltaTime) override
 	{
 		if (animated)
 		{
