@@ -14,6 +14,9 @@ private:
 	std::vector<Vector2*> patrolPoints = std::vector<Vector2*>();
 	Vector2 patrolLocation;
 	int patrolNode = 0;
+	
+
+
 
 	enum States
 	{
@@ -49,6 +52,9 @@ private:
 public:
 	//We ned to handle enum switching based off other stuff dont know yet other than manually...
 
+	bool seesPlayer = false;
+
+
 
 
 	//The components job is to have functionality that will effect the A.I's transform...
@@ -66,7 +72,6 @@ public:
 		State = PATROL;
 	}
 
-	
 
 	virtual void Init()
 	{
@@ -78,6 +83,10 @@ public:
 	virtual void Update(const float deltaTime)
 	{
 
+		if (seesPlayer)
+		{
+			State = CHASE;
+		}
 
 
 

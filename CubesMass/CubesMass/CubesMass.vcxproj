@@ -99,9 +99,10 @@
     <ClInclude Include="Source\Animation.h" />
     <ClInclude Include="Source\Collision.h" />
     <ClInclude Include="Source\EntityCS\AIController.h" />
+    <ClInclude Include="Source\EntityCS\CircleColliderComponent.h" />
     <ClInclude Include="Source\EntityCS\TileComponent.h" />
     <ClInclude Include="Source\Map.h" />
-    <ClInclude Include="Source\EntityCS\ColliderComponent.h" />
+    <ClInclude Include="Source\EntityCS\BoxColliderComponent.h" />
     <ClInclude Include="Source\EntityCS\Components.h" />
     <ClInclude Include="Source\EntityCS\EntityCS.h" />
     <ClInclude Include="Source\EntityCS\KeyBoardController.h" />

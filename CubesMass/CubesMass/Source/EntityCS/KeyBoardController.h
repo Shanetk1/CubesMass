@@ -39,16 +39,16 @@ public:
 			switch (sdlEvent.key.keysym.sym)
 			{
 			case SDLK_w:
-				transform->velocity.y = -1;
+				transform->velocity.y = -150.f;
 				break;
 			case SDLK_s:
-				transform->velocity.y = 1;
+				transform->velocity.y = 150.f;
 				break;
 			case SDLK_a:
-				transform->velocity.x = -1;
+				transform->velocity.x = -150.f;
 				break;
 			case SDLK_d:
-				transform->velocity.x = 1;
+				transform->velocity.x = 150.f;
 				break;
 				default:
 					break;

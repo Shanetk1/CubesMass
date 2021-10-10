@@ -80,7 +80,7 @@
     <ClInclude Include="Source\EntityCS\KeyBoardController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\EntityCS\ColliderComponent.h">
+    <ClInclude Include="Source\EntityCS\BoxColliderComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Source\EntityCS\TransformComponent.h">
@@ -105,6 +105,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Source\VMath.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\EntityCS\CircleColliderComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

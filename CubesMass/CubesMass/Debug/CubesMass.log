@@ -11,9 +11,9 @@
   Generating Code...
 LINK : warning LNK4044: unrecognized option '/lSDL_mixer'; ignored
   Starting pass 1
+  Processed /DEFAULTLIB:msvcprt
   Processed /DEFAULTLIB:MSVCRT
   Processed /DEFAULTLIB:OLDNAMES
-  Processed /DEFAULTLIB:msvcprt
   Searching libraries
       Searching D:\dev\CubesMass\CubesMass\\Dependencies\SDL2-2.0.12\lib\x86\SDL2.lib:
         Found _SDL_SetRenderDrawColor
@@ -21,6 +21,9 @@ LINK : warning LNK4044: unrecognized option '/lSDL_mixer'; ignored
           Referenced in Window.obj
           Loaded SDL2.lib(SDL2.dll)
         Found _SDL_RenderClear
+          Referenced in Scene1.obj
+          Loaded SDL2.lib(SDL2.dll)
+        Found _SDL_RenderDrawPoint
           Referenced in Scene1.obj
           Loaded SDL2.lib(SDL2.dll)
         Found _SDL_RenderDrawRect
@@ -93,6 +96,7 @@ LINK : warning LNK4044: unrecognized option '/lSDL_mixer'; ignored
           Referenced in SDL2.lib(SDL2.dll)
           Referenced in SDL2.lib(SDL2.dll)
           Referenced in SDL2.lib(SDL2.dll)
+          Referenced in SDL2.lib(SDL2.dll)
           Loaded SDL2.lib(SDL2.dll)
         Found __NULL_IMPORT_DESCRIPTOR
           Referenced in SDL2.lib(SDL2.dll)
@@ -123,182 +127,6 @@ LINK : warning LNK4044: unrecognized option '/lSDL_mixer'; ignored
       Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\uuid.lib:
       Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\odbc32.lib:
       Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\odbccp32.lib:
-      Searching C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\lib\x86\MSVCRT.lib:
-        Found "void * __cdecl operator new(unsigned int)" (??2@YAPAXI@Z)
-          Referenced in SceneManager.obj
-          Referenced in Map.obj
-          Referenced in EntityCS.obj
-          Referenced in Main.obj
-          Referenced in Scene1.obj
-          Loaded MSVCRT.lib(new_scalar.obj)
-        Found "void __cdecl operator delete(void *,unsigned int)" (??3@YAXPAXI@Z)
-          Referenced in SceneManager.obj
-          Referenced in Window.obj
-          Referenced in Map.obj
-          Referenced in EntityCS.obj
-          Referenced in Main.obj
-          Referenced in Scene1.obj
-          Loaded MSVCRT.lib(delete_scalar_size.obj)
-        Found @__security_check_cookie@4
-          Referenced in TextureLoader.obj
-          Referenced in Map.obj
-          Referenced in Main.obj
-          Referenced in Scene1.obj
-          Referenced in SceneManager.obj
-          Loaded MSVCRT.lib(secchk.obj)
-        Found "const type_info::`vftable'" (??_7type_info@@6B@)
-          Referenced in SceneManager.obj
-          Referenced in Map.obj
-          Referenced in EntityCS.obj
-          Referenced in Main.obj
-          Referenced in Scene1.obj
-          Loaded MSVCRT.lib(std_type_info_static.obj)
-        Found ___security_cookie
-          Referenced in TextureLoader.obj
-          Referenced in MSVCRT.lib(secchk.obj)
-          Referenced in Map.obj
-          Referenced in Main.obj
-          Referenced in Scene1.obj
-          Referenced in SceneManager.obj
-          Loaded MSVCRT.lib(gs_cookie.obj)
-        Found "void __stdcall `eh vector constructor iterator'(void *,unsigned int,unsigned int,void (__thiscall*)(void *),void (__thiscall*)(void *))" (??_L@YGXPAXIIP6EX0@Z1@Z)
-          Referenced in Scene1.obj
-          Loaded MSVCRT.lib(ehvecctr.obj)
-        Found "void __stdcall `eh vector destructor iterator'(void *,unsigned int,unsigned int,void (__thiscall*)(void *))" (??_M@YGXPAXIIP6EX0@Z@Z)
-          Referenced in Scene1.obj
-          Loaded MSVCRT.lib(ehvecdtr.obj)
-        Found "void __cdecl operator delete(void *)" (??3@YAXPAX@Z)
-          Referenced in Scene1.obj
-          Referenced in MSVCRT.lib(delete_scalar_size.obj)
-          Loaded MSVCRT.lib(delete_scalar.obj)
-        Found _atexit
-          Referenced in Scene1.obj
-          Loaded MSVCRT.lib(utility.obj)
-        Found __Init_thread_header
-          Referenced in Scene1.obj
-          Loaded MSVCRT.lib(thread_safe_statics.obj)
-        Found __fltused
-          Referenced in VMath.obj
-          Referenced in Scene1.obj
-          Referenced in SceneManager.obj
-          Referenced in TextureLoader.obj
-          Referenced in Timer.obj
-          Loaded MSVCRT.lib(fltused.obj)
-        Found __tls_array
-          Referenced in Scene1.obj
-          Referenced in MSVCRT.lib(thread_safe_statics.obj)
-          Loaded MSVCRT.lib(atlssup.obj)
-        Found __tls_index
-          Referenced in Scene1.obj
-          Referenced in MSVCRT.lib(thread_safe_statics.obj)
-          Loaded MSVCRT.lib(tlssup.obj)
-        Found _mainCRTStartup
-          Loaded MSVCRT.lib(exe_main.obj)
-        Found "void __cdecl __scrt_throw_std_bad_alloc(void)" (?__scrt_throw_std_bad_alloc@@YAXXZ)
-          Referenced in MSVCRT.lib(new_scalar.obj)
-          Loaded MSVCRT.lib(throw_bad_alloc.obj)
-        Found ___report_gsfailure
-          Referenced in MSVCRT.lib(secchk.obj)
-          Loaded MSVCRT.lib(gs_report.obj)
-        Found __SEH_prolog4
-          Referenced in MSVCRT.lib(ehvecctr.obj)
-          Referenced in MSVCRT.lib(ehvecdtr.obj)
-          Referenced in MSVCRT.lib(utility.obj)
-          Referenced in MSVCRT.lib(exe_main.obj)
-          Loaded MSVCRT.lib(sehprolg4.obj)
-        Found __except_handler4
-          Referenced in MSVCRT.lib(sehprolg4.obj)
-          Referenced in MSVCRT.lib(ehvecctr.obj)
-          Referenced in MSVCRT.lib(ehvecdtr.obj)
-          Referenced in MSVCRT.lib(utility.obj)
-          Referenced in MSVCRT.lib(exe_main.obj)
-          Loaded MSVCRT.lib(chandler4gs.obj)
-        Found ___guard_check_icall_fptr
-          Referenced in MSVCRT.lib(exe_main.obj)
-          Referenced in MSVCRT.lib(ehvecctr.obj)
-          Referenced in MSVCRT.lib(ehvecdtr.obj)
-          Referenced in MSVCRT.lib(utility.obj)
-          Referenced in MSVCRT.lib(thread_safe_statics.obj)
-          Loaded MSVCRT.lib(guard_support.obj)
-        Found ___isa_available_init
-          Referenced in MSVCRT.lib(utility.obj)
-          Loaded MSVCRT.lib(cpu_disp.obj)
-        Found __get_startup_argv_mode
-          Referenced in MSVCRT.lib(utility.obj)
-          Referenced in MSVCRT.lib(exe_main.obj)
-          Loaded MSVCRT.lib(argv_mode.obj)
-        Found ___scrt_is_ucrt_dll_in_use
-          Referenced in MSVCRT.lib(utility.obj)
-          Loaded MSVCRT.lib(ucrt_detection.obj)
-        Found ___scrt_fastfail
-          Referenced in MSVCRT.lib(utility.obj)
-          Referenced in MSVCRT.lib(thread_safe_statics.obj)
-          Referenced in MSVCRT.lib(exe_main.obj)
-          Loaded MSVCRT.lib(utility_desktop.obj)
-        Found ___security_init_cookie
-          Referenced in MSVCRT.lib(exe_main.obj)
-          Loaded MSVCRT.lib(gs_support.obj)
-        Found __matherr
-          Referenced in MSVCRT.lib(exe_main.obj)
-          Loaded MSVCRT.lib(matherr.obj)
-        Found __get_startup_commit_mode
-          Referenced in MSVCRT.lib(exe_main.obj)
-          Loaded MSVCRT.lib(commit_mode.obj)
-        Found __get_startup_file_mode
-          Referenced in MSVCRT.lib(exe_main.obj)
-          Loaded MSVCRT.lib(file_mode.obj)
-        Found __get_startup_new_mode
-          Referenced in MSVCRT.lib(exe_main.obj)
-          Loaded MSVCRT.lib(new_mode.obj)
-        Found __get_startup_thread_locale_mode
-          Referenced in MSVCRT.lib(exe_main.obj)
-          Loaded MSVCRT.lib(thread_locale.obj)
-        Found "void __cdecl __scrt_initialize_type_info(void)" (?__scrt_initialize_type_info@@YAXXZ)
-          Referenced in MSVCRT.lib(exe_main.obj)
-          Loaded MSVCRT.lib(tncleanup.obj)
-        Found __should_initialize_environment
-          Referenced in MSVCRT.lib(exe_main.obj)
-          Loaded MSVCRT.lib(env_mode.obj)
-        Found __initialize_default_precision
-          Referenced in MSVCRT.lib(exe_main.obj)
-          Loaded MSVCRT.lib(default_precision.obj)
-        Found __initialize_invalid_parameter_handler
-          Referenced in MSVCRT.lib(exe_main.obj)
-          Loaded MSVCRT.lib(invalid_parameter_handler.obj)
-        Found __initialize_denormal_control
-          Referenced in MSVCRT.lib(exe_main.obj)
-          Loaded MSVCRT.lib(denormal_control.obj)
-        Found ___scrt_initialize_default_local_stdio_options
-          Referenced in MSVCRT.lib(exe_main.obj)
-          Loaded MSVCRT.lib(default_local_stdio_options.obj)
-        Found ___scrt_is_user_matherr_present
-          Referenced in MSVCRT.lib(exe_main.obj)
-          Loaded MSVCRT.lib(matherr_detection.obj)
-        Found ___scrt_get_dyn_tls_init_callback
-          Referenced in MSVCRT.lib(exe_main.obj)
-          Loaded MSVCRT.lib(dyn_tls_init.obj)
-        Found ___scrt_get_dyn_tls_dtor_callback
-          Referenced in MSVCRT.lib(exe_main.obj)
-          Loaded MSVCRT.lib(dyn_tls_dtor.obj)
-        Found __RTC_Initialize
-          Referenced in MSVCRT.lib(exe_main.obj)
-          Loaded MSVCRT.lib(initsect.obj)
-        Found ___xi_a
-          Referenced in MSVCRT.lib(exe_main.obj)
-          Loaded MSVCRT.lib(initializers.obj)
-  Processed /DEFAULTLIB:kernel32.lib
-   Processed /DISALLOWLIB:msvcrtd.lib
-   Processed /DISALLOWLIB:libcmt.lib
-   Processed /DISALLOWLIB:libcmtd.lib
-  Processed /DEFAULTLIB:vcruntime.lib
-   Processed /DISALLOWLIB:vcruntimed.lib
-   Processed /DISALLOWLIB:libvcruntime.lib
-   Processed /DISALLOWLIB:libvcruntimed.lib
-  Processed /DEFAULTLIB:ucrt.lib
-   Processed /DISALLOWLIB:ucrtd.lib
-   Processed /DISALLOWLIB:libucrt.lib
-   Processed /DISALLOWLIB:libucrtd.lib
-      Searching C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\lib\x86\OLDNAMES.lib:
       Searching C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\lib\x86\msvcprt.lib:
         Found "__declspec(dllimport) public: __thiscall std::_Lockit::_Lockit(int)" (__imp_??0_Lockit@std@@QAE@H@Z)
           Referenced in Map.obj
@@ -456,6 +284,187 @@ LINK : warning LNK4044: unrecognized option '/lSDL_mixer'; ignored
         Found MSVCP140_NULL_THUNK_DATA
           Referenced in msvcprt.lib(MSVCP140.dll)
           Loaded msvcprt.lib(MSVCP140.dll)
+      Searching C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\lib\x86\MSVCRT.lib:
+        Found __fltused
+          Referenced in Timer.obj
+          Referenced in VMath.obj
+          Referenced in Collision.obj
+          Referenced in Scene1.obj
+          Referenced in SceneManager.obj
+          Referenced in TextureLoader.obj
+          Loaded MSVCRT.lib(fltused.obj)
+        Found "void * __cdecl operator new(unsigned int)" (??2@YAPAXI@Z)
+          Referenced in SceneManager.obj
+          Referenced in msvcprt.lib(locale0_implib.obj)
+          Referenced in Map.obj
+          Referenced in EntityCS.obj
+          Referenced in Main.obj
+          Referenced in Scene1.obj
+          Loaded MSVCRT.lib(new_scalar.obj)
+        Found "void __cdecl operator delete(void *,unsigned int)" (??3@YAXPAXI@Z)
+          Referenced in SceneManager.obj
+          Referenced in Window.obj
+          Referenced in msvcprt.lib(locale0_implib.obj)
+          Referenced in Map.obj
+          Referenced in EntityCS.obj
+          Referenced in Main.obj
+          Referenced in Scene1.obj
+          Loaded MSVCRT.lib(delete_scalar_size.obj)
+        Found @__security_check_cookie@4
+          Referenced in TextureLoader.obj
+          Referenced in Map.obj
+          Referenced in Main.obj
+          Referenced in Scene1.obj
+          Referenced in SceneManager.obj
+          Loaded MSVCRT.lib(secchk.obj)
+        Found "const type_info::`vftable'" (??_7type_info@@6B@)
+          Referenced in SceneManager.obj
+          Referenced in Map.obj
+          Referenced in EntityCS.obj
+          Referenced in Main.obj
+          Referenced in Scene1.obj
+          Loaded MSVCRT.lib(std_type_info_static.obj)
+        Found ___security_cookie
+          Referenced in TextureLoader.obj
+          Referenced in MSVCRT.lib(secchk.obj)
+          Referenced in Map.obj
+          Referenced in Main.obj
+          Referenced in Scene1.obj
+          Referenced in SceneManager.obj
+          Loaded MSVCRT.lib(gs_cookie.obj)
+        Found "void __stdcall `eh vector constructor iterator'(void *,unsigned int,unsigned int,void (__thiscall*)(void *),void (__thiscall*)(void *))" (??_L@YGXPAXIIP6EX0@Z1@Z)
+          Referenced in Scene1.obj
+          Loaded MSVCRT.lib(ehvecctr.obj)
+        Found "void __stdcall `eh vector destructor iterator'(void *,unsigned int,unsigned int,void (__thiscall*)(void *))" (??_M@YGXPAXIIP6EX0@Z@Z)
+          Referenced in Scene1.obj
+          Loaded MSVCRT.lib(ehvecdtr.obj)
+        Found "void __cdecl operator delete(void *)" (??3@YAXPAX@Z)
+          Referenced in Scene1.obj
+          Referenced in MSVCRT.lib(delete_scalar_size.obj)
+          Loaded MSVCRT.lib(delete_scalar.obj)
+        Found _atexit
+          Referenced in Scene1.obj
+          Referenced in msvcprt.lib(locale0_implib.obj)
+          Loaded MSVCRT.lib(utility.obj)
+        Found __Init_thread_header
+          Referenced in Scene1.obj
+          Loaded MSVCRT.lib(thread_safe_statics.obj)
+        Found __tls_array
+          Referenced in Scene1.obj
+          Referenced in MSVCRT.lib(thread_safe_statics.obj)
+          Loaded MSVCRT.lib(atlssup.obj)
+        Found __tls_index
+          Referenced in Scene1.obj
+          Referenced in MSVCRT.lib(thread_safe_statics.obj)
+          Loaded MSVCRT.lib(tlssup.obj)
+        Found _mainCRTStartup
+          Loaded MSVCRT.lib(exe_main.obj)
+        Found ___guard_check_icall_fptr
+          Referenced in MSVCRT.lib(thread_safe_statics.obj)
+          Referenced in MSVCRT.lib(exe_main.obj)
+          Referenced in msvcprt.lib(locale0_implib.obj)
+          Referenced in MSVCRT.lib(ehvecctr.obj)
+          Referenced in MSVCRT.lib(ehvecdtr.obj)
+          Referenced in MSVCRT.lib(utility.obj)
+          Loaded MSVCRT.lib(guard_support.obj)
+        Found "void __cdecl __scrt_throw_std_bad_alloc(void)" (?__scrt_throw_std_bad_alloc@@YAXXZ)
+          Referenced in MSVCRT.lib(new_scalar.obj)
+          Loaded MSVCRT.lib(throw_bad_alloc.obj)
+        Found ___report_gsfailure
+          Referenced in MSVCRT.lib(secchk.obj)
+          Loaded MSVCRT.lib(gs_report.obj)
+        Found __SEH_prolog4
+          Referenced in MSVCRT.lib(ehvecctr.obj)
+          Referenced in MSVCRT.lib(ehvecdtr.obj)
+          Referenced in MSVCRT.lib(utility.obj)
+          Referenced in MSVCRT.lib(exe_main.obj)
+          Loaded MSVCRT.lib(sehprolg4.obj)
+        Found __except_handler4
+          Referenced in MSVCRT.lib(sehprolg4.obj)
+          Referenced in MSVCRT.lib(ehvecctr.obj)
+          Referenced in MSVCRT.lib(ehvecdtr.obj)
+          Referenced in MSVCRT.lib(utility.obj)
+          Referenced in MSVCRT.lib(exe_main.obj)
+          Loaded MSVCRT.lib(chandler4gs.obj)
+        Found ___isa_available_init
+          Referenced in MSVCRT.lib(utility.obj)
+          Loaded MSVCRT.lib(cpu_disp.obj)
+        Found __get_startup_argv_mode
+          Referenced in MSVCRT.lib(utility.obj)
+          Referenced in MSVCRT.lib(exe_main.obj)
+          Loaded MSVCRT.lib(argv_mode.obj)
+        Found ___scrt_is_ucrt_dll_in_use
+          Referenced in MSVCRT.lib(utility.obj)
+          Loaded MSVCRT.lib(ucrt_detection.obj)
+        Found ___scrt_fastfail
+          Referenced in MSVCRT.lib(utility.obj)
+          Referenced in MSVCRT.lib(thread_safe_statics.obj)
+          Referenced in MSVCRT.lib(exe_main.obj)
+          Loaded MSVCRT.lib(utility_desktop.obj)
+        Found ___security_init_cookie
+          Referenced in MSVCRT.lib(exe_main.obj)
+          Loaded MSVCRT.lib(gs_support.obj)
+        Found __matherr
+          Referenced in MSVCRT.lib(exe_main.obj)
+          Loaded MSVCRT.lib(matherr.obj)
+        Found __get_startup_commit_mode
+          Referenced in MSVCRT.lib(exe_main.obj)
+          Loaded MSVCRT.lib(commit_mode.obj)
+        Found __get_startup_file_mode
+          Referenced in MSVCRT.lib(exe_main.obj)
+          Loaded MSVCRT.lib(file_mode.obj)
+        Found __get_startup_new_mode
+          Referenced in MSVCRT.lib(exe_main.obj)
+          Loaded MSVCRT.lib(new_mode.obj)
+        Found __get_startup_thread_locale_mode
+          Referenced in MSVCRT.lib(exe_main.obj)
+          Loaded MSVCRT.lib(thread_locale.obj)
+        Found "void __cdecl __scrt_initialize_type_info(void)" (?__scrt_initialize_type_info@@YAXXZ)
+          Referenced in MSVCRT.lib(exe_main.obj)
+          Loaded MSVCRT.lib(tncleanup.obj)
+        Found __should_initialize_environment
+          Referenced in MSVCRT.lib(exe_main.obj)
+          Loaded MSVCRT.lib(env_mode.obj)
+        Found __initialize_default_precision
+          Referenced in MSVCRT.lib(exe_main.obj)
+          Loaded MSVCRT.lib(default_precision.obj)
+        Found __initialize_invalid_parameter_handler
+          Referenced in MSVCRT.lib(exe_main.obj)
+          Loaded MSVCRT.lib(invalid_parameter_handler.obj)
+        Found __initialize_denormal_control
+          Referenced in MSVCRT.lib(exe_main.obj)
+          Loaded MSVCRT.lib(denormal_control.obj)
+        Found ___scrt_initialize_default_local_stdio_options
+          Referenced in MSVCRT.lib(exe_main.obj)
+          Loaded MSVCRT.lib(default_local_stdio_options.obj)
+        Found ___scrt_is_user_matherr_present
+          Referenced in MSVCRT.lib(exe_main.obj)
+          Loaded MSVCRT.lib(matherr_detection.obj)
+        Found ___scrt_get_dyn_tls_init_callback
+          Referenced in MSVCRT.lib(exe_main.obj)
+          Loaded MSVCRT.lib(dyn_tls_init.obj)
+        Found ___scrt_get_dyn_tls_dtor_callback
+          Referenced in MSVCRT.lib(exe_main.obj)
+          Loaded MSVCRT.lib(dyn_tls_dtor.obj)
+        Found __RTC_Initialize
+          Referenced in MSVCRT.lib(exe_main.obj)
+          Loaded MSVCRT.lib(initsect.obj)
+        Found ___xi_a
+          Referenced in MSVCRT.lib(exe_main.obj)
+          Loaded MSVCRT.lib(initializers.obj)
+  Processed /DEFAULTLIB:kernel32.lib
+   Processed /DISALLOWLIB:msvcrtd.lib
+   Processed /DISALLOWLIB:libcmt.lib
+   Processed /DISALLOWLIB:libcmtd.lib
+  Processed /DEFAULTLIB:vcruntime.lib
+   Processed /DISALLOWLIB:vcruntimed.lib
+   Processed /DISALLOWLIB:libvcruntime.lib
+   Processed /DISALLOWLIB:libvcruntimed.lib
+  Processed /DEFAULTLIB:ucrt.lib
+   Processed /DISALLOWLIB:ucrtd.lib
+   Processed /DISALLOWLIB:libucrt.lib
+   Processed /DISALLOWLIB:libucrtd.lib
+      Searching C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\lib\x86\OLDNAMES.lib:
       Searching C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\lib\x86\vcruntime.lib:
         Found ___std_terminate
           Referenced in Map.obj
@@ -542,6 +551,11 @@ LINK : warning LNK4044: unrecognized option '/lSDL_mixer'; ignored
           Referenced in vcruntime.lib(VCRUNTIME140.dll)
           Loaded vcruntime.lib(VCRUNTIME140.dll)
       Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\ucrt\x86\ucrt.lib:
+        Found __libm_sse2_sqrt_precise
+          Referenced in Collision.obj
+          Referenced in Scene1.obj
+          Referenced in VMath.obj
+          Loaded ucrt.lib(api-ms-win-crt-math-l1-1-0.dll)
         Found __imp___invalid_parameter_noinfo_noreturn
           Referenced in SceneManager.obj
           Referenced in Window.obj
@@ -605,10 +619,6 @@ LINK : warning LNK4044: unrecognized option '/lSDL_mixer'; ignored
           Loaded ucrt.lib(api-ms-win-crt-stdio-l1-1-0.dll)
         Found __CIatan2
           Referenced in Scene1.obj
-          Loaded ucrt.lib(api-ms-win-crt-math-l1-1-0.dll)
-        Found __libm_sse2_sqrt_precise
-          Referenced in Scene1.obj
-          Referenced in VMath.obj
           Loaded ucrt.lib(api-ms-win-crt-math-l1-1-0.dll)
         Found __callnewh
           Referenced in MSVCRT.lib(new_scalar.obj)
@@ -704,6 +714,11 @@ LINK : warning LNK4044: unrecognized option '/lSDL_mixer'; ignored
         Found __controlfp_s
           Referenced in MSVCRT.lib(default_precision.obj)
           Loaded ucrt.lib(api-ms-win-crt-runtime-l1-1-0.dll)
+        Found __IMPORT_DESCRIPTOR_api-ms-win-crt-math-l1-1-0
+          Referenced in ucrt.lib(api-ms-win-crt-math-l1-1-0.dll)
+          Referenced in ucrt.lib(api-ms-win-crt-math-l1-1-0.dll)
+          Referenced in ucrt.lib(api-ms-win-crt-math-l1-1-0.dll)
+          Loaded ucrt.lib(api-ms-win-crt-math-l1-1-0.dll)
         Found __IMPORT_DESCRIPTOR_api-ms-win-crt-runtime-l1-1-0
           Referenced in ucrt.lib(api-ms-win-crt-runtime-l1-1-0.dll)
           Referenced in ucrt.lib(api-ms-win-crt-runtime-l1-1-0.dll)
@@ -754,11 +769,6 @@ LINK : warning LNK4044: unrecognized option '/lSDL_mixer'; ignored
         Found __IMPORT_DESCRIPTOR_api-ms-win-crt-convert-l1-1-0
           Referenced in ucrt.lib(api-ms-win-crt-convert-l1-1-0.dll)
           Loaded ucrt.lib(api-ms-win-crt-convert-l1-1-0.dll)
-        Found __IMPORT_DESCRIPTOR_api-ms-win-crt-math-l1-1-0
-          Referenced in ucrt.lib(api-ms-win-crt-math-l1-1-0.dll)
-          Referenced in ucrt.lib(api-ms-win-crt-math-l1-1-0.dll)
-          Referenced in ucrt.lib(api-ms-win-crt-math-l1-1-0.dll)
-          Loaded ucrt.lib(api-ms-win-crt-math-l1-1-0.dll)
         Found __IMPORT_DESCRIPTOR_api-ms-win-crt-heap-l1-1-0
           Referenced in ucrt.lib(api-ms-win-crt-heap-l1-1-0.dll)
           Referenced in ucrt.lib(api-ms-win-crt-heap-l1-1-0.dll)
@@ -768,6 +778,9 @@ LINK : warning LNK4044: unrecognized option '/lSDL_mixer'; ignored
         Found __IMPORT_DESCRIPTOR_api-ms-win-crt-locale-l1-1-0
           Referenced in ucrt.lib(api-ms-win-crt-locale-l1-1-0.dll)
           Loaded ucrt.lib(api-ms-win-crt-locale-l1-1-0.dll)
+        Found api-ms-win-crt-math-l1-1-0_NULL_THUNK_DATA
+          Referenced in ucrt.lib(api-ms-win-crt-math-l1-1-0.dll)
+          Loaded ucrt.lib(api-ms-win-crt-math-l1-1-0.dll)
         Found api-ms-win-crt-runtime-l1-1-0_NULL_THUNK_DATA
           Referenced in ucrt.lib(api-ms-win-crt-runtime-l1-1-0.dll)
           Loaded ucrt.lib(api-ms-win-crt-runtime-l1-1-0.dll)
@@ -780,9 +793,6 @@ LINK : warning LNK4044: unrecognized option '/lSDL_mixer'; ignored
         Found api-ms-win-crt-convert-l1-1-0_NULL_THUNK_DATA
           Referenced in ucrt.lib(api-ms-win-crt-convert-l1-1-0.dll)
           Loaded ucrt.lib(api-ms-win-crt-convert-l1-1-0.dll)
-        Found api-ms-win-crt-math-l1-1-0_NULL_THUNK_DATA
-          Referenced in ucrt.lib(api-ms-win-crt-math-l1-1-0.dll)
-          Loaded ucrt.lib(api-ms-win-crt-math-l1-1-0.dll)
         Found api-ms-win-crt-heap-l1-1-0_NULL_THUNK_DATA
           Referenced in ucrt.lib(api-ms-win-crt-heap-l1-1-0.dll)
           Loaded ucrt.lib(api-ms-win-crt-heap-l1-1-0.dll)
@@ -906,9 +916,9 @@ LINK : warning LNK4044: unrecognized option '/lSDL_mixer'; ignored
       Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\uuid.lib:
       Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\odbc32.lib:
       Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\odbccp32.lib:
+      Searching C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\lib\x86\msvcprt.lib:
       Searching C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\lib\x86\MSVCRT.lib:
       Searching C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\lib\x86\OLDNAMES.lib:
-      Searching C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\lib\x86\msvcprt.lib:
       Searching C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\lib\x86\vcruntime.lib:
       Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\ucrt\x86\ucrt.lib:
       Searching D:\dev\CubesMass\CubesMass\\Dependencies\SDL2-2.0.12\lib\x86\SDL2.lib:
@@ -931,13 +941,13 @@ LINK : warning LNK4044: unrecognized option '/lSDL_mixer'; ignored
       Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\uuid.lib:
       Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\odbc32.lib:
       Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\odbccp32.lib:
+      Searching C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\lib\x86\msvcprt.lib:
       Searching C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\lib\x86\MSVCRT.lib:
         Found ___scrt_stub_for_acrt_initialize
           Loaded MSVCRT.lib(ucrt_stubs.obj)
         Found __filter_x86_sse2_floating_point_exception_default
           Loaded MSVCRT.lib(x86_exception_filter.obj)
       Searching C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\lib\x86\OLDNAMES.lib:
-      Searching C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\lib\x86\msvcprt.lib:
       Searching C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\lib\x86\vcruntime.lib:
       Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\ucrt\x86\ucrt.lib:
   Finished searching libraries
@@ -957,9 +967,9 @@ LINK : warning LNK4044: unrecognized option '/lSDL_mixer'; ignored
       Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\uuid.lib:
       Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\odbc32.lib:
       Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\odbccp32.lib:
+      Searching C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\lib\x86\msvcprt.lib:
       Searching C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\lib\x86\MSVCRT.lib:
       Searching C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\lib\x86\OLDNAMES.lib:
-      Searching C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\lib\x86\msvcprt.lib:
       Searching C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\lib\x86\vcruntime.lib:
       Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\ucrt\x86\ucrt.lib:
   Finished searching libraries
@@ -979,9 +989,9 @@ LINK : warning LNK4044: unrecognized option '/lSDL_mixer'; ignored
       Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\uuid.lib:
       Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\odbc32.lib:
       Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\odbccp32.lib:
+      Searching C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\lib\x86\msvcprt.lib:
       Searching C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\lib\x86\MSVCRT.lib:
       Searching C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\lib\x86\OLDNAMES.lib:
-      Searching C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\lib\x86\msvcprt.lib:
       Searching C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\lib\x86\vcruntime.lib:
       Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\ucrt\x86\ucrt.lib:
   Finished searching libraries
@@ -1002,11 +1012,11 @@ LINK : warning LNK4044: unrecognized option '/lSDL_mixer'; ignored
       Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\uuid.lib:
       Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\odbc32.lib:
       Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\odbccp32.lib:
+      Searching C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\lib\x86\msvcprt.lib:
       Searching C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\lib\x86\MSVCRT.lib:
         Found __load_config_used
           Loaded MSVCRT.lib(loadcfg.obj)
       Searching C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\lib\x86\OLDNAMES.lib:
-      Searching C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\lib\x86\msvcprt.lib:
       Searching C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\lib\x86\vcruntime.lib:
       Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\ucrt\x86\ucrt.lib:
       Searching D:\dev\CubesMass\CubesMass\\Dependencies\SDL2-2.0.12\lib\x86\SDL2.lib:
@@ -1024,30 +1034,31 @@ LINK : warning LNK4044: unrecognized option '/lSDL_mixer'; ignored
       Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\uuid.lib:
       Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\odbc32.lib:
       Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\odbccp32.lib:
+      Searching C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\lib\x86\msvcprt.lib:
   Finished searching libraries
   Invoking rc.exe:
    /v
    /x
    /fo
-   "C:\Users\Shane\AppData\Local\Temp\lnk{F44C0B1C-EF77-409C-9B7B-6BC6B1252F91}.tmp"
-   "C:\Users\Shane\AppData\Local\Temp\lnk{E7AD0972-9C94-442D-AC97-75C57F522C64}.tmp"
+   "C:\Users\Shane\AppData\Local\Temp\lnk{2D6673AF-F6C0-4080-8579-34B18C4C7D3F}.tmp"
+   "C:\Users\Shane\AppData\Local\Temp\lnk{F77E37CC-AF26-476A-A8B8-B749A077B743}.tmp"
   Microsoft (R) Windows (R) Resource Compiler Version 10.0.10011.16384
   
   Copyright (C) Microsoft Corporation.  All rights reserved.
   
   
-  Creating C:\Users\Shane\AppData\Local\Temp\lnk{F44C0B1C-EF77-409C-9B7B-6BC6B1252F91}.tmp
+  Creating C:\Users\Shane\AppData\Local\Temp\lnk{2D6673AF-F6C0-4080-8579-34B18C4C7D3F}.tmp
   
   Using codepage 1252 as default
   
-  C:\Users\Shane\AppData\Local\Temp\lnk{E7AD0972-9C94-442D-AC97-75C57F522C64}.tmp.
+  C:\Users\Shane\AppData\Local\Temp\lnk{F77E37CC-AF26-476A-A8B8-B749A077B743}.tmp.
   Writing 24:1,	lang:0x409,	size 381
   Invoking cvtres.exe:
    /machine:x86
    /verbose
-   /out:"C:\Users\Shane\AppData\Local\Temp\lnk{2F51F37B-B358-408C-98DE-ED71E3D03A78}.tmp"
+   /out:"C:\Users\Shane\AppData\Local\Temp\lnk{93486DA9-B41B-4070-BCE4-AE7DEF559159}.tmp"
    /readonly
-   "C:\Users\Shane\AppData\Local\Temp\lnk{F44C0B1C-EF77-409C-9B7B-6BC6B1252F91}.tmp"
+   "C:\Users\Shane\AppData\Local\Temp\lnk{2D6673AF-F6C0-4080-8579-34B18C4C7D3F}.tmp"
   Microsoft (R) Windows Resource To Object Converter Version 14.29.30133.0
   Copyright (C) Microsoft Corporation.  All rights reserved.
   
@@ -1099,6 +1110,7 @@ LINK : warning LNK4044: unrecognized option '/lSDL_mixer'; ignored
        SDL2.lib(SDL2.dll)
        SDL2.lib(SDL2.dll)
        SDL2.lib(SDL2.dll)
+       SDL2.lib(SDL2.dll)
        SDL2_image.lib(SDL2_image.dll)
        SDL2_image.lib(SDL2_image.dll)
        SDL2_image.lib(SDL2_image.dll)
@@ -1127,6 +1139,45 @@ LINK : warning LNK4044: unrecognized option '/lSDL_mixer'; ignored
        kernel32.lib(KERNEL32.dll)
        kernel32.lib(KERNEL32.dll)
        kernel32.lib(KERNEL32.dll)
+       msvcprt.lib(MSVCP140.dll)
+       msvcprt.lib(MSVCP140.dll)
+       msvcprt.lib(MSVCP140.dll)
+       msvcprt.lib(MSVCP140.dll)
+       msvcprt.lib(MSVCP140.dll)
+       msvcprt.lib(MSVCP140.dll)
+       msvcprt.lib(MSVCP140.dll)
+       msvcprt.lib(MSVCP140.dll)
+       msvcprt.lib(MSVCP140.dll)
+       msvcprt.lib(MSVCP140.dll)
+       msvcprt.lib(MSVCP140.dll)
+       msvcprt.lib(MSVCP140.dll)
+       msvcprt.lib(MSVCP140.dll)
+       msvcprt.lib(MSVCP140.dll)
+       msvcprt.lib(MSVCP140.dll)
+       msvcprt.lib(MSVCP140.dll)
+       msvcprt.lib(MSVCP140.dll)
+       msvcprt.lib(MSVCP140.dll)
+       msvcprt.lib(MSVCP140.dll)
+       msvcprt.lib(MSVCP140.dll)
+       msvcprt.lib(MSVCP140.dll)
+       msvcprt.lib(MSVCP140.dll)
+       msvcprt.lib(MSVCP140.dll)
+       msvcprt.lib(MSVCP140.dll)
+       msvcprt.lib(MSVCP140.dll)
+       msvcprt.lib(MSVCP140.dll)
+       msvcprt.lib(MSVCP140.dll)
+       msvcprt.lib(MSVCP140.dll)
+       msvcprt.lib(MSVCP140.dll)
+       msvcprt.lib(MSVCP140.dll)
+       msvcprt.lib(MSVCP140.dll)
+       msvcprt.lib(MSVCP140.dll)
+       msvcprt.lib(MSVCP140.dll)
+       msvcprt.lib(MSVCP140.dll)
+       msvcprt.lib(MSVCP140.dll)
+       msvcprt.lib(MSVCP140.dll)
+       msvcprt.lib(MSVCP140.dll)
+       msvcprt.lib(MSVCP140.dll)
+       msvcprt.lib(locale0_implib.obj)
        MSVCRT.lib(sehprolg4.obj)
        MSVCRT.lib(atlssup.obj)
        MSVCRT.lib(gs_cookie.obj)
@@ -1170,45 +1221,6 @@ LINK : warning LNK4044: unrecognized option '/lSDL_mixer'; ignored
        MSVCRT.lib(initsect.obj)
        MSVCRT.lib(default_precision.obj)
        MSVCRT.lib(x86_exception_filter.obj)
-       msvcprt.lib(MSVCP140.dll)
-       msvcprt.lib(MSVCP140.dll)
-       msvcprt.lib(MSVCP140.dll)
-       msvcprt.lib(MSVCP140.dll)
-       msvcprt.lib(MSVCP140.dll)
-       msvcprt.lib(MSVCP140.dll)
-       msvcprt.lib(MSVCP140.dll)
-       msvcprt.lib(MSVCP140.dll)
-       msvcprt.lib(MSVCP140.dll)
-       msvcprt.lib(MSVCP140.dll)
-       msvcprt.lib(MSVCP140.dll)
-       msvcprt.lib(MSVCP140.dll)
-       msvcprt.lib(MSVCP140.dll)
-       msvcprt.lib(MSVCP140.dll)
-       msvcprt.lib(MSVCP140.dll)
-       msvcprt.lib(MSVCP140.dll)
-       msvcprt.lib(MSVCP140.dll)
-       msvcprt.lib(MSVCP140.dll)
-       msvcprt.lib(MSVCP140.dll)
-       msvcprt.lib(MSVCP140.dll)
-       msvcprt.lib(MSVCP140.dll)
-       msvcprt.lib(MSVCP140.dll)
-       msvcprt.lib(MSVCP140.dll)
-       msvcprt.lib(MSVCP140.dll)
-       msvcprt.lib(MSVCP140.dll)
-       msvcprt.lib(MSVCP140.dll)
-       msvcprt.lib(MSVCP140.dll)
-       msvcprt.lib(MSVCP140.dll)
-       msvcprt.lib(MSVCP140.dll)
-       msvcprt.lib(MSVCP140.dll)
-       msvcprt.lib(MSVCP140.dll)
-       msvcprt.lib(MSVCP140.dll)
-       msvcprt.lib(MSVCP140.dll)
-       msvcprt.lib(MSVCP140.dll)
-       msvcprt.lib(MSVCP140.dll)
-       msvcprt.lib(MSVCP140.dll)
-       msvcprt.lib(MSVCP140.dll)
-       msvcprt.lib(MSVCP140.dll)
-       msvcprt.lib(locale0_implib.obj)
        vcruntime.lib(VCRUNTIME140.dll)
        vcruntime.lib(VCRUNTIME140.dll)
        vcruntime.lib(VCRUNTIME140.dll)

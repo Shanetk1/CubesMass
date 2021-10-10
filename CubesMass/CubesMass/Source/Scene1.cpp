@@ -51,13 +51,14 @@ bool Scene1::OnCreate()
 	newPlayer.addComponent<SpriteComponent>("assets/download.png", true);
 
 	newPlayer.addComponent<KeyBoardController>();
-	newPlayer.addComponent<ColliderComponent>("player");
-	newPlayer.getComponent<ColliderComponent>().setColliderSize(64.f, 64.f);
+	newPlayer.addComponent<BoxColliderComponent>("player");
+	newPlayer.getComponent<BoxColliderComponent>().setColliderSize(64.f, 64.f);
 	newPlayer.addGroup(groupPlayer);
 
 	AITest.addComponent<TransformComponent>(Vector2(200.f, 180.f), Vector2(1.f, 1.f));
 	AITest.addComponent<SpriteComponent>("assets/download.png", true);
-
+	AITest.addComponent<CircleColliderComponent>("AIPerception");
+	AITest.getComponent<CircleColliderComponent>().SetRadiusSize(100.0f);
 	std::vector<Vector2*> patrol;
 
 	Vector2* pt1 = new Vector2(500.f, 180.f);
@@ -66,14 +67,13 @@ bool Scene1::OnCreate()
 	patrol.push_back(pt1);
 	patrol.push_back(pt2);
 	AITest.addComponent<AIController>(patrol);
-
 	AITest.addGroup(groupPlayer);
 
 	wall.addComponent<TransformComponent>(Vector2(300.f,300.f), Vector2(1.f,1.f));
 	wall.addComponent<SpriteComponent>("assets/dirt.png");
 	wall.getComponent<SpriteComponent>().setSize(300.f, 20.f);
-	wall.addComponent<ColliderComponent>("wall");
-	wall.getComponent<ColliderComponent>().setColliderSize(300.f, 20.f);
+	wall.addComponent<BoxColliderComponent>("wall");
+	wall.getComponent<BoxColliderComponent>().setColliderSize(300.f, 20.f);
 	wall.addGroup(groupPlayer);
 
 
@@ -127,12 +127,30 @@ void Scene1::Update(const float deltaTime)
 	
 	for (auto& c : colliders)
 	{
-		if (Collision::AABB(newPlayer.getComponent<ColliderComponent>().collider, c->getComponent<ColliderComponent>().collider))
+		if (Collision::AABB(newPlayer.getComponent<BoxColliderComponent>().collider, c->getComponent<BoxColliderComponent>().collider))
 		{
 			newPlayer.getComponent<TransformComponent>().position = playerPos;
 		}
+
+		
+
 	}
 
+	SDL_Rect tmp = newPlayer.getComponent<BoxColliderComponent>().collider;
+	Vector2 tmpC = AITest.getComponent<CircleColliderComponent>().position;
+	float rad = AITest.getComponent<CircleColliderComponent>().radius;
+	if (Collision::CircleRect(tmpC.x, tmpC.y, rad, tmp.x, tmp.y, tmp.w, tmp.h))
+	{
+		//Super scuffed if value but whatever
+		//Need to continually check since this is between player and AI eventually make this only scroll through the list of AI grouped entities!
+		AITest.getComponent<AIController>().seesPlayer = true;
+
+	}
+	else
+	{
+
+		AITest.getComponent<AIController>().seesPlayer = false;
+	}
 
 
 
@@ -190,8 +208,8 @@ void Scene1::addTile(int srcX, int srcY, int xPos, int yPos, int coll)
 	{
 		//Adding colliders to this is awkward because we need them to have a transform position
 		tile.addComponent<TransformComponent>(Vector2(xPos, yPos), Vector2(1.f,1.f));
-		tile.addComponent<ColliderComponent>("Collider help");
-		tile.getComponent<ColliderComponent>().setColliderSize(64.f, 64.f);
+		tile.addComponent<BoxColliderComponent>("Collider help");
+		tile.getComponent<BoxColliderComponent>().setColliderSize(64.f, 64.f);
 		tile.addGroup(groupColliders);
 	}
 
