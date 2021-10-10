@@ -15,7 +15,7 @@ LINK : warning LNK4044: unrecognized option '/lSDL_mixer'; ignored
   Processed /DEFAULTLIB:OLDNAMES
   Processed /DEFAULTLIB:msvcprt
   Searching libraries
-      Searching C:\dev\CubesMass\CubesMass\\Dependencies\SDL2-2.0.12\lib\x86\SDL2.lib:
+      Searching D:\dev\CubesMass\CubesMass\\Dependencies\SDL2-2.0.12\lib\x86\SDL2.lib:
         Found _SDL_SetRenderDrawColor
           Referenced in Scene1.obj
           Referenced in Window.obj
@@ -100,8 +100,8 @@ LINK : warning LNK4044: unrecognized option '/lSDL_mixer'; ignored
         Found SDL2_NULL_THUNK_DATA
           Referenced in SDL2.lib(SDL2.dll)
           Loaded SDL2.lib(SDL2.dll)
-      Searching C:\dev\CubesMass\CubesMass\\Dependencies\SDL2-2.0.12\lib\x86\SDL2main.lib:
-      Searching C:\dev\CubesMass\CubesMass\\Dependencies\SDL2_image-2.0.5\lib\x86\SDL2_image.lib:
+      Searching D:\dev\CubesMass\CubesMass\\Dependencies\SDL2-2.0.12\lib\x86\SDL2main.lib:
+      Searching D:\dev\CubesMass\CubesMass\\Dependencies\SDL2_image-2.0.5\lib\x86\SDL2_image.lib:
         Found _IMG_Load
           Referenced in TextureLoader.obj
           Loaded SDL2_image.lib(SDL2_image.dll)
@@ -111,18 +111,18 @@ LINK : warning LNK4044: unrecognized option '/lSDL_mixer'; ignored
         Found SDL2_image_NULL_THUNK_DATA
           Referenced in SDL2_image.lib(SDL2_image.dll)
           Loaded SDL2_image.lib(SDL2_image.dll)
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\kernel32.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\user32.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\gdi32.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\winspool.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\comdlg32.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\advapi32.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\shell32.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\ole32.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\oleaut32.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\uuid.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\odbc32.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\odbccp32.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\kernel32.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\user32.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\gdi32.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\winspool.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\comdlg32.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\advapi32.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\shell32.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\ole32.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\oleaut32.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\uuid.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\odbc32.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\odbccp32.lib:
       Searching C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\lib\x86\MSVCRT.lib:
         Found "void * __cdecl operator new(unsigned int)" (??2@YAPAXI@Z)
           Referenced in SceneManager.obj
@@ -541,7 +541,7 @@ LINK : warning LNK4044: unrecognized option '/lSDL_mixer'; ignored
         Found VCRUNTIME140_NULL_THUNK_DATA
           Referenced in vcruntime.lib(VCRUNTIME140.dll)
           Loaded vcruntime.lib(VCRUNTIME140.dll)
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\ucrt\x86\ucrt.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\ucrt\x86\ucrt.lib:
         Found __imp___invalid_parameter_noinfo_noreturn
           Referenced in SceneManager.obj
           Referenced in Window.obj
@@ -789,10 +789,10 @@ LINK : warning LNK4044: unrecognized option '/lSDL_mixer'; ignored
         Found api-ms-win-crt-locale-l1-1-0_NULL_THUNK_DATA
           Referenced in ucrt.lib(api-ms-win-crt-locale-l1-1-0.dll)
           Loaded ucrt.lib(api-ms-win-crt-locale-l1-1-0.dll)
-      Searching C:\dev\CubesMass\CubesMass\\Dependencies\SDL2-2.0.12\lib\x86\SDL2.lib:
-      Searching C:\dev\CubesMass\CubesMass\\Dependencies\SDL2-2.0.12\lib\x86\SDL2main.lib:
-      Searching C:\dev\CubesMass\CubesMass\\Dependencies\SDL2_image-2.0.5\lib\x86\SDL2_image.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\kernel32.lib:
+      Searching D:\dev\CubesMass\CubesMass\\Dependencies\SDL2-2.0.12\lib\x86\SDL2.lib:
+      Searching D:\dev\CubesMass\CubesMass\\Dependencies\SDL2-2.0.12\lib\x86\SDL2main.lib:
+      Searching D:\dev\CubesMass\CubesMass\\Dependencies\SDL2_image-2.0.5\lib\x86\SDL2_image.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\kernel32.lib:
         Found __imp__CloseHandle@4
           Referenced in MSVCRT.lib(thread_safe_statics.obj)
           Loaded kernel32.lib(KERNEL32.dll)
@@ -895,42 +895,42 @@ LINK : warning LNK4044: unrecognized option '/lSDL_mixer'; ignored
         Found KERNEL32_NULL_THUNK_DATA
           Referenced in kernel32.lib(KERNEL32.dll)
           Loaded kernel32.lib(KERNEL32.dll)
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\user32.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\gdi32.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\winspool.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\comdlg32.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\advapi32.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\shell32.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\ole32.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\oleaut32.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\uuid.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\odbc32.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\odbccp32.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\user32.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\gdi32.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\winspool.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\comdlg32.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\advapi32.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\shell32.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\ole32.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\oleaut32.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\uuid.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\odbc32.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\odbccp32.lib:
       Searching C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\lib\x86\MSVCRT.lib:
       Searching C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\lib\x86\OLDNAMES.lib:
       Searching C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\lib\x86\msvcprt.lib:
       Searching C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\lib\x86\vcruntime.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\ucrt\x86\ucrt.lib:
-      Searching C:\dev\CubesMass\CubesMass\\Dependencies\SDL2-2.0.12\lib\x86\SDL2.lib:
-      Searching C:\dev\CubesMass\CubesMass\\Dependencies\SDL2-2.0.12\lib\x86\SDL2main.lib:
-      Searching C:\dev\CubesMass\CubesMass\\Dependencies\SDL2_image-2.0.5\lib\x86\SDL2_image.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\ucrt\x86\ucrt.lib:
+      Searching D:\dev\CubesMass\CubesMass\\Dependencies\SDL2-2.0.12\lib\x86\SDL2.lib:
+      Searching D:\dev\CubesMass\CubesMass\\Dependencies\SDL2-2.0.12\lib\x86\SDL2main.lib:
+      Searching D:\dev\CubesMass\CubesMass\\Dependencies\SDL2_image-2.0.5\lib\x86\SDL2_image.lib:
   Finished searching libraries
   Searching libraries
-      Searching C:\dev\CubesMass\CubesMass\\Dependencies\SDL2-2.0.12\lib\x86\SDL2.lib:
-      Searching C:\dev\CubesMass\CubesMass\\Dependencies\SDL2-2.0.12\lib\x86\SDL2main.lib:
-      Searching C:\dev\CubesMass\CubesMass\\Dependencies\SDL2_image-2.0.5\lib\x86\SDL2_image.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\kernel32.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\user32.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\gdi32.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\winspool.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\comdlg32.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\advapi32.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\shell32.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\ole32.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\oleaut32.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\uuid.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\odbc32.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\odbccp32.lib:
+      Searching D:\dev\CubesMass\CubesMass\\Dependencies\SDL2-2.0.12\lib\x86\SDL2.lib:
+      Searching D:\dev\CubesMass\CubesMass\\Dependencies\SDL2-2.0.12\lib\x86\SDL2main.lib:
+      Searching D:\dev\CubesMass\CubesMass\\Dependencies\SDL2_image-2.0.5\lib\x86\SDL2_image.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\kernel32.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\user32.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\gdi32.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\winspool.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\comdlg32.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\advapi32.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\shell32.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\ole32.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\oleaut32.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\uuid.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\odbc32.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\odbccp32.lib:
       Searching C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\lib\x86\MSVCRT.lib:
         Found ___scrt_stub_for_acrt_initialize
           Loaded MSVCRT.lib(ucrt_stubs.obj)
@@ -939,132 +939,132 @@ LINK : warning LNK4044: unrecognized option '/lSDL_mixer'; ignored
       Searching C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\lib\x86\OLDNAMES.lib:
       Searching C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\lib\x86\msvcprt.lib:
       Searching C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\lib\x86\vcruntime.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\ucrt\x86\ucrt.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\ucrt\x86\ucrt.lib:
   Finished searching libraries
   Searching libraries
-      Searching C:\dev\CubesMass\CubesMass\\Dependencies\SDL2-2.0.12\lib\x86\SDL2.lib:
-      Searching C:\dev\CubesMass\CubesMass\\Dependencies\SDL2-2.0.12\lib\x86\SDL2main.lib:
-      Searching C:\dev\CubesMass\CubesMass\\Dependencies\SDL2_image-2.0.5\lib\x86\SDL2_image.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\kernel32.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\user32.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\gdi32.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\winspool.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\comdlg32.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\advapi32.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\shell32.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\ole32.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\oleaut32.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\uuid.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\odbc32.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\odbccp32.lib:
+      Searching D:\dev\CubesMass\CubesMass\\Dependencies\SDL2-2.0.12\lib\x86\SDL2.lib:
+      Searching D:\dev\CubesMass\CubesMass\\Dependencies\SDL2-2.0.12\lib\x86\SDL2main.lib:
+      Searching D:\dev\CubesMass\CubesMass\\Dependencies\SDL2_image-2.0.5\lib\x86\SDL2_image.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\kernel32.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\user32.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\gdi32.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\winspool.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\comdlg32.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\advapi32.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\shell32.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\ole32.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\oleaut32.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\uuid.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\odbc32.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\odbccp32.lib:
       Searching C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\lib\x86\MSVCRT.lib:
       Searching C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\lib\x86\OLDNAMES.lib:
       Searching C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\lib\x86\msvcprt.lib:
       Searching C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\lib\x86\vcruntime.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\ucrt\x86\ucrt.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\ucrt\x86\ucrt.lib:
   Finished searching libraries
   Searching libraries
-      Searching C:\dev\CubesMass\CubesMass\\Dependencies\SDL2-2.0.12\lib\x86\SDL2.lib:
-      Searching C:\dev\CubesMass\CubesMass\\Dependencies\SDL2-2.0.12\lib\x86\SDL2main.lib:
-      Searching C:\dev\CubesMass\CubesMass\\Dependencies\SDL2_image-2.0.5\lib\x86\SDL2_image.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\kernel32.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\user32.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\gdi32.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\winspool.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\comdlg32.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\advapi32.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\shell32.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\ole32.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\oleaut32.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\uuid.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\odbc32.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\odbccp32.lib:
+      Searching D:\dev\CubesMass\CubesMass\\Dependencies\SDL2-2.0.12\lib\x86\SDL2.lib:
+      Searching D:\dev\CubesMass\CubesMass\\Dependencies\SDL2-2.0.12\lib\x86\SDL2main.lib:
+      Searching D:\dev\CubesMass\CubesMass\\Dependencies\SDL2_image-2.0.5\lib\x86\SDL2_image.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\kernel32.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\user32.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\gdi32.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\winspool.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\comdlg32.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\advapi32.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\shell32.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\ole32.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\oleaut32.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\uuid.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\odbc32.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\odbccp32.lib:
       Searching C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\lib\x86\MSVCRT.lib:
       Searching C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\lib\x86\OLDNAMES.lib:
       Searching C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\lib\x86\msvcprt.lib:
       Searching C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\lib\x86\vcruntime.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\ucrt\x86\ucrt.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\ucrt\x86\ucrt.lib:
   Finished searching libraries
   Finished pass 1
   Searching libraries
-      Searching C:\dev\CubesMass\CubesMass\\Dependencies\SDL2-2.0.12\lib\x86\SDL2.lib:
-      Searching C:\dev\CubesMass\CubesMass\\Dependencies\SDL2-2.0.12\lib\x86\SDL2main.lib:
-      Searching C:\dev\CubesMass\CubesMass\\Dependencies\SDL2_image-2.0.5\lib\x86\SDL2_image.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\kernel32.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\user32.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\gdi32.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\winspool.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\comdlg32.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\advapi32.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\shell32.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\ole32.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\oleaut32.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\uuid.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\odbc32.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\odbccp32.lib:
+      Searching D:\dev\CubesMass\CubesMass\\Dependencies\SDL2-2.0.12\lib\x86\SDL2.lib:
+      Searching D:\dev\CubesMass\CubesMass\\Dependencies\SDL2-2.0.12\lib\x86\SDL2main.lib:
+      Searching D:\dev\CubesMass\CubesMass\\Dependencies\SDL2_image-2.0.5\lib\x86\SDL2_image.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\kernel32.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\user32.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\gdi32.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\winspool.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\comdlg32.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\advapi32.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\shell32.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\ole32.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\oleaut32.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\uuid.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\odbc32.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\odbccp32.lib:
       Searching C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\lib\x86\MSVCRT.lib:
         Found __load_config_used
           Loaded MSVCRT.lib(loadcfg.obj)
       Searching C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\lib\x86\OLDNAMES.lib:
       Searching C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\lib\x86\msvcprt.lib:
       Searching C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\lib\x86\vcruntime.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\ucrt\x86\ucrt.lib:
-      Searching C:\dev\CubesMass\CubesMass\\Dependencies\SDL2-2.0.12\lib\x86\SDL2.lib:
-      Searching C:\dev\CubesMass\CubesMass\\Dependencies\SDL2-2.0.12\lib\x86\SDL2main.lib:
-      Searching C:\dev\CubesMass\CubesMass\\Dependencies\SDL2_image-2.0.5\lib\x86\SDL2_image.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\kernel32.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\user32.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\gdi32.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\winspool.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\comdlg32.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\advapi32.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\shell32.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\ole32.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\oleaut32.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\uuid.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\odbc32.lib:
-      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\odbccp32.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\ucrt\x86\ucrt.lib:
+      Searching D:\dev\CubesMass\CubesMass\\Dependencies\SDL2-2.0.12\lib\x86\SDL2.lib:
+      Searching D:\dev\CubesMass\CubesMass\\Dependencies\SDL2-2.0.12\lib\x86\SDL2main.lib:
+      Searching D:\dev\CubesMass\CubesMass\\Dependencies\SDL2_image-2.0.5\lib\x86\SDL2_image.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\kernel32.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\user32.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\gdi32.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\winspool.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\comdlg32.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\advapi32.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\shell32.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\ole32.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\oleaut32.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\uuid.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\odbc32.lib:
+      Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\odbccp32.lib:
   Finished searching libraries
   Invoking rc.exe:
    /v
    /x
    /fo
-   "C:\Users\Shane\AppData\Local\Temp\lnk{14430F29-FBF1-4F05-9DDA-2F1EC5AFC7A4}.tmp"
-   "C:\Users\Shane\AppData\Local\Temp\lnk{997B2E69-A85B-44A1-A1DC-B4358C3FFD34}.tmp"
+   "C:\Users\Shane\AppData\Local\Temp\lnk{F44C0B1C-EF77-409C-9B7B-6BC6B1252F91}.tmp"
+   "C:\Users\Shane\AppData\Local\Temp\lnk{E7AD0972-9C94-442D-AC97-75C57F522C64}.tmp"
   Microsoft (R) Windows (R) Resource Compiler Version 10.0.10011.16384
   
   Copyright (C) Microsoft Corporation.  All rights reserved.
   
   
-  Creating C:\Users\Shane\AppData\Local\Temp\lnk{14430F29-FBF1-4F05-9DDA-2F1EC5AFC7A4}.tmp
+  Creating C:\Users\Shane\AppData\Local\Temp\lnk{F44C0B1C-EF77-409C-9B7B-6BC6B1252F91}.tmp
   
   Using codepage 1252 as default
   
-  C:\Users\Shane\AppData\Local\Temp\lnk{997B2E69-A85B-44A1-A1DC-B4358C3FFD34}.tmp.
+  C:\Users\Shane\AppData\Local\Temp\lnk{E7AD0972-9C94-442D-AC97-75C57F522C64}.tmp.
   Writing 24:1,	lang:0x409,	size 381
   Invoking cvtres.exe:
    /machine:x86
    /verbose
-   /out:"C:\Users\Shane\AppData\Local\Temp\lnk{8B2D4E04-6D1D-4113-B09D-5D5D6A319A7D}.tmp"
+   /out:"C:\Users\Shane\AppData\Local\Temp\lnk{2F51F37B-B358-408C-98DE-ED71E3D03A78}.tmp"
    /readonly
-   "C:\Users\Shane\AppData\Local\Temp\lnk{14430F29-FBF1-4F05-9DDA-2F1EC5AFC7A4}.tmp"
-  Microsoft (R) Windows Resource To Object Converter Version 14.29.30136.0
+   "C:\Users\Shane\AppData\Local\Temp\lnk{F44C0B1C-EF77-409C-9B7B-6BC6B1252F91}.tmp"
+  Microsoft (R) Windows Resource To Object Converter Version 14.29.30133.0
   Copyright (C) Microsoft Corporation.  All rights reserved.
   
   adding resource. type:MANIFEST, name:1, language:0x0409, flags:0x30, size:381
   Unused libraries:
-    C:\dev\CubesMass\CubesMass\\Dependencies\SDL2-2.0.12\lib\x86\SDL2main.lib
-    C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\user32.lib
-    C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\gdi32.lib
-    C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\winspool.lib
-    C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\comdlg32.lib
-    C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\advapi32.lib
-    C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\shell32.lib
-    C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\ole32.lib
-    C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\oleaut32.lib
-    C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\uuid.lib
-    C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\odbc32.lib
-    C:\Program Files (x86)\Windows Kits\10\lib\10.0.19041.0\um\x86\odbccp32.lib
+    D:\dev\CubesMass\CubesMass\\Dependencies\SDL2-2.0.12\lib\x86\SDL2main.lib
+    C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\user32.lib
+    C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\gdi32.lib
+    C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\winspool.lib
+    C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\comdlg32.lib
+    C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\advapi32.lib
+    C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\shell32.lib
+    C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\ole32.lib
+    C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\oleaut32.lib
+    C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\uuid.lib
+    C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\odbc32.lib
+    C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\odbccp32.lib
     C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\lib\x86\OLDNAMES.lib
   Starting pass 2
        * linker generated manifest res *
@@ -1289,4 +1289,4 @@ LINK : warning LNK4044: unrecognized option '/lSDL_mixer'; ignored
        ucrt.lib(api-ms-win-crt-convert-l1-1-0.dll)
        ucrt.lib(api-ms-win-crt-convert-l1-1-0.dll)
   Finished pass 2
-  CubesMass.vcxproj -> C:\dev\CubesMass\CubesMass\Debug\CubesMass.exe
+  CubesMass.vcxproj -> D:\dev\CubesMass\CubesMass\Debug\CubesMass.exe
