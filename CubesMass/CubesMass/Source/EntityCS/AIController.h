@@ -82,7 +82,6 @@ public:
 	};
 	virtual void Update(const float deltaTime)
 	{
-
 		if (seesPlayer)
 		{
 			State = CHASE;

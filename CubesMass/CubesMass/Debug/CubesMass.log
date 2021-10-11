@@ -1040,25 +1040,25 @@ LINK : warning LNK4044: unrecognized option '/lSDL_mixer'; ignored
    /v
    /x
    /fo
-   "C:\Users\Shane\AppData\Local\Temp\lnk{2D6673AF-F6C0-4080-8579-34B18C4C7D3F}.tmp"
-   "C:\Users\Shane\AppData\Local\Temp\lnk{F77E37CC-AF26-476A-A8B8-B749A077B743}.tmp"
+   "C:\Users\Shane\AppData\Local\Temp\lnk{E321BAF9-59CC-4F46-BAC7-14823641B1EA}.tmp"
+   "C:\Users\Shane\AppData\Local\Temp\lnk{CBB9E32E-C632-4D21-848B-A4120EF416E2}.tmp"
   Microsoft (R) Windows (R) Resource Compiler Version 10.0.10011.16384
   
   Copyright (C) Microsoft Corporation.  All rights reserved.
   
   
-  Creating C:\Users\Shane\AppData\Local\Temp\lnk{2D6673AF-F6C0-4080-8579-34B18C4C7D3F}.tmp
+  Creating C:\Users\Shane\AppData\Local\Temp\lnk{E321BAF9-59CC-4F46-BAC7-14823641B1EA}.tmp
   
   Using codepage 1252 as default
   
-  C:\Users\Shane\AppData\Local\Temp\lnk{F77E37CC-AF26-476A-A8B8-B749A077B743}.tmp.
+  C:\Users\Shane\AppData\Local\Temp\lnk{CBB9E32E-C632-4D21-848B-A4120EF416E2}.tmp.
   Writing 24:1,	lang:0x409,	size 381
   Invoking cvtres.exe:
    /machine:x86
    /verbose
-   /out:"C:\Users\Shane\AppData\Local\Temp\lnk{93486DA9-B41B-4070-BCE4-AE7DEF559159}.tmp"
+   /out:"C:\Users\Shane\AppData\Local\Temp\lnk{67DC3084-B5BE-4790-918C-DC62EBAF141B}.tmp"
    /readonly
-   "C:\Users\Shane\AppData\Local\Temp\lnk{2D6673AF-F6C0-4080-8579-34B18C4C7D3F}.tmp"
+   "C:\Users\Shane\AppData\Local\Temp\lnk{E321BAF9-59CC-4F46-BAC7-14823641B1EA}.tmp"
   Microsoft (R) Windows Resource To Object Converter Version 14.29.30133.0
   Copyright (C) Microsoft Corporation.  All rights reserved.
   

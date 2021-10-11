@@ -151,10 +151,6 @@ void Scene1::Update(const float deltaTime)
 
 		AITest.getComponent<AIController>().seesPlayer = false;
 	}
-
-
-
-	
 }
 
 void Scene1::Render() const

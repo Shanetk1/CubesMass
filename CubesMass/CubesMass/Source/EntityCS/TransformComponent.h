@@ -53,15 +53,17 @@ public:
 
 		//This has no real functionality and it won't to be honest other than to be used as a dummy value used within AI scripts
 		
+
+
+
 		if (MATH::VMath::mag(velocity) > 0.0f)
 		{
-			orientation = atan2(-velocity.x, velocity.y);
+			orientation = atan2f(-velocity.y, velocity.x);
 		}
 		else
 		{
 			orientation = orientation;
 		}
-
 
 		
 

@@ -2,6 +2,7 @@
 #define STEERINGOUTPUT_H
 #include "Vector.h"
 #include <iostream>
+#include <random>
 class SteeringOutput
 {
 public:
@@ -16,15 +17,9 @@ public:
 
 		float satisfactionRadius = 45.0f;
 		const float timeTo = 1.15f;
-
-
-
 		Vector2 result;
 		result = Scene1::playerPosition - AIPosition_;
-
-
 		float mag = sqrtf(result.x * result.x + result.y * result.y);
-
 
 
 		if (mag < satisfactionRadius)
@@ -75,15 +70,27 @@ public:
 
 
 	}
-	inline static Vector2 getWanderOutput(Vector2 AIPosition_)
+	inline static Vector2 getWanderOutput(Vector2 AIPosition_, float orientation)
 	{
 		float maxRotation = 1.0f;
-		 
+		
+		//Get a target location
+		//Grab forward vector of that location
+		//Randomize it a bit i think??
+		
+		
+		Vector2 tmp = Vector2(cosf(orientation), sinf(orientation));
+		//This gives our orientation as vector
+		Vector2 result = tmp * 100.f;
 
-		//Vector2 result = 100.f * 
+		float r = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
+		
 
 
-		//return Vector2(0.f);
+
+		
+
+
 	}
 
 
