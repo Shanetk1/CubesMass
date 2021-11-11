@@ -8,8 +8,8 @@ SDL_Texture* TextureLoader::LoadTexture(const char* fileName)
     return text;
 }
 
-void TextureLoader::Draw(SDL_Texture* tex, SDL_Rect src, SDL_Rect dest, SDL_RendererFlip flip_)
+void TextureLoader::Draw(SDL_Texture* tex, SDL_Rect src, SDL_Rect dest, float angle, SDL_RendererFlip flip_)
 {
 
-    SDL_RenderCopyEx(Scene1::renderer, tex, &src, &dest, NULL, NULL, flip_);
+    SDL_RenderCopyEx(Scene1::renderer, tex, &src, &dest, static_cast<double>(angle), NULL, flip_);
 }

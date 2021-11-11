@@ -9,16 +9,13 @@ class CircleColliderComponent : public Component
 public:
 
 
+	//Instead we should have a cirlce struct rather than creating a psuedo-circle like this...
+
 	Vector2 position;
+	float radius = 0;
 
 	TransformComponent* transform = nullptr;
-	float radius = 0; 
 	const char* tag ="";
-	//This is a very empty component since all it needs is a radius 
-	//Mainly becuase there will not be a implemented offset and just use the transform position as the cirlces position
-
-
-
 	CircleColliderComponent()
 	{
 		//Do nothing since nothing provided... most of our stuff will be in init anyway
@@ -91,9 +88,6 @@ public:
 			}
 		}
 	}
-
-
-
 };
 
 #endif // !CIRCLECOLLIDERCOMPONENT_H

@@ -77,6 +77,7 @@
       <AdditionalOptions>-lSDL_mixer %(AdditionalOptions)</AdditionalOptions>
       <OutputFile>$(OutDir)\$(ProjectName).exe</OutputFile>
       <ShowProgress>LinkVerbose</ShowProgress>
+      <SubSystem>Console</SubSystem>
     </Link>
     <ClCompile>
       <AdditionalIncludeDirectories>
@@ -84,6 +85,7 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\MouseEventListener.cpp" />
     <ClCompile Include="Source\Collision.cpp" />
     <ClCompile Include="Source\Map.cpp" />
     <ClCompile Include="Source\EntityCS\EntityCS.cpp" />
@@ -96,6 +98,8 @@
     <ClCompile Include="Source\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\EntityCS\MovementComponent.h" />
+    <ClInclude Include="Source\MouseEventListener.h" />
     <ClInclude Include="Source\Animation.h" />
     <ClInclude Include="Source\Collision.h" />
     <ClInclude Include="Source\EntityCS\AIController.h" />

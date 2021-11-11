@@ -9,14 +9,13 @@ class AIController : public Component
 private:
 
 	TransformComponent* transform = nullptr;
+	MovementComponent* movement = nullptr;
 
 	//Patrolling handling I think this can be done better but for now it works
 	std::vector<Vector2*> patrolPoints = std::vector<Vector2*>();
+	
 	Vector2 patrolLocation;
 	int patrolNode = 0;
-	
-
-
 
 	enum States
 	{
@@ -29,11 +28,11 @@ private:
 
 	inline void beginPatrol()
 	{
-
 		//Basically, always move to the first item in the vector list
 		if (patrolPoints.size() > 0)
 		{
 
+			//Eventually add randomization to picking patrol point...
 			if (MATH::VMath::distance(transform->position, *patrolPoints.at(0)) < 10.f)
 			{
 				//Use a different point
@@ -50,22 +49,18 @@ private:
 
 
 public:
-	//We ned to handle enum switching based off other stuff dont know yet other than manually...
+
 
 	bool seesPlayer = false;
 
-
-
-
-	//The components job is to have functionality that will effect the A.I's transform...
-	//Meaning implement algorithms based on the ai's state
-
+	//Setting Default State, Init vector list
 	AIController()
 	{
-		//Setting Default
 		State = PATROL;
 		patrolPoints = std::vector<Vector2*>();
 	}
+
+
 	AIController(std::vector<Vector2*> patrolPoints_)
 	{
 		patrolPoints = patrolPoints_;
@@ -77,6 +72,7 @@ public:
 	{
 		//This is dangerous since if this doesnt exist will will get an error, could add error check but lazy
 		transform = &entity->getComponent<TransformComponent>();
+		movement = &entity->getComponent<MovementComponent>();
 		State = PATROL;
 		beginPatrol();
 	};
@@ -94,11 +90,9 @@ public:
 		case AIController::PATROL:
 			//Patrol should just update velocity...
 			//We need to call something and send it our information thats it and it should return a result
-			//However this component shouldnt need to hold the player position for every ai we have...
 
-			transform->velocity = SteeringOutput::getSteeringOutput(transform->position, patrolLocation);
 
-			std::cout << transform->orientation << std::endl;
+			movement->setVelocity(SteeringOutput::getSteeringOutput(transform->position, patrolLocation));
 
 
 			if (patrolPoints.size() > 1)
@@ -114,16 +108,16 @@ public:
 					patrolNode = 0;
 					patrolLocation = *patrolPoints.at(patrolNode);
 				}
-
-
 			}
-
 			break;
 		case AIController::WANDER:
+			//WIP since, I was having a hard time with some orientation stuff within the program
+			//Need to use orientation to update my animation...
+
 			//transform->velocity = SteeringOutput::getWanderOutput(transform->position);
 			break;
 		case AIController::CHASE:
-			transform->velocity = SteeringOutput::getSteeringOutput(transform->position);
+			movement->setVelocity(SteeringOutput::getSteeringOutput(transform->position));
 
 			break;
 		default:
@@ -135,9 +129,7 @@ public:
 
 	};
 	virtual void Render()
-	{
-
-	};
+	{};
 
 
 };

@@ -1,6 +1,7 @@
 #ifndef SCENEMANAGER_H
 #define SCENEMANAGER_H
 #include <string>
+#include "MouseEventListener.h"
 class SceneManager
 {
 	//This class will be how our game runs, 
@@ -9,6 +10,9 @@ private:
 	class Window* window = nullptr;
 	class Timer* timer = nullptr;
 	class Scene* currentScene = nullptr;
+
+
+
 	bool isRunning = false;
 	unsigned int fps = 0;
 public:

@@ -6,20 +6,16 @@ class KeyBoardController : public Component
 	//Basically a movement component via keyboard input//
 	//RENDER FLIPPING DOESN'T WORK BECAUE OF DEPENDANT ON SPRITE COMPONENT EXISTING BEFORE INIT
 private:
-	TransformComponent* transform = nullptr;
+	MovementComponent* transform = nullptr;
 	float speed = 0;
 	Vector2 velocity = (0.f,0.f);
 public:
 	void Init() override
 	{
-		transform = &entity->getComponent<TransformComponent>();
-		velocity = Vector2(0.f);
-		speed = 3.0f;
+		transform = &entity->getComponent<MovementComponent>();
 	}
 	void Update(const float deltaTime) override
 	{
-		//transform->position.x += velocity.x * speed;
-		//transform->position.y += velocity.y * speed;
 	}
 	void HandleEvents(const SDL_Event &sdlEvent) override
 	{
@@ -34,21 +30,25 @@ public:
 		//We could make our sdl_event from our scene 
 		//A static event allowing us to access it hear instead of passing down
 		//The event address..... but idk
+
+		Vector2 tmp = transform->getVelocity();
+
+
 		if (sdlEvent.type == SDL_KEYDOWN)
 		{
 			switch (sdlEvent.key.keysym.sym)
 			{
 			case SDLK_w:
-				transform->velocity.y = -150.f;
+				transform->setVelocity(Vector2(tmp.x,-150.f));
 				break;
 			case SDLK_s:
-				transform->velocity.y = 150.f;
+				transform->setVelocity(Vector2(tmp.x, 150.f));
 				break;
 			case SDLK_a:
-				transform->velocity.x = -150.f;
+				transform->setVelocity(Vector2(-150.0f, tmp.y));
 				break;
 			case SDLK_d:
-				transform->velocity.x = 150.f;
+				transform->setVelocity(Vector2(150.0f, tmp.y));
 				break;
 				default:
 					break;
@@ -61,16 +61,16 @@ public:
 			switch (sdlEvent.key.keysym.sym)
 			{
 			case SDLK_w:
-				transform->velocity.y = 0;
+				transform->setVelocity(Vector2(tmp.x, 0.0f));
 				break;
 			case SDLK_s:
-				transform->velocity.y = 0;
+				transform->setVelocity(Vector2(tmp.x, 0.0f));
 				break;
 			case SDLK_a:
-				transform->velocity.x = 0;
+				transform->setVelocity(Vector2(0.0f, tmp.y));
 				break;
 			case SDLK_d:
-				transform->velocity.x = 0;
+				transform->setVelocity(Vector2(0.0f, tmp.y));
 				break;
 			case SDLK_ESCAPE:
 				SDL_Quit();

@@ -1,5 +1,16 @@
 #pragma once
 
+#ifndef M_PI
+#define M_PI 3.14159265358979323846f
+#endif
+
+#ifndef DEGREES_TO_RADIANS
+#define DEGREES_TO_RADIANS (M_PI / 180.0f)
+#endif	
+
+#ifndef RADIANS_TO_DEGREES
+#define RADIANS_TO_DEGREES (180.0f / M_PI)
+#endif
 struct Vector2
 {
 	float x, y = 0.f;
@@ -53,7 +64,14 @@ struct Vector2
 
 	inline Vector2& operator +=(const Vector2& vec)
 	{
-		return this->Add(vec);
+		this->x += vec.x;
+		this->y += vec.y;
+		return *this;
+
+
+
+
+		//return this->Add(vec);
 	}
 	inline Vector2& operator -=(const Vector2& vec)
 	{
@@ -67,11 +85,9 @@ struct Vector2
 	{
 		return this->Multiply(vec);
 	}
-	inline Vector2& operator * (const float scalar)
+	inline Vector2 operator * (const float scalar)
 	{
-		this->x = this->x * scalar;
-		this->y = this->y * scalar;
-		return *this;
+		return Vector2(x * scalar, y * scalar);
 	}
 
 

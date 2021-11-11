@@ -38,7 +38,7 @@ public:
 	}
 	void Render() override
 	{
-		TextureLoader::Draw(texture, sRect, dRect, SDL_FLIP_NONE);
+		TextureLoader::Draw(texture, sRect, dRect, 0.0f, SDL_FLIP_NONE);
 	}
 	void Update(const float deltaTime) override
 	{

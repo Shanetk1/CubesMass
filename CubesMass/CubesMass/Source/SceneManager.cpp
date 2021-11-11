@@ -18,6 +18,13 @@ bool SceneManager::Initialize(std::string name_, int width_, int height_)
 	{
 		return false;
 	}
+
+
+	SDL_WarpMouseInWindow(window->getWindow(), window->getWidth() / 2, window->getHeight() / 2);
+
+	MouseEventListener::RegisterWindow(window);
+
+
 	timer = new Timer();
 	if (timer == nullptr)
 	{
@@ -36,9 +43,10 @@ void SceneManager::Run()
 	while (isRunning)
 	{
 		timer->UpdateFrameTicks();
+		GetEvents();//This includes currentscene->handlevents
 		currentScene->Update(timer->GetDeltaTime());
 		currentScene->Render();
-		GetEvents();//This includes currentscene->handlevents
+		
 		SDL_Delay(timer->GetSleepTime(fps));
 	}
 	currentScene->OnDestroy();
@@ -56,20 +64,37 @@ void SceneManager::GetEvents()
 			isRunning = false;//Set is running false then close window
 			return;
 		}
-		else if (sdlEvent.type == SDL_KEYDOWN)
-			switch (sdlEvent.key.keysym.scancode)//The key pressed basically!
-			{
-			case SDL_SCANCODE_ESCAPE:
-				isRunning = false;
-				return;
 
-			case SDL_SCANCODE_1:
-				InitializeScene();
-					break;
+		switch (sdlEvent.type)
+		{
+		case SDL_MOUSEBUTTONDOWN:
+			MouseEventListener::Update(sdlEvent);
+			break;
+		case SDL_MOUSEBUTTONUP:
+			MouseEventListener::Update(sdlEvent);
+			break;
+		case SDL_MOUSEMOTION:
+			MouseEventListener::Update(sdlEvent);
+			break;
+		case SDL_MOUSEWHEEL:
+			MouseEventListener::Update(sdlEvent);
+			break;
 
-			default:
-				break;
-			}
+		default:
+			break;
+		}
+
+
+
+		/*
+					case SDL_SCANCODE_ESCAPE:
+						isRunning = false;
+						return;
+
+					case SDL_SCANCODE_1:
+						InitializeScene();
+						break;*/
+
 	}
 }
 

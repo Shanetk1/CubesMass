@@ -9,6 +9,7 @@ class Window
 private:
 	SDL_Window* window = nullptr;
 	SDL_Renderer* renderer = nullptr;
+	int height, width = 0.0f;
 
 public:
 	Window();
@@ -17,6 +18,12 @@ public:
 	void OnDestroy();
 	SDL_Window* getWindow();
 	SDL_Renderer* getRenderer();
+
+
+	const int getHeight() { return height; }
+	const int getWidth() { return width; }
+
+
 };
 
 

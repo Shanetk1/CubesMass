@@ -1,6 +1,7 @@
 #pragma once
 #include "EntityCS.h"
 #include "TransformComponent.h"
+#include "MovementComponent.h"
 #include "SpriteComponent.h"
 #include "KeyBoardController.h"
 #include "BoxColliderComponent.h"

@@ -7,18 +7,19 @@ class SteeringOutput
 {
 public:
 
-	inline static Vector2 getSteeringOutput(Vector2 AIPosition_) //This is our arrive algorithm
+	///!!! Currently speed is hard-coded in, this will change once the physics component is added 
+
+
+
+	inline static Vector2 getSteeringOutput(Vector2 AIPosition_) 
 	{
 
-
-		//To calculate this we need player pos, self-pos, max-speed
-
-		//It is this classes job to do the algorithms stuff meaning i need to gather the world information as well....
 
 		float satisfactionRadius = 45.0f;
 		const float timeTo = 1.15f;
 		Vector2 result;
 		result = Scene1::playerPosition - AIPosition_;
+		
 		float mag = sqrtf(result.x * result.x + result.y * result.y);
 
 
@@ -92,7 +93,7 @@ public:
 
 
 	}
-
+	
 
 
 };

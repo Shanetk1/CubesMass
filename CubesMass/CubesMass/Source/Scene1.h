@@ -6,6 +6,7 @@
 #include "TextureLoader.h"
 #include "Vector.h"
 #include "VMath.h"
+#include "SceneManager.h"
 struct SDL_Renderer;
 struct SDL_Rect;
 class GameObject;
@@ -20,6 +21,9 @@ public:
 	virtual void Render()const override;
 	virtual void HandleEvents(const SDL_Event& sdlEvent) override;
 
+
+
+	
 	static SDL_Renderer* renderer;
 	static SDL_Rect camera;
 	static void addTile(int srcX, int srcY, int xPos, int yPos, int coll);

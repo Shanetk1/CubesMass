@@ -94,8 +94,9 @@ public:
 		dRect.y = (int)transform->position.y - Scene1::camera.y;
 		dRect.w = sRect.w * transform->scale.x;
 		dRect.h = sRect.h * transform->scale.y;
+		
 
-
+		/*
 		if (transform->velocity.x == 0 && transform->velocity.y == 0)
 		{
 			Play("Idle");
@@ -126,11 +127,14 @@ public:
 		}
 
 
-
+		*/
 	}
 	void Render() override
 	{
-		TextureLoader::Draw(texture, sRect, dRect, flip);
+
+
+
+		TextureLoader::Draw(texture, sRect, dRect, transform->orientation, flip);
 	}
 	void Play(const char* animName)
 	{

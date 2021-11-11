@@ -48,6 +48,7 @@ bool Scene1::OnCreate()
 	mapTest->loadMap("assets/map.txt", 25.f, 20.f);
 
 	newPlayer.addComponent<TransformComponent>(Vector2(400.f, 320.f), Vector2(1.f,1.f));
+	newPlayer.addComponent<MovementComponent>(true);
 	newPlayer.addComponent<SpriteComponent>("assets/download.png", true);
 
 	newPlayer.addComponent<KeyBoardController>();
@@ -55,7 +56,10 @@ bool Scene1::OnCreate()
 	newPlayer.getComponent<BoxColliderComponent>().setColliderSize(64.f, 64.f);
 	newPlayer.addGroup(groupPlayer);
 
+
+	//AI Populate
 	AITest.addComponent<TransformComponent>(Vector2(200.f, 180.f), Vector2(1.f, 1.f));
+	AITest.addComponent<MovementComponent>();
 	AITest.addComponent<SpriteComponent>("assets/download.png", true);
 	AITest.addComponent<CircleColliderComponent>("AIPerception");
 	AITest.getComponent<CircleColliderComponent>().SetRadiusSize(100.0f);
@@ -135,6 +139,12 @@ void Scene1::Update(const float deltaTime)
 		
 
 	}
+
+	//std::cout << "Player orientation; " << newPlayer.getComponent<TransformComponent>().orientation << std::endl;
+
+
+
+
 
 	SDL_Rect tmp = newPlayer.getComponent<BoxColliderComponent>().collider;
 	Vector2 tmpC = AITest.getComponent<CircleColliderComponent>().position;
