@@ -37,21 +37,33 @@ public:
 		setTexture(fileName);
 		
 	}
-	SpriteComponent(const char* fileName, bool animated_)
+
+	SpriteComponent(const char* fileName, int index_, int speed_, int frames_) //This MUST ALWAYS be the idle animation
 	{
-		//Default h,w to 32 pixels to actually render something
-		animated = animated_;
-		Animation idle = Animation(2, 200, 7);
-		Animation walkRight = Animation(11, 100, 9);
-		Animation walkUp = Animation(8, 100, 9);
-		Animation walkDown = Animation(10, 100, 9);
-		Animation walkAngled = Animation(11, 100, 9);
+		//I dont like this rather, I want to send it parameters necessary for animation...
+
+		//COMPLETELY BROKEN DONT USE
+
+
+		animated = true;
+
+		Animation idle = Animation(index_, speed_, frames_);
+
+
+
+
+		//Animation idle = Animation(2, 200, 7);
+		//Animation walkRight = Animation(11, 100, 9);
+		//Animation walkUp = Animation(8, 100, 9);
+		//Animation walkDown = Animation(10, 100, 9);
+		//Animation walkAngled = Animation(11, 100, 9);
 
 		animations.emplace("Idle",idle);
-		animations.emplace("WalkRight", walkRight);
-		animations.emplace("WalkUp", walkUp);
-		animations.emplace("WalkDown", walkDown);
-		animations.emplace("WalkAngled", walkAngled);
+
+		//animations.emplace("WalkRight", walkRight);
+		//animations.emplace("WalkUp", walkUp);
+		//animations.emplace("WalkDown", walkDown);
+		//animations.emplace("WalkAngled", walkAngled);
 		height = 64;
 		width = 64;
 		Play("Idle");
@@ -81,6 +93,9 @@ public:
 		sRect.x = sRect.y = 0;
 		sRect.w = width;
 		sRect.h = height;
+
+
+
 	}
 	void Update(const float deltaTime) override
 	{
@@ -131,9 +146,6 @@ public:
 	}
 	void Render() override
 	{
-
-
-
 		TextureLoader::Draw(texture, sRect, dRect, transform->orientation, flip);
 	}
 	void Play(const char* animName)

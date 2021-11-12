@@ -10,6 +10,6 @@ SDL_Texture* TextureLoader::LoadTexture(const char* fileName)
 
 void TextureLoader::Draw(SDL_Texture* tex, SDL_Rect src, SDL_Rect dest, float angle, SDL_RendererFlip flip_)
 {
-
+    angle *= RADIANS_TO_DEGREES;
     SDL_RenderCopyEx(Scene1::renderer, tex, &src, &dest, static_cast<double>(angle), NULL, flip_);
 }

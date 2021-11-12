@@ -98,6 +98,7 @@
     <ClCompile Include="Source\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\AIOutput.h" />
     <ClInclude Include="Source\EntityCS\MovementComponent.h" />
     <ClInclude Include="Source\MouseEventListener.h" />
     <ClInclude Include="Source\Animation.h" />

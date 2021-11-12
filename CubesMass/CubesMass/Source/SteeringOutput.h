@@ -9,7 +9,8 @@ public:
 
 	///!!! Currently speed is hard-coded in, this will change once the physics component is added 
 
-
+	//This wont work...
+	//This will be transitioned into a pure virtual class with a struct ofo 
 
 	inline static Vector2 getSteeringOutput(Vector2 AIPosition_) 
 	{
@@ -71,7 +72,7 @@ public:
 
 
 	}
-	inline static Vector2 getWanderOutput(Vector2 AIPosition_, float orientation)
+	inline static float getWanderOutput(Vector2 AIPosition_, float orientation)
 	{
 		float maxRotation = 1.0f;
 		
@@ -85,6 +86,13 @@ public:
 		Vector2 result = tmp * 100.f;
 
 		float r = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
+
+
+		return r * maxRotation;
+
+		std::cout << r << std::endl;
+
+
 		
 
 

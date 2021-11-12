@@ -49,8 +49,8 @@ bool Scene1::OnCreate()
 
 	newPlayer.addComponent<TransformComponent>(Vector2(400.f, 320.f), Vector2(1.f,1.f));
 	newPlayer.addComponent<MovementComponent>(true);
-	newPlayer.addComponent<SpriteComponent>("assets/download.png", true);
-
+	newPlayer.addComponent<SpriteComponent>("assets/player/player_9mmhandgun.png");
+	newPlayer.getComponent<SpriteComponent>().setSize(60, 66);
 	newPlayer.addComponent<KeyBoardController>();
 	newPlayer.addComponent<BoxColliderComponent>("player");
 	newPlayer.getComponent<BoxColliderComponent>().setColliderSize(64.f, 64.f);
@@ -60,7 +60,9 @@ bool Scene1::OnCreate()
 	//AI Populate
 	AITest.addComponent<TransformComponent>(Vector2(200.f, 180.f), Vector2(1.f, 1.f));
 	AITest.addComponent<MovementComponent>();
-	AITest.addComponent<SpriteComponent>("assets/download.png", true);
+	AITest.addComponent<SpriteComponent>("assets/player/player_9mmhandgun.png");
+	AITest.getComponent<SpriteComponent>().setSize(60, 66);
+
 	AITest.addComponent<CircleColliderComponent>("AIPerception");
 	AITest.getComponent<CircleColliderComponent>().SetRadiusSize(100.0f);
 	std::vector<Vector2*> patrol;

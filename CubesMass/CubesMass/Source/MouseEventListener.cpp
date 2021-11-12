@@ -67,7 +67,11 @@ void MouseEventListener::UpdateMousePosition()
 
 	//Need to get window position here... maybe have a reference to the window....
 
-	tmpY = static_cast<int>(window->getHeight()) - tmpY;
+	//tmpY = static_cast<int>(window->getHeight()) - tmpY;
+
+	//tmpY = static_cast<int>(window->getHeight()) - tmpY;
+
+	
 
 
 
