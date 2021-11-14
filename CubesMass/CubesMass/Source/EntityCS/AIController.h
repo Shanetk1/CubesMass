@@ -3,13 +3,21 @@
 
 #include "Components.h"
 #include "../Vector.h"
-#include "../SteeringOutput.h"
+#include "../AI/SteeringOutput.h"
+
+
+
+#include "../AI/BlendedSteering.h"
+#include "../AI/SteeringHeaders.h"
+
+
 class AIController : public Component
 {
 private:
 
 	TransformComponent* transform = nullptr;
 	MovementComponent* movement = nullptr;
+	BlendedSteering* SteeringHandler = nullptr;
 
 	//Patrolling handling I think this can be done better but for now it works
 	std::vector<Vector2*> patrolPoints = std::vector<Vector2*>();
@@ -56,7 +64,7 @@ public:
 	//Setting Default State, Init vector list
 	AIController()
 	{
-		State = PATROL;
+		State = WANDER;
 		patrolPoints = std::vector<Vector2*>();
 	}
 
@@ -64,7 +72,7 @@ public:
 	AIController(std::vector<Vector2*> patrolPoints_)
 	{
 		patrolPoints = patrolPoints_;
-		State = PATROL;
+		State = WANDER;
 	}
 
 
@@ -73,11 +81,35 @@ public:
 		//This is dangerous since if this doesnt exist will will get an error, could add error check but lazy
 		transform = &entity->getComponent<TransformComponent>();
 		movement = &entity->getComponent<MovementComponent>();
-		State = PATROL;
+		SteeringHandler = new BlendedSteering();
+		State = WANDER;
 		beginPatrol();
+
+
+
+		SteeringHandler->addSteering<Arrive>();
+
+
+
 	};
 	virtual void Update(const float deltaTime)
 	{
+		static float delay = 0.0f;
+
+		//Why we need to do this...
+		SteeringHandler->getAlgorithm<Arrive>().updateValues(Scene1::playerPosition, transform->getPosition());
+
+
+
+		//SteeringOutput::AIOutput val;
+
+		//Preset values to old values needed
+	//	val.vel = movement->getVelocity();
+	//	val.orientation = transform->getOrientation();
+
+		//std::cout << delay << std::endl;
+
+
 		if (seesPlayer)
 		{
 			State = CHASE;
@@ -92,7 +124,7 @@ public:
 			//We need to call something and send it our information thats it and it should return a result
 
 
-			movement->setVelocity(SteeringOutput::getSteeringOutput(transform->position, patrolLocation));
+			//val = SteeringOutput::arrive(transform->position, patrolLocation);
 
 
 			if (patrolPoints.size() > 1)
@@ -110,14 +142,19 @@ public:
 				}
 			}
 			break;
-		case AIController::WANDER:
-			//WIP since, I was having a hard time with some orientation stuff within the program
-			//Need to use orientation to update my animation...
+		case AIController::WANDER: {
 
-			//transform->velocity = SteeringOutput::getWanderOutput(transform->position);
+
+			//I rlly dont like this..
+			if (delay <= 0.0f)
+			{
+				//val = SteeringOutput::wander(transform->getPosition(), transform->getOrientation());
+				delay = 2.0f;
+			}
+		}
 			break;
 		case AIController::CHASE:
-			movement->setVelocity(SteeringOutput::getSteeringOutput(transform->position));
+			//val = SteeringOutput::arrive(transform->position, Scene1::playerPosition);
 
 			break;
 		default:
@@ -127,6 +164,15 @@ public:
 
 
 
+
+		movement->setVelocity(SteeringHandler->getSteering().vel);
+
+		if (MATH::VMath::mag(movement->getVelocity()) > 0.0f)
+		{
+		//	transform->setOrientation(val.orientation);
+		}
+
+		delay -= deltaTime;
 	};
 	virtual void Render()
 	{};

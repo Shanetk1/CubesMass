@@ -85,6 +85,7 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\AI\BlendedSteering.cpp" />
     <ClCompile Include="Source\MouseEventListener.cpp" />
     <ClCompile Include="Source\Collision.cpp" />
     <ClCompile Include="Source\Map.cpp" />
@@ -98,7 +99,12 @@
     <ClCompile Include="Source\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Source\AIOutput.h" />
+    <ClInclude Include="Source\AI\arrive.h" />
+    <ClInclude Include="Source\AI\BlendedSteering.h" />
+    <ClInclude Include="Source\AI\Steering.h" />
+    <ClInclude Include="Source\AI\SteeringAlgorithm.h" />
+    <ClInclude Include="Source\AI\SteeringHeaders.h" />
+    <ClInclude Include="Source\AI\SteeringOutput.h" />
     <ClInclude Include="Source\EntityCS\MovementComponent.h" />
     <ClInclude Include="Source\MouseEventListener.h" />
     <ClInclude Include="Source\Animation.h" />
@@ -116,7 +122,7 @@
     <ClInclude Include="Source\Scene.h" />
     <ClInclude Include="Source\Scene1.h" />
     <ClInclude Include="Source\SceneManager.h" />
-    <ClInclude Include="Source\SteeringOutput.h" />
+    <ClInclude Include="Source\AI\redundant.h" />
     <ClInclude Include="Source\TextureLoader.h" />
     <ClInclude Include="Source\Timer.h" />
     <ClInclude Include="Source\Vector.h" />

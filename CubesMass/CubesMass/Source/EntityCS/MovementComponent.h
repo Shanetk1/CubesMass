@@ -94,9 +94,9 @@ public:
 		{
 			if (MATH::VMath::mag(velocity) > 0.0f)
 			{
-				float angle = atan2(velocity.y, velocity.x);
+				//float angle = atan2(velocity.y, velocity.x);
 				//angle *= RADIANS_TO_DEGREES;
-				transformRef->setOrientation(angle);
+				//transformRef->setOrientation(angle);
 				//std::cout << 
 
 

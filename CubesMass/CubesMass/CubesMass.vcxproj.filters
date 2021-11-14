@@ -48,6 +48,9 @@
     <ClCompile Include="Source\MouseEventListener.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Source\AI\BlendedSteering.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Window.h">
@@ -104,7 +107,7 @@
     <ClInclude Include="Source\EntityCS\AIController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\SteeringOutput.h">
+    <ClInclude Include="Source\AI\redundant.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Source\VMath.h">
@@ -119,7 +122,22 @@
     <ClInclude Include="Source\EntityCS\MovementComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\AIOutput.h">
+    <ClInclude Include="Source\AI\BlendedSteering.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\AI\Steering.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\AI\arrive.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\AI\SteeringAlgorithm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\AI\SteeringHeaders.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\AI\SteeringOutput.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
