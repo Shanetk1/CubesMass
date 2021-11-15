@@ -21,6 +21,10 @@ void Map::loadMap(std::string path, int sizeX, int sizeY)
 			srcZ = atoi(&tile);
 
 			Scene1::addTile(srcX, srcY, x * 64, y * 64, srcZ);
+			//Create grid for pathfinding here as well.....
+
+
+
 			mapFile.ignore();
 		}
 	}

@@ -3,44 +3,33 @@
 
 
 
-BlendedSteering::BlendedSteering() : Steering()
+BlendedSteering::BlendedSteering() : mSpeed(50.0f), aiPos(Vector2(0.0f)), targetLocation(Vector2(0.0f))
 {
-	//Loop thru our
-
-
-
+	//Blended steering gets created...
+	//This is fine, eventually we will need to update our base class
+	//
 }
 
-
-
-
-SteeringOutput BlendedSteering::getSteering()
+BlendedSteering::BlendedSteering(Vector2 targetLoc_, Vector2 aiPos_, float mSpeed_)
 {
-	//This is ok but yeah idk about the struct still
+	targetLocation = targetLoc_;
+	aiPos = aiPos_;
+	mSpeed = mSpeed_;
+}
+
+SteeringOutput BlendedSteering::updateAlgorithms(const float deltaTime)
+{
 	SteeringOutput result;
 
-
-
-	for (auto& a : algorithms)
+	for (auto &i : algorithms)
 	{
-		//Update all algorithms data values...
-		//This will give us our steering... it looks wierd since its not called getSteering
-		result = a->getSteering();
-		//Functions get populated with the necessary data 
-	
 
-
+		//Adds up all stored algorithms
+		//Eventually there will be a weight to it but we shall see
+		result += i->getSteering(deltaTime);
 
 
 	}
-
-
-
-
-
-
-
-
 
 
 	return result;

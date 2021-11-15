@@ -2,13 +2,19 @@
 #define BLENDEDSTEERING_H
 
 //Steering algorithm class with all classes of algorithms for steering....?
-#include "Steering.h"
 #include <vector>
-#include "SteeringAlgorithm.h"
 #include <memory>
 #include <stdio.h>
 #include <bitset>
 #include <array>
+
+
+
+#include "../Vector.h"
+#include "Steering.h"
+
+class Steering;
+
 //This class will not be inherited by steering, since well wait.... maybe it should cause it does have a getsteering pog that fixes it
 //I kinda want to use this as a container class...
 //Want to add steering to the vector and this class handles all the steering...
@@ -22,7 +28,7 @@ constexpr std::size_t maxAlgorithms = 10;
 //This is only used internally
 using AlgorithmID = std::size_t;
 using AlgorithmBitSet = std::bitset<maxAlgorithms>;
-using AlgorithmArray = std::array <SteeringAlgorithm*, maxAlgorithms> ;
+using AlgorithmArray = std::array <Steering*, maxAlgorithms> ;
 
 
 
@@ -35,40 +41,91 @@ inline AlgorithmID getNewAlgorithmTypeID()
 
 template <typename T> inline AlgorithmID getAlgorithmTypeID() noexcept
 {
-	static_assert (std::is_base_of<SteeringAlgorithm, T>::value, "");
+	static_assert (std::is_base_of<Steering, T>::value, "");
 	static AlgorithmID typeID = getNewAlgorithmTypeID();
 	return typeID;
 }
 
 
-class BlendedSteering : public Steering
+class BlendedSteering
 {
+private:
+	//Member variables these are used by multiple different steering algorithms...
+
+
+	//Updatable Field Variables\\
+	//These Variables will be updated every tick (or once a frame even works)\\
+
+
+	//Why we add target location here cause no matter what algorithm we use there will be some target location... mainly cause we mainly use arrive...
+	Vector2 targetLocation, aiPos = Vector2(0.0f);
+
+
+
+	//Non-Updatable Field Variables\\ Utilized by most algorithms...
+	//These variables naturally should never change but it can possibly happen... \\
+
+	float mSpeed = 50.0f;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 public:
 	struct BehaviourAndWeight
 	{
 		float weight;
 		SteeringOutput val;
 	};
-	std::vector<std::unique_ptr<SteeringAlgorithm>> algorithms;
+	std::vector<std::unique_ptr<Steering>> algorithms;
 	
-	float mSpeed;
-	float mAngle;
+
 
 
 	AlgorithmArray algorithmArray;
 	AlgorithmBitSet algorithmBitSet;
 
 	BlendedSteering();
+	BlendedSteering(Vector2 targetLoc_, Vector2 aiPos_, float mSpeed_);
+
+
 	~BlendedSteering();
 
-	//This might be created for every AIComponent... this is since it will hold all steering that is effecting the ai
+	//Updates our algorithms, adding them all together and returning the result
+	SteeringOutput updateAlgorithms(const float deltaTime);
 
 
-	//This will go through all our stored algorithms
-	SteeringOutput getSteering() override;
+
+
+	//Setters
+	void setTargetLoc(Vector2 targetLoc_) {targetLocation = targetLoc_;}
+	void setAIPos(Vector2 aiPos_) { aiPos = aiPos_; }
+
+
+	//Setters and getters
+	void setMaxSpeed(float mSpeed_) { mSpeed = mSpeed_; }
+	void updateUpdatables(Vector2 targetLoc_, Vector2 aiPos_) { targetLocation = targetLoc_; aiPos = aiPos_; }
+
+	Vector2 getTargetLoc() { return targetLocation; }
+	Vector2 getAIPos() { return aiPos; }
+	float getMaxSpeed() { return mSpeed; }
 	
-
-
 
 	//Ugly template things 
 	template <typename T, typename... TArgs>
@@ -79,11 +136,11 @@ public:
 		T* comp(new T(std::forward<TArgs>(mArgs)...));
 
 		//Sets components owner (Us)
-		//comp->entity = this;
+		comp->SteeringHandler = this;
 
 
 		//std::vector<SteeringAlgorithm*> uPtr{ comp };
-		std::unique_ptr<SteeringAlgorithm> uPtr{ comp };
+		std::unique_ptr<Steering> uPtr{ comp };
 
 
 
@@ -101,8 +158,8 @@ public:
 		algorithmBitSet[getAlgorithmTypeID<T>()] = true;
 
 		//Initialize component by calling its initialize function!
-		comp->Init();
-
+		//comp->Init();
+		//This is due to change...
 		
 		//Return pointer to component
 		//std::cout << *comp <<  std::endl;

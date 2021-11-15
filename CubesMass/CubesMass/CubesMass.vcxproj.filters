@@ -51,6 +51,15 @@
     <ClCompile Include="Source\AI\BlendedSteering.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Source\AI\Pathfinding\Node.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\AI\Pathfinding\AStarNode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\AI\Pathfinding\Graph\Graph.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Window.h">
@@ -128,16 +137,31 @@
     <ClInclude Include="Source\AI\Steering.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\AI\arrive.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\AI\SteeringAlgorithm.h">
+    <ClInclude Include="Source\AI\Arrive.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Source\AI\SteeringHeaders.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Source\AI\SteeringOutput.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\AI\Wander.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\AI\Flee.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\AI\Pathfinding\Node.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\AI\Pathfinding\AStarNode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\AI\Pathfinding\Graph\Graph.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\AI\Pathfinding\Graph\Connection.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

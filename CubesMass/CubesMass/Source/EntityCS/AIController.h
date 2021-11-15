@@ -11,12 +11,15 @@
 #include "../AI/SteeringHeaders.h"
 
 
+
 class AIController : public Component
 {
 private:
 
 	TransformComponent* transform = nullptr;
 	MovementComponent* movement = nullptr;
+
+	//Our steering...
 	BlendedSteering* SteeringHandler = nullptr;
 
 	//Patrolling handling I think this can be done better but for now it works
@@ -86,28 +89,20 @@ public:
 		beginPatrol();
 
 
-
 		SteeringHandler->addSteering<Arrive>();
-
-
+		SteeringHandler->setMaxSpeed(150.0f);
 
 	};
 	virtual void Update(const float deltaTime)
 	{
 		static float delay = 0.0f;
 
-		//Why we need to do this...
-		SteeringHandler->getAlgorithm<Arrive>().updateValues(Scene1::playerPosition, transform->getPosition());
+
+		//This value will change based on state
+		Vector2 target = Scene1::playerPosition;
 
 
 
-		//SteeringOutput::AIOutput val;
-
-		//Preset values to old values needed
-	//	val.vel = movement->getVelocity();
-	//	val.orientation = transform->getOrientation();
-
-		//std::cout << delay << std::endl;
 
 
 		if (seesPlayer)
@@ -165,14 +160,27 @@ public:
 
 
 
-		movement->setVelocity(SteeringHandler->getSteering().vel);
 
-		if (MATH::VMath::mag(movement->getVelocity()) > 0.0f)
-		{
-		//	transform->setOrientation(val.orientation);
-		}
 
-		delay -= deltaTime;
+
+		//First update the necessary updatables after all logic has been done
+		SteeringHandler->updateUpdatables(target, this->transform->position);
+
+
+		//Then we need to get our result of the algorithms.....
+
+
+		SteeringOutput val = SteeringHandler->updateAlgorithms(deltaTime);
+
+		//Set these gathered values to our aI's velocity, and position...
+
+
+
+		//We will run into some issues with handling algorithms that might want to have a slight delay....
+		//This needs to have some if statements maybe... 
+		movement->setVelocity(val.vel);
+		transform->setOrientation(val.orientation);
+
 	};
 	virtual void Render()
 	{};
