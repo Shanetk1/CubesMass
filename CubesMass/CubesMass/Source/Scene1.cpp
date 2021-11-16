@@ -4,8 +4,7 @@
 #include "EntityCS/Components.h"
 #include "Map.h"
 #include "Collision.h"
-
-
+#include "AI/Pathfinding/Graph/TileDemo.h"
 
 Map* mapTest;
 const char* mapFile = "assets/32x32noBG.png";
@@ -82,6 +81,82 @@ bool Scene1::OnCreate()
 	wall.getComponent<BoxColliderComponent>().setColliderSize(300.f, 20.f);
 	wall.addGroup(groupPlayer);
 
+	//MAP SIZE IS W=1600 AND H=1280
+
+
+	int rows = static_cast<int>(1280 / 64);
+	int cols = static_cast<int>(1600 / 64);
+
+	tiles_.resize(rows);
+
+
+	for (int i = 0; i < rows; i++) tiles_[i].resize(cols);
+
+	int i, j;
+	i = 0;
+	j = 0;
+	int node = 0;
+
+	for (float y = 0.5 * 64; y < 1280; y += 64)
+	{
+		for (float x = 0.5 * 64; x < 1600; x += 64)
+		{
+
+
+
+			TileDemo* t;
+			Vector2 position = Vector2(x, y);
+			t = new TileDemo(node, 64, 64, position);
+			tiles_[i][j] = t;
+			
+			
+			node++;
+			j++;
+		}
+		j = 0;
+		i++;
+		
+	}
+
+
+
+
+	graphLevel = new Graph(rows * cols);
+	for (int i = 0; i < rows; i++)
+	{
+		for (int j = 0; j < cols; j++)
+		{
+
+			if (i > 0)
+			{
+				graphLevel->addWeightedConnection(tiles_[i][ j]->getNode(), tiles_[i - 1][ j]->getNode(), 64);
+			}
+			if (i < rows - 1)
+			{
+				graphLevel->addWeightedConnection(tiles_[i][j]->getNode(), tiles_[i + 1][j]->getNode(), 64);
+			}
+			if (j > 0)
+			{
+				graphLevel->addWeightedConnection(tiles_[i][j]->getNode(), tiles_[i][j - 1]->getNode(), 64);
+			}
+			if (j < cols - 1)
+			{
+				graphLevel->addWeightedConnection(tiles_[i][j]->getNode(), tiles_[i][j + 1]->getNode(), 64);
+			}
+
+		}
+	}
+
+
+
+
+	auto z = graphLevel->findPathUsingAStar(0, 29);
+
+	for (auto x : z)
+	{
+		std::cout << x << std::endl;
+	}
+
 
 	//Add AI component here
 	
@@ -99,6 +174,8 @@ void Scene1::OnDestroy()
 	delete renderer;
 }
 
+
+//NOTE MAP SIZE IS ; WIDTH = 1600,
 void Scene1::Update(const float deltaTime)
 {
 	//Beginning of every frame update world information...
@@ -114,6 +191,11 @@ void Scene1::Update(const float deltaTime)
 
 	camera.x = newPlayer.getComponent<TransformComponent>().position.x - 400;
 	camera.y = newPlayer.getComponent<TransformComponent>().position.y - 320;
+	
+	//Map bounds....
+	//startpos; 0, 0
+	//height =
+	
 	if (camera.x < 0)
 	{
 		camera.x = 0;
@@ -176,6 +258,13 @@ void Scene1::Render() const
 	//Need to cycle through all objs but for now just tiles
 	
 
+
+	//tiles->Render(renderer);
+
+
+
+
+
 	for (auto& t : tiles)
 	{
 		//This is some really basic culling idk if its good but it works, to test put the 74 numbers to 0
@@ -183,18 +272,32 @@ void Scene1::Render() const
 		float y = t->getComponent<TileComponent>().position.y;
 		if ((x <= camera.x + camera.w && x + 0 >= camera.x && y <= camera.y + camera.h && y + 0 >= camera.y))
 		{
-			t->Render();
+			//t->Render();
+		}
+		t->Render();
+
+	}
+	for (int i = 0; i < tiles_.size(); i++)
+	{
+
+		for (int j = 0; j < tiles_[i].size(); j++)
+		{
+			tiles_[i][j]->Render(renderer, 64, 64);
 		}
 
 	}
+
+
+
+
 	for (auto& p : players)
 	{
-		p->Render();
+		//p->Render();
 	}
 
 	for (auto& p : projectiles)
 	{
-		p->Render();
+		//p->Render();
 	}
 
 	//Necessary at end

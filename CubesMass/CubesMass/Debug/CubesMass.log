@@ -1,13 +1,11 @@
-﻿  AStarNode.cpp
-  Graph.cpp
-C:\dev\CubesMass\CubesMass\CubesMass\Source\AI\Pathfinding\Graph\Graph.cpp(5,1): error C2084: function 'Graph::Graph(int)' already has a body
-C:\dev\CubesMass\CubesMass\CubesMass\Source\AI\Pathfinding\Graph\Graph.h(19): message : see previous definition of '{ctor}'
-C:\dev\CubesMass\CubesMass\CubesMass\Source\AI\Pathfinding\Graph\Graph.cpp(22,1): error C2084: function 'int Graph::numNodes(void)' already has a body
-C:\dev\CubesMass\CubesMass\CubesMass\Source\AI\Pathfinding\Graph\Graph.h(25): message : see previous definition of 'numNodes'
-C:\dev\CubesMass\CubesMass\CubesMass\Source\AI\Pathfinding\Graph\Graph.cpp(29,1): error C2084: function 'void Graph::clearWeights(void)' already has a body
-C:\dev\CubesMass\CubesMass\CubesMass\Source\AI\Pathfinding\Graph\Graph.h(26): message : see previous definition of 'clearWeights'
-  Node.cpp
-  BlendedSteering.cpp
-  Map.cpp
-  Scene1.cpp
-  Generating Code...
+﻿  Scene1.cpp
+LINK : warning LNK4044: unrecognized option '/lSDL_mixer'; ignored
+  LINK : 0 new modules and 1 (out of 61) modules have changed since prior linking
+  Searching libraries
+      Searching D:\dev\CubesMass\CubesMass\\Dependencies\SDL2-2.0.12\lib\x86\SDL2.lib:
+  Finished searching libraries
+  Starting pass 2
+       Scene1.obj
+       MSVCRT.lib(loadcfg.obj)
+  Finished pass 2
+  CubesMass.vcxproj -> D:\dev\CubesMass\CubesMass\Debug\CubesMass.exe

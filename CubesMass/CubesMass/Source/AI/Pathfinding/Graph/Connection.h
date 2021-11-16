@@ -13,11 +13,11 @@ public:
 
 
 
-	void getCost();
+	int getCost() { return cost; }
 private:
 	Node* fromNode = nullptr;
 	Node* toNode = nullptr;
-
+	int cost = 1;
 };
 
 

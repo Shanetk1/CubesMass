@@ -28,6 +28,9 @@ public:
 
 		position.x = Posx;
 		position.y = Posy;
+
+		//We scale the map here basically doubling its size... 
+		//So normally our map is 800x640 but now it is 
 		dRect.w = dRect.h = 64;
 
 

@@ -1,9 +1,11 @@
 #ifndef GRAPH_H
 #define GRAPH_H
 
-
+#include <queue>
 #include <vector>
 #include <list>
+#include <map>
+#include "../PrioNode.h"
 
 class Graph
 {
@@ -16,16 +18,14 @@ public:
 	//Array, list of connections to the node given
 
 
-	Graph(int numNodes)
-	{
-		nodes.resize(numNodes);
-	}
+	Graph(int numNodes);
 
 	//Reset all weights
-	int numNodes() {}
-	void clearWeights() {}
+	int numNodes();
+	void clearWeights();
 	void addWeightedConnection(int fromNode_, int toNode_, float weight_);
 	std::list<int> neighbours(int fromNode_);
+	std::list<int> cost(int fromNode_);
 	std::vector<int> findPathUsingAStar(int startNode_, int goalNode_);
 	float heuristic(int node_, int goal_);
 

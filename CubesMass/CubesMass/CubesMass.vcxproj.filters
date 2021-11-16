@@ -54,10 +54,13 @@
     <ClCompile Include="Source\AI\Pathfinding\Node.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\AI\Pathfinding\AStarNode.cpp">
+    <ClCompile Include="Source\AI\Pathfinding\PrioNode.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Source\AI\Pathfinding\Graph\Graph.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\AI\Pathfinding\Graph\TileDemo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -155,13 +158,16 @@
     <ClInclude Include="Source\AI\Pathfinding\Node.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\AI\Pathfinding\AStarNode.h">
+    <ClInclude Include="Source\AI\Pathfinding\PrioNode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Source\AI\Pathfinding\Graph\Graph.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Source\AI\Pathfinding\Graph\Connection.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\AI\Pathfinding\Graph\TileDemo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

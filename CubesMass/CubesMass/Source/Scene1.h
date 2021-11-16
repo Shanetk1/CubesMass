@@ -7,6 +7,8 @@
 #include "Vector.h"
 #include "VMath.h"
 #include "SceneManager.h"
+#include "AI/Pathfinding/Graph/TileDemo.h"
+#include "AI/Pathfinding/Graph/Graph.h"
 struct SDL_Renderer;
 struct SDL_Rect;
 class GameObject;
@@ -20,6 +22,7 @@ public:
 	virtual void Update(const float deltaTime) override ;
 	virtual void Render()const override;
 	virtual void HandleEvents(const SDL_Event& sdlEvent) override;
+
 
 
 
@@ -37,6 +40,10 @@ public:
 		groupColliders,
 		groupProjectiles
 	};
+
+private:
+	std::vector<std::vector<TileDemo*>> tiles_;
+	Graph* graphLevel;
 };
 
 

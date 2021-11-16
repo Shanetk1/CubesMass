@@ -5,7 +5,7 @@ int main(int argc, char * args[])
 {
 	std::string name = { "Cube's Mass Game Engine" };
 	SceneManager* gsm = new SceneManager();
-	if (gsm->Initialize(name, 800, 640))
+	if (gsm->Initialize(name, 1000, 840))
 	{
 		gsm->Run();
 	}
