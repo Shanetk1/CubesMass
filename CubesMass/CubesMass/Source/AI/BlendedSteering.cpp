@@ -26,8 +26,12 @@ SteeringOutput BlendedSteering::updateAlgorithms(const float deltaTime)
 
 		//Adds up all stored algorithms
 		//Eventually there will be a weight to it but we shall see
-		result += i->getSteering(deltaTime);
 
+
+		if (i != nullptr)
+		{
+			result += *i->getSteering(deltaTime);
+		}
 
 	}
 

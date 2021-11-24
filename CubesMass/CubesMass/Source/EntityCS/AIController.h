@@ -9,6 +9,7 @@
 
 #include "../AI/BlendedSteering.h"
 #include "../AI/SteeringHeaders.h"
+#include "../AI/FollowPath.h"
 
 
 
@@ -22,10 +23,17 @@ private:
 	//Our steering...
 	BlendedSteering* SteeringHandler = nullptr;
 
+	//Our necessary data for pathfinding
+	Graph* graph = nullptr;
+	std::vector<std::vector<TileDemo*>>* tiles = nullptr;
+
+
+	//OLD
 	//Patrolling handling I think this can be done better but for now it works
 	std::vector<Vector2*> patrolPoints = std::vector<Vector2*>();
 	
 	Vector2 patrolLocation;
+
 	int patrolNode = 0;
 
 	enum States
@@ -72,9 +80,11 @@ public:
 	}
 
 
-	AIController(std::vector<Vector2*> patrolPoints_)
+	AIController(Graph* graph_, std::vector<std::vector<TileDemo*>>* tiles_)
 	{
-		patrolPoints = patrolPoints_;
+		//patrolPoints = patrolPoints_;
+		graph = graph_;
+		tiles = tiles_;
 		State = WANDER;
 	}
 
@@ -87,9 +97,10 @@ public:
 		SteeringHandler = new BlendedSteering();
 		State = WANDER;
 		beginPatrol();
+		
 
-
-		SteeringHandler->addSteering<Arrive>();
+		//Add steering here for pathfinding
+		SteeringHandler->addSteering<FollowPath>(30.0f, 0.0f, tiles, graph->findPathUsingAStar(28, 179));
 		SteeringHandler->setMaxSpeed(150.0f);
 
 	};
@@ -115,27 +126,7 @@ public:
 		switch (State)
 		{
 		case AIController::PATROL:
-			//Patrol should just update velocity...
-			//We need to call something and send it our information thats it and it should return a result
 
-
-			//val = SteeringOutput::arrive(transform->position, patrolLocation);
-
-
-			if (patrolPoints.size() > 1)
-			{
-				if (patrolNode == 0 && MATH::VMath::distance(patrolLocation, transform->position) < 15.0f)
-				{
-					//Enemy AI is close to goal location, change target to next patrol destination
-					patrolNode = 1;
-					patrolLocation = *patrolPoints.at(patrolNode);
-				}
-				else if (patrolNode == 1 && MATH::VMath::distance(patrolLocation, transform->position) < 15.0f)
-				{
-					patrolNode = 0;
-					patrolLocation = *patrolPoints.at(patrolNode);
-				}
-			}
 			break;
 		case AIController::WANDER: {
 
@@ -143,13 +134,11 @@ public:
 			//I rlly dont like this..
 			if (delay <= 0.0f)
 			{
-				//val = SteeringOutput::wander(transform->getPosition(), transform->getOrientation());
 				delay = 2.0f;
 			}
 		}
 			break;
 		case AIController::CHASE:
-			//val = SteeringOutput::arrive(transform->position, Scene1::playerPosition);
 
 			break;
 		default:
@@ -168,16 +157,9 @@ public:
 
 
 		//Then we need to get our result of the algorithms.....
-
-
 		SteeringOutput val = SteeringHandler->updateAlgorithms(deltaTime);
 
 		//Set these gathered values to our aI's velocity, and position...
-
-
-
-		//We will run into some issues with handling algorithms that might want to have a slight delay....
-		//This needs to have some if statements maybe... 
 		movement->setVelocity(val.vel);
 		transform->setOrientation(val.orientation);
 

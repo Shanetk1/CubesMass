@@ -51,9 +51,6 @@
     <ClCompile Include="Source\AI\BlendedSteering.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\AI\Pathfinding\Node.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Source\AI\Pathfinding\PrioNode.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -119,9 +116,6 @@
     <ClInclude Include="Source\EntityCS\AIController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\AI\redundant.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Source\VMath.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -155,19 +149,19 @@
     <ClInclude Include="Source\AI\Flee.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\AI\Pathfinding\Node.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Source\AI\Pathfinding\PrioNode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Source\AI\Pathfinding\Graph\Graph.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\AI\Pathfinding\Graph\Connection.h">
+    <ClInclude Include="Source\AI\Pathfinding\Graph\TileDemo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\AI\Pathfinding\Graph\TileDemo.h">
+    <ClInclude Include="Source\AI\FollowPath.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\AI\Pathfinding\Graph\Path.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

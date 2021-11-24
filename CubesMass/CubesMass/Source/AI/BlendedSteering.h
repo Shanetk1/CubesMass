@@ -12,8 +12,10 @@
 
 #include "../Vector.h"
 #include "Steering.h"
+#include "Pathfinding/Graph/TileDemo.h"
 
 class Steering;
+class TileDemo;
 
 //This class will not be inherited by steering, since well wait.... maybe it should cause it does have a getsteering pog that fixes it
 //I kinda want to use this as a container class...

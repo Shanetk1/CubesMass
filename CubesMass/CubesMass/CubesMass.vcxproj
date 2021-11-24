@@ -87,7 +87,6 @@
   <ItemGroup>
     <ClCompile Include="Source\AI\Pathfinding\PrioNode.cpp" />
     <ClCompile Include="Source\AI\Pathfinding\Graph\Graph.cpp" />
-    <ClCompile Include="Source\AI\Pathfinding\Node.cpp" />
     <ClCompile Include="Source\AI\BlendedSteering.cpp" />
     <ClCompile Include="Source\MouseEventListener.cpp" />
     <ClCompile Include="Source\Collision.cpp" />
@@ -103,10 +102,10 @@
     <ClCompile Include="Source\AI\Pathfinding\Graph\TileDemo.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\AI\FollowPath.h" />
+    <ClInclude Include="Source\AI\Pathfinding\Graph\Path.h" />
     <ClInclude Include="Source\AI\Pathfinding\PrioNode.h" />
-    <ClInclude Include="Source\AI\Pathfinding\Graph\Connection.h" />
     <ClInclude Include="Source\AI\Pathfinding\Graph\Graph.h" />
-    <ClInclude Include="Source\AI\Pathfinding\Node.h" />
     <ClInclude Include="Source\AI\Arrive.h" />
     <ClInclude Include="Source\AI\BlendedSteering.h" />
     <ClInclude Include="Source\AI\Flee.h" />
@@ -131,7 +130,6 @@
     <ClInclude Include="Source\Scene.h" />
     <ClInclude Include="Source\Scene1.h" />
     <ClInclude Include="Source\SceneManager.h" />
-    <ClInclude Include="Source\AI\redundant.h" />
     <ClInclude Include="Source\TextureLoader.h" />
     <ClInclude Include="Source\Timer.h" />
     <ClInclude Include="Source\Vector.h" />

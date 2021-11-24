@@ -1,7 +1,7 @@
 #ifndef PRIONODE_H
 #define PRIONODE_H
 
-#include "Node.h"
+//Used specifically from our graph class...
 class PrioNode
 {
 public:

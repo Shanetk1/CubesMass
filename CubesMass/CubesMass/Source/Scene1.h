@@ -8,6 +8,7 @@
 #include "VMath.h"
 #include "SceneManager.h"
 #include "AI/Pathfinding/Graph/TileDemo.h"
+#include "Map.h"
 #include "AI/Pathfinding/Graph/Graph.h"
 struct SDL_Renderer;
 struct SDL_Rect;
@@ -30,7 +31,6 @@ public:
 	static SDL_Renderer* renderer;
 	static SDL_Rect camera;
 	static void addTile(int srcX, int srcY, int xPos, int yPos, int coll);
-
 	static Vector2 playerPosition; 
 
 	enum groupLabels : std::size_t
@@ -42,6 +42,7 @@ public:
 	};
 
 private:
+	Map* map;
 	std::vector<std::vector<TileDemo*>> tiles_;
 	Graph* graphLevel;
 };

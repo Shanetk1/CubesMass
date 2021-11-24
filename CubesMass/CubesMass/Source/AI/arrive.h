@@ -10,7 +10,10 @@ class Arrive : public Steering
 public:
 	//Defaulted... will use all set default values
 	Arrive()
-	{}
+	{
+	
+	
+	}
 	
 	//Sets default variables... This can be updated again using a different method
 	Arrive(float satRadius_, float timeTo_)
@@ -20,7 +23,7 @@ public:
 	}
 
 
-	SteeringOutput getSteering(const float deltaTime) override
+	SteeringOutput* getSteering(const float deltaTime) override
 	{
 		//Why we do this is because we need to run the algorithm then let the algorithm to be delayed
 		static float timePassed = delay;
@@ -28,7 +31,7 @@ public:
 		if (delay <= timePassed)
 		{
 			timePassed = 0.0f;
-			return SteeringOutput(arrive(SteeringHandler->getAIPos(), SteeringHandler->getTargetLoc()));
+			return new SteeringOutput(arrive(SteeringHandler->getAIPos(), SteeringHandler->getTargetLoc()));
 			
 		}
 		else
@@ -44,10 +47,10 @@ public:
 			//For now having a delay on arrive is slightly pointless
 			//but we will keep it in because its overall useful and can still be used just on a very low amount of delay probably around 0.5 
 
-			return SteeringOutput(arrive(oldPos, oldLoc));
+			return new SteeringOutput(arrive(oldPos, oldLoc));
 
 
-
+			
 
 		}
 
@@ -69,8 +72,8 @@ private:
 	//Store an old value, meaning store the last returned value
 
 	//const variables... hwoever we are not going to be keeping these const... this is because there could be an instance where we might want to change the timeto, or the satisfaction radius...
-	float satRadius = 10.0f;
-	float timeTo = 1.0f;
+	float satRadius;
+	float timeTo;
 	//These are defaulted to these values if not set..
 
 
@@ -91,8 +94,6 @@ private:
 		SteeringOutput result;
 		float mSpeed = SteeringHandler->getMaxSpeed();
 
-		satRadius = 14.5f;
-		timeTo = 1.15f;
 
 		
 
@@ -113,9 +114,20 @@ private:
 
 		}
 
-		result.vel = result.vel / timeTo;
-		mag = sqrtf(result.vel.x * result.vel.x + result.vel.y * result.vel.y);
 
+
+
+		if (!timeTo == 0.0f)
+		{
+			result.vel = result.vel / timeTo;
+		}
+		else
+		{
+			result.vel = result.vel * mSpeed;
+		}
+
+		
+		mag = sqrtf(result.vel.x * result.vel.x + result.vel.y * result.vel.y);
 		if (mag > mSpeed)
 		{
 			result.vel = Vector2(result.vel.x / mag, result.vel.y / mag);

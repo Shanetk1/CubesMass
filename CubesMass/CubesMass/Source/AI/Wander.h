@@ -23,7 +23,7 @@ public:
 
 
 
-	SteeringOutput getSteering(const float deltaTime) override
+	SteeringOutput* getSteering(const float deltaTime) override
 	{
 		return wander();
 	}
@@ -34,7 +34,7 @@ private:
 
 
 	//Algorithm Calculation
-	SteeringOutput wander()
+	SteeringOutput* wander()
 	{
 		//Baseline
 
@@ -62,10 +62,7 @@ private:
 
 		result.vel = tmp * 100.f;
 
-		return result;
-
-
-
+		return new SteeringOutput(result);
 	}
 
 

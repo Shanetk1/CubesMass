@@ -1,6 +1,7 @@
 ﻿  Scene1.cpp
+D:\dev\CubesMass\CubesMass\CubesMass\Source\AI\Pathfinding\Graph\Path.h(53): warning C4715: 'Path::getCurrentNodePosition': not all control paths return a value
 LINK : warning LNK4044: unrecognized option '/lSDL_mixer'; ignored
-  LINK : 0 new modules and 1 (out of 61) modules have changed since prior linking
+  LINK : 0 new modules and 1 (out of 60) modules have changed since prior linking
   Searching libraries
       Searching D:\dev\CubesMass\CubesMass\\Dependencies\SDL2-2.0.12\lib\x86\SDL2.lib:
   Finished searching libraries

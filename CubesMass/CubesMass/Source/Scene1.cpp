@@ -6,7 +6,6 @@
 #include "Collision.h"
 #include "AI/Pathfinding/Graph/TileDemo.h"
 
-Map* mapTest;
 const char* mapFile = "assets/32x32noBG.png";
 SDL_Texture* tex_;
 
@@ -39,12 +38,54 @@ Scene1::Scene1(SDL_Renderer* renderer_)
 
 bool Scene1::OnCreate()
 {
-	//Load our tileset here to when we parse our map file we send it the loaded texture address to create
-	//Every single tile component
 	tex_ = TextureLoader::LoadTexture(mapFile);
 
-	mapTest = new Map();
-	mapTest->loadMap("assets/map.txt", 25.f, 20.f);
+	//Our map will load our tilemap and crete our tilemap to use with our pathfinding algorithms.... //POINTER ON THIS MAY OR MAY NOT BE CAUSING A DATA LEAK//
+	map = new Map();
+	tiles_ = map->loadMap("assets/map.txt", 25.f, 20.f);
+
+
+
+
+	//Set up our graph here
+	//I set it up here since I want to pass all ai components a reference to the graph
+	graphLevel = new Graph(25 * 20);
+	for (int i = 0; i < 20; i++)
+	{
+		for (int j = 0; j < 25; j++)
+		{
+			//Checks to see if our tiles are traversable this value is set via the map.txt file and loaded up on Map::loadMap();
+			if (tiles_[i][j]->getCanTraverse())
+			{
+				if (i > 0)
+				{
+
+					graphLevel->addWeightedConnection(tiles_[i][j]->getNode(), tiles_[i - 1][j]->getNode(), 64.0f);
+				}
+				if (i < 20 - 1)
+				{
+					graphLevel->addWeightedConnection(tiles_[i][j]->getNode(), tiles_[i + 1][j]->getNode(), 64.0f);
+				}
+				if (j > 0)
+				{
+					graphLevel->addWeightedConnection(tiles_[i][j]->getNode(), tiles_[i][j - 1]->getNode(), 64.0f);
+				}
+				if (j < 25 - 1)
+				{
+					graphLevel->addWeightedConnection(tiles_[i][j]->getNode(), tiles_[i][j + 1]->getNode(), 64.0f);
+				}
+
+			}
+		}
+	}
+
+	graphLevel->addGameWorld(tiles_);
+
+
+
+
+
+
 
 	newPlayer.addComponent<TransformComponent>(Vector2(400.f, 320.f), Vector2(1.f,1.f));
 	newPlayer.addComponent<MovementComponent>(true);
@@ -57,7 +98,7 @@ bool Scene1::OnCreate()
 
 
 	//AI Populate
-	AITest.addComponent<TransformComponent>(Vector2(200.f, 180.f), Vector2(1.f, 1.f));
+	AITest.addComponent<TransformComponent>(Vector2(64.f, 64.f), Vector2(1.f, 1.f));
 	AITest.addComponent<MovementComponent>();
 	AITest.addComponent<SpriteComponent>("assets/player/player_9mmhandgun.png");
 	AITest.getComponent<SpriteComponent>().setSize(60, 66);
@@ -71,7 +112,11 @@ bool Scene1::OnCreate()
 	
 	patrol.push_back(pt1);
 	patrol.push_back(pt2);
-	AITest.addComponent<AIController>(patrol);
+
+
+
+	//Gives ai information about map and nodes... Bad overall but it gets the pathfinding working...
+	AITest.addComponent<AIController>(graphLevel, &tiles_);
 	AITest.addGroup(groupPlayer);
 
 	wall.addComponent<TransformComponent>(Vector2(300.f,300.f), Vector2(1.f,1.f));
@@ -81,85 +126,6 @@ bool Scene1::OnCreate()
 	wall.getComponent<BoxColliderComponent>().setColliderSize(300.f, 20.f);
 	wall.addGroup(groupPlayer);
 
-	//MAP SIZE IS W=1600 AND H=1280
-
-
-	int rows = static_cast<int>(1280 / 64);
-	int cols = static_cast<int>(1600 / 64);
-
-	tiles_.resize(rows);
-
-
-	for (int i = 0; i < rows; i++) tiles_[i].resize(cols);
-
-	int i, j;
-	i = 0;
-	j = 0;
-	int node = 0;
-
-	for (float y = 0.5 * 64; y < 1280; y += 64)
-	{
-		for (float x = 0.5 * 64; x < 1600; x += 64)
-		{
-
-
-
-			TileDemo* t;
-			Vector2 position = Vector2(x, y);
-			t = new TileDemo(node, 64, 64, position);
-			tiles_[i][j] = t;
-			
-			
-			node++;
-			j++;
-		}
-		j = 0;
-		i++;
-		
-	}
-
-
-
-
-	graphLevel = new Graph(rows * cols);
-	for (int i = 0; i < rows; i++)
-	{
-		for (int j = 0; j < cols; j++)
-		{
-
-			if (i > 0)
-			{
-				graphLevel->addWeightedConnection(tiles_[i][ j]->getNode(), tiles_[i - 1][ j]->getNode(), 64);
-			}
-			if (i < rows - 1)
-			{
-				graphLevel->addWeightedConnection(tiles_[i][j]->getNode(), tiles_[i + 1][j]->getNode(), 64);
-			}
-			if (j > 0)
-			{
-				graphLevel->addWeightedConnection(tiles_[i][j]->getNode(), tiles_[i][j - 1]->getNode(), 64);
-			}
-			if (j < cols - 1)
-			{
-				graphLevel->addWeightedConnection(tiles_[i][j]->getNode(), tiles_[i][j + 1]->getNode(), 64);
-			}
-
-		}
-	}
-
-
-
-
-	auto z = graphLevel->findPathUsingAStar(0, 29);
-
-	for (auto x : z)
-	{
-		std::cout << x << std::endl;
-	}
-
-
-	//Add AI component here
-	
 	pt1 = nullptr;
 	pt2 = nullptr;
 	delete pt1;
@@ -274,7 +240,7 @@ void Scene1::Render() const
 		{
 			//t->Render();
 		}
-		t->Render();
+		//t->Render();
 
 	}
 	for (int i = 0; i < tiles_.size(); i++)
@@ -292,12 +258,12 @@ void Scene1::Render() const
 
 	for (auto& p : players)
 	{
-		//p->Render();
+		p->Render();
 	}
 
 	for (auto& p : projectiles)
 	{
-		//p->Render();
+		p->Render();
 	}
 
 	//Necessary at end

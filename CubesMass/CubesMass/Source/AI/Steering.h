@@ -19,7 +19,7 @@ public:
 	BlendedSteering* SteeringHandler = nullptr;
 
 	//We need to use deltaTime to showcase this is running every tick, also will be used to allow algorithms to be delayed... (not update every tick)
-	virtual SteeringOutput getSteering(const float deltaTime) = 0;
+	virtual SteeringOutput* getSteering(const float deltaTime) = 0;
 	
 	void setDelay(float delay_) { delay = delay_; }
 	//setDefaultValues... //But this wont work 
