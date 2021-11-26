@@ -2,6 +2,7 @@
 #include "Scene1.h"
 #include <SDL.h>
 #include "EntityCS/Components.h"
+#include "Map.h"
 #include "Collision.h"
 #include "AI/Pathfinding/Graph/TileDemo.h"
 
@@ -41,13 +42,8 @@ bool Scene1::OnCreate()
 
 	//Our map will load our tilemap and crete our tilemap to use with our pathfinding algorithms.... //POINTER ON THIS MAY OR MAY NOT BE CAUSING A DATA LEAK//
 	map = new Map();
+	tiles_ = map->loadMap("assets/map.txt", 25.f, 20.f);
 
-
-	std::vector<TileDemo*> tiles;
-	tiles = map->loadMap("assets/map.txt", 25.f, 20.f);
-
-	//Maybe make a constant of max map size....
-	//If I just loop through 
 
 
 
@@ -58,42 +54,32 @@ bool Scene1::OnCreate()
 	{
 		for (int j = 0; j < 25; j++)
 		{
-			int currNode = (i * 20) + (j * 25);
-
 			//Checks to see if our tiles are traversable this value is set via the map.txt file and loaded up on Map::loadMap();
-			if (tiles[currNode]->getCanTraverse())
+			if (tiles_[i][j]->getCanTraverse())
 			{
-
-				//Left connections
 				if (i > 0)
 				{
 
-					graphLevel->addWeightedConnection(tiles[currNode]->getNode(), tiles[currNode - 1]->getNode(), 64.0f);
+					graphLevel->addWeightedConnection(tiles_[i][j]->getNode(), tiles_[i - 1][j]->getNode(), 64.0f);
 				}
-
-				//Right connections
 				if (i < 20 - 1)
 				{
-					graphLevel->addWeightedConnection(tiles[currNode]->getNode(), tiles[currNode + 1]->getNode(), 64.0f);
+					graphLevel->addWeightedConnection(tiles_[i][j]->getNode(), tiles_[i + 1][j]->getNode(), 64.0f);
 				}
-
-				//Up connections
 				if (j > 0)
 				{
-					graphLevel->addWeightedConnection(tiles[currNode]->getNode(), tiles[currNode - (j * 25)]->getNode(), 64.0f);
+					graphLevel->addWeightedConnection(tiles_[i][j]->getNode(), tiles_[i][j - 1]->getNode(), 64.0f);
 				}
-
-				//Down connections
 				if (j < 25 - 1)
 				{
-					graphLevel->addWeightedConnection(tiles[currNode]->getNode(), tiles[currNode + (j * 25)]->getNode(), 64.0f);
+					graphLevel->addWeightedConnection(tiles_[i][j]->getNode(), tiles_[i][j + 1]->getNode(), 64.0f);
 				}
 
 			}
 		}
 	}
 
-	//graphLevel->addGameWorld(tiles);
+	graphLevel->addGameWorld(tiles_);
 
 
 
@@ -130,7 +116,7 @@ bool Scene1::OnCreate()
 
 
 	//Gives ai information about map and nodes... Bad overall but it gets the pathfinding working...
-	//AITest.addComponent<AIController>(graphLevel, &tiles_);
+	AITest.addComponent<AIController>(graphLevel, &tiles_);
 	AITest.addGroup(groupPlayer);
 
 	wall.addComponent<TransformComponent>(Vector2(300.f,300.f), Vector2(1.f,1.f));
@@ -257,15 +243,13 @@ void Scene1::Render() const
 		//t->Render();
 
 	}
-	for (int i = 0; i < tiles.size(); i++)
+	for (int i = 0; i < tiles_.size(); i++)
 	{
 
-		tiles[i]->Render();
-
-	/*	for (int j = 0; j < tiles_[i].size(); j++)
+		for (int j = 0; j < tiles_[i].size(); j++)
 		{
 			tiles_[i][j]->Render(renderer, 64, 64);
-		}*/
+		}
 
 	}
 

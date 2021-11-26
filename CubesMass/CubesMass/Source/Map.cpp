@@ -3,7 +3,7 @@
 #include <fstream>
 Map::Map(){}
 Map::~Map(){}
-std::vector<TileDemo*> Map::loadMap(std::string path, int columns, int rows)
+std::vector<std::vector<TileDemo*>> Map::loadMap(std::string path, int columns, int rows)
 {
 
 	//For map file parsing
@@ -14,9 +14,9 @@ std::vector<TileDemo*> Map::loadMap(std::string path, int columns, int rows)
 
 
 	//For pathfinding
-	std::vector<TileDemo*> tiles;
+	std::vector<std::vector<TileDemo*>> tiles;
 
-	tiles.resize(rows * columns);
+	tiles.resize(rows);	//first set the size of the rows 
 	int node = 0;
 
 
@@ -25,7 +25,7 @@ std::vector<TileDemo*> Map::loadMap(std::string path, int columns, int rows)
 	{
 
 
-				//Update size of the columns for this current row
+		tiles[row].resize(columns);		//Update size of the columns for this current row
 
 		for (int col = 0; col < columns; col++)//Is also equal to columns
 		{
@@ -49,19 +49,14 @@ std::vector<TileDemo*> Map::loadMap(std::string path, int columns, int rows)
 
 			//Logic for tile creation
 
-
-
-			//I want position to be represented different here.... since nodes are represented as 500... i want this as well it makes it very easy....
 			TileDemo* t;
-			Vector2 position = Vector2(col * 64, row * 64);
+			Vector2 position = Vector2(col * 64.0f, row * 64.0f);
 			t = new TileDemo(node, 64, 64, position, !srcZ);
-			tiles[(row * rows) + (col * columns)] = t;
+			tiles[row][col] = t;
 
 			node++;
 		}
 	}
-
-
 	mapFile.close();
 
 	return tiles;
