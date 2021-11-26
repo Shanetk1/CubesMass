@@ -10,6 +10,8 @@
 #include "AI/Pathfinding/Graph/TileDemo.h"
 #include "Map.h"
 #include "AI/Pathfinding/Graph/Graph.h"
+#include "Map.h"
+
 struct SDL_Renderer;
 struct SDL_Rect;
 class GameObject;
@@ -43,7 +45,6 @@ public:
 
 private:
 	Map* map;
-	std::vector<std::vector<TileDemo*>> tiles_;
 	Graph* graphLevel;
 };
 

@@ -11,7 +11,7 @@ public:
 	~Map();
 
 	//Loads our map from a file and also sets up a tilemap 
-	static std::vector<std::vector<TileDemo*>> loadMap(std::string path, int sizeX, int sizeY);
+	static std::vector<TileDemo*> loadMap(std::string path, int sizeX, int sizeY);
 
 
 
