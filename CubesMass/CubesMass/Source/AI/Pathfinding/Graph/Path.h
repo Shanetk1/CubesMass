@@ -30,13 +30,13 @@ struct Path
 
 	
 
-	Vector2 getCurrentNodePosition(std::vector<std::vector<TileDemo*>>& tiles_)
+	Vector2 getCurrentNodePosition(std::vector<TileDemo*>& tiles_)
 	{
 		//This will need to know about the tile map....
 		
 		//From this we can find our values its hard to do however....
 
-
+/*
 		for (int i = 0; i < 20; i++)
 		{
 			//Loop through the tilesize until we find the node 
@@ -49,7 +49,17 @@ struct Path
 					return tiles_[i][j]->getPosition();
 				}
 			}
+		}*/
+		//I think this is redundant since both of the represenations are the same
+		for (int i = 0; i < 500; i++)
+		{
+			//Loop thru thing
+			if (tiles_[i]->getNode() == currentNode)
+			{
+				return tiles_[i]->getPosition();
+			}
 		}
+
 	}
 	
 

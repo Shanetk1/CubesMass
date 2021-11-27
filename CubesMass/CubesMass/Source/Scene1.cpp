@@ -52,13 +52,13 @@ bool Scene1::OnCreate()
 
 
 	//Set up our graph here
-	//I set it up here since I want to pass all ai components a reference to the graph
 	graphLevel = new Graph(25 * 20);
 	for (int i = 0; i < 20; i++)
 	{
 		for (int j = 0; j < 25; j++)
 		{
-			int currNode = (i * 20) + (j * 25);
+			int currNode = (j) + (i * 25);
+			std::cout << currNode << std::endl;
 
 			//Checks to see if our tiles are traversable this value is set via the map.txt file and loaded up on Map::loadMap();
 			if (tiles[currNode]->getCanTraverse())
@@ -80,20 +80,20 @@ bool Scene1::OnCreate()
 				//Up connections
 				if (j > 0)
 				{
-					graphLevel->addWeightedConnection(tiles[currNode]->getNode(), tiles[currNode - (j * 25)]->getNode(), 64.0f);
+					graphLevel->addWeightedConnection(tiles[currNode]->getNode(), tiles[currNode - (25)]->getNode(), 64.0f);
 				}
 
 				//Down connections
 				if (j < 25 - 1)
 				{
-					graphLevel->addWeightedConnection(tiles[currNode]->getNode(), tiles[currNode + (j * 25)]->getNode(), 64.0f);
+					graphLevel->addWeightedConnection(tiles[currNode]->getNode(), tiles[currNode + (25)]->getNode(), 64.0f);
 				}
 
 			}
 		}
 	}
-
-	//graphLevel->addGameWorld(tiles);
+	//Adds our game world to our graph...
+	graphLevel->addGameWorld(tiles);
 
 
 
@@ -130,7 +130,7 @@ bool Scene1::OnCreate()
 
 
 	//Gives ai information about map and nodes... Bad overall but it gets the pathfinding working...
-	//AITest.addComponent<AIController>(graphLevel, &tiles_);
+	AITest.addComponent<AIController>(graphLevel);
 	AITest.addGroup(groupPlayer);
 
 	wall.addComponent<TransformComponent>(Vector2(300.f,300.f), Vector2(1.f,1.f));

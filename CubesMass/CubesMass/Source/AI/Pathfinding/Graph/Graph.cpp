@@ -13,10 +13,12 @@ Graph::~Graph()
 
 }
 
-void Graph::addGameWorld(const std::vector<std::vector<TileDemo*>>& ref_)
+void Graph::addGameWorld(const std::vector<TileDemo*>& ref_)
 {
-	gameWorldRef = ref_;
+	*gameWorldRef = ref_;
 }
+
+
 
 
 Graph::Graph(int numNodes_)

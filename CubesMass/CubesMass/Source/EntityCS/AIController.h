@@ -25,7 +25,6 @@ private:
 
 	//Our necessary data for pathfinding
 	Graph* graph = nullptr;
-	std::vector<std::vector<TileDemo*>>* tiles = nullptr;
 
 
 	//OLD
@@ -80,11 +79,10 @@ public:
 	}
 
 
-	AIController(Graph* graph_, std::vector<std::vector<TileDemo*>>* tiles_)
+	AIController(Graph* graph_)
 	{
 		//patrolPoints = patrolPoints_;
 		graph = graph_;
-		tiles = tiles_;
 		State = WANDER;
 	}
 
@@ -100,7 +98,7 @@ public:
 		
 
 		//Add steering here for pathfinding
-		SteeringHandler->addSteering<FollowPath>(30.0f, 0.0f, tiles, graph->findPathUsingAStar(28, 179));
+		SteeringHandler->addSteering<FollowPath>(30.0f, 0.0f, graph->getGameWorld(), graph->findPathUsingAStar(28, 179));
 		SteeringHandler->setMaxSpeed(150.0f);
 
 	};

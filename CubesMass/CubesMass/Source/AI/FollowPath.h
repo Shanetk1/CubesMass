@@ -8,7 +8,8 @@
 
 using namespace MATH;
 
-
+//I like following being sent a path but idk....
+//Maybe allow graph to create a pa
 
 class Graph;
 
@@ -22,7 +23,7 @@ public:
 	}
 
 	//Pass in our graph address also our path.... or we could actually specify a location rather a node instead..... and then use the graph to calculate closest nodes to location then create a path from that....
-	FollowPath(float satRadius_, float timeTo_, std::vector<std::vector<TileDemo*>>* graph_, std::vector<int> path_)
+	FollowPath(float satRadius_, float timeTo_, std::vector<TileDemo*>* graph_, std::vector<int> path_)
 	{
 		//I set time to so it sets the inherited arrives time to....
 
@@ -64,6 +65,7 @@ public:
 			 }
 			 else
 			 {
+
 				 std::cout << "This path has been found" << std::endl;
 			 }
 
@@ -89,7 +91,7 @@ public:
 private:
 	//Sat radius default same as arrive
 	float radius = 10.0f;
-	std::vector<std::vector<TileDemo*>>* graph;
+	std::vector<TileDemo*>* graph;
 	Path* path = nullptr;
 };
 

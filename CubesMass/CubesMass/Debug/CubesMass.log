@@ -1,11 +1,25 @@
-﻿  Scene1.cpp
-LINK : warning LNK4044: unrecognized option '/lSDL_mixer'; ignored
-  LINK : 0 new modules and 1 (out of 60) modules have changed since prior linking
-  Searching libraries
-      Searching D:\dev\CubesMass\CubesMass\\Dependencies\SDL2-2.0.12\lib\x86\SDL2.lib:
-  Finished searching libraries
-  Starting pass 2
-       Scene1.obj
-       MSVCRT.lib(loadcfg.obj)
-  Finished pass 2
-  CubesMass.vcxproj -> D:\dev\CubesMass\CubesMass\Debug\CubesMass.exe
+﻿  PrioNode.cpp
+  Graph.cpp
+  BlendedSteering.cpp
+  MouseEventListener.cpp
+  Collision.cpp
+  Map.cpp
+  EntityCS.cpp
+  Main.cpp
+  Scene1.cpp
+C:\dev\CubesMass\CubesMass\CubesMass\Source\AI\BlendedSteering.h(138,1): error C2664: 'FollowPath::FollowPath(float,float,std::vector<TileDemo *,std::allocator<TileDemo *>> *,std::vector<int,std::allocator<int>>)': cannot convert argument 3 from 'std::vector<TileDemo *,std::allocator<TileDemo *>>' to 'std::vector<TileDemo *,std::allocator<TileDemo *>> *'
+C:\dev\CubesMass\CubesMass\CubesMass\Source\AI\BlendedSteering.h(138,36): message : No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
+C:\dev\CubesMass\CubesMass\CubesMass\Source\AI\FollowPath.h(26,2): message : see declaration of 'FollowPath::FollowPath'
+C:\dev\CubesMass\CubesMass\CubesMass\Source\EntityCS\AIController.h(101): message : see reference to function template instantiation 'T &BlendedSteering::addSteering<FollowPath,float,float,std::vector<TileDemo *,std::allocator<TileDemo *>>&,std::vector<int,std::allocator<int>>>(float &&,float &&,std::vector<TileDemo *,std::allocator<TileDemo *>> &,std::vector<int,std::allocator<int>> &&)' being compiled
+          with
+          [
+              T=FollowPath
+          ]
+  SceneManager.cpp
+  TextureLoader.cpp
+  Timer.cpp
+  VMath.cpp
+  Window.cpp
+  TileDemo.cpp
+  Generating Code...
+C:\dev\CubesMass\CubesMass\CubesMass\Source\AI\Pathfinding\Graph\Graph.cpp(190): warning C4715: 'Graph::findPathUsingAStar': not all control paths return a value

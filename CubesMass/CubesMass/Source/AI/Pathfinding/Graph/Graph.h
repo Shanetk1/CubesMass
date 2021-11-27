@@ -39,9 +39,9 @@ public:
 	//Returns a light of neighbours connected from this node... Note this just returns node index not weight
 	std::list<int> neighbours(int fromNode_);
 	
-	void addGameWorld(const std::vector<std::vector<TileDemo*>>& ref_);
+	void addGameWorld(const std::vector<TileDemo*>& ref_);
 	
-
+	std::vector<TileDemo*>& getGameWorld() { return *gameWorldRef; };
 
 
 	//Path Finding Functions\\
@@ -55,6 +55,7 @@ public:
 
 
 
+
 	
 private:
 
@@ -65,7 +66,7 @@ private:
 	//I think tilemap is defined wrong since
 	//WIP I personally think representing it like this is bad since the nodes are represented in a 1d format and this is a 2d format..... but for now leave it
 	//Also, I think this can be represented as a address rather than value?? not sure though...
-	std::vector<std::vector<TileDemo*>> gameWorldRef;
+	std::vector<TileDemo*>* gameWorldRef;
 
 
 	//Graph might need to know about the tilemap....
