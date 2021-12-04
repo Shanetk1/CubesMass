@@ -11,7 +11,7 @@ public:
 	//Defaulted... will use all set default values
 	Arrive()
 	{
-	
+		std::cout << "help me" << std::endl;
 	
 	}
 	
@@ -93,7 +93,7 @@ private:
 		//Baseline 
 		SteeringOutput result;
 		float mSpeed = SteeringHandler->getMaxSpeed();
-
+		
 
 		
 
@@ -101,6 +101,8 @@ private:
 
 
 		float mag = sqrtf(result.vel.x * result.vel.x + result.vel.y * result.vel.y);
+		std::cout << mag << std::endl;
+		std::cout << satRadius << std::endl;
 		if (mag < satRadius)
 		{
 
@@ -113,7 +115,15 @@ private:
 			return result;
 
 		}
+		if (satRadius <= 0.0f)
+		{
+			//If sat rad is rlllly small.....
+			//Then we have a special case....
 
+
+
+
+		}
 
 
 

@@ -60,6 +60,9 @@
     <ClCompile Include="Source\AI\Pathfinding\Graph\TileDemo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Source\AI\DecisionMaking\StateMachine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Window.h">
@@ -162,6 +165,21 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Source\AI\Pathfinding\Graph\Path.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\AI\DecisionMaking\StateMachine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\AI\DecisionMaking\State.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\AI\DecisionMaking\Transition.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\AI\DecisionMaking\Condition.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\AI\DecisionMaking\Conditions\ConditionPursue.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,28 +1,39 @@
 #include "Graph.h"
 #include <math.h>
 #include <iostream>
+#include "../../../VMath.h"
+using namespace MATH;
 
-Graph::Graph()
+Graph::Graph(): gameWorldRef(new std::vector<TileDemo*>())
 {
+	//gameWorldRef = new std::vector<TileDemo*>();
+	gameWorldRef->reserve(500);
 
 }
 Graph::~Graph()
 {
 	//Delete our graph...
 	//remove our reference and if the graph is ever deleted kill the that vector list
-
+		
 }
-
-void Graph::addGameWorld(const std::vector<TileDemo*>& ref_)
+//We pass it by value here.... this is because in oncreate the addresses get popped off the streets
+void Graph::addGameWorld(std::vector<TileDemo*> ref_)
 {
+	
+	//The copied value send in this parameter will be set to the pointer
 	*gameWorldRef = ref_;
+	//Basically we are setting our pointer to the sent values.... we don't want to change the gameworlds address!
+
+
 }
 
 
 
 
-Graph::Graph(int numNodes_)
+Graph::Graph(int numNodes_) : gameWorldRef(new std::vector<TileDemo*>())
 {
+	gameWorldRef->reserve(500);
+
 	nodes.resize(numNodes_);
 	for (int i = 0; i < numNodes_; i++)
 	{
@@ -91,7 +102,7 @@ struct ComparePriority
 
 
 
-std::vector<int> Graph::findPathUsingAStar(int startNode_, int endNode_)
+std::vector<TileDemo*> Graph::findPathUsingAStar(int startNode_, int endNode_)
 {
 	float new_cost;
 	int current;
@@ -120,10 +131,10 @@ std::vector<int> Graph::findPathUsingAStar(int startNode_, int endNode_)
 		current = frontier.top().node;
 		frontier.pop();
 
-		
+		//Reached goal node
 		if (current == endNode_)
 		{
-			//Awesome job don
+			//Awesome job done
 
 
 			//This is basically gathering my end node data which should tell us where this node came from .. eventually it will go all the way back to the start node
@@ -134,24 +145,24 @@ std::vector<int> Graph::findPathUsingAStar(int startNode_, int endNode_)
 
 			
 			
-			std::vector<int> result;
+			std::vector<TileDemo*> result;
 
 
 
-			//Push end node
-			result.push_back(endNode_);
+			//Push end node to the back.... well not really the end node will be in the front
+			result.push_back(gameWorldRef->at(endNode_));
 			while (true)
 			{
 				if (val != 0)
 				{
-					result.push_back(val);
+					result.push_back(gameWorldRef->at(val));
 					val = came_from[val];
 
 				}
 				else
 				{
 					//Push start node
-					result.push_back(startNode_);
+					//.push_back(startNode_);
 					break;
 				}
 			}
@@ -206,4 +217,56 @@ float Graph::heuristic(int node_, int goal_)
 
 
 	return 0.0f;
+}
+
+std::vector<TileDemo*> Graph::findPathUsingAStar(Vector2 startPosition_, Vector2 goalPosition_)
+{
+	//First we need to grab these 2 posiitons and find the closest node to these locations....
+	//Loop through our entire list of tiles this can be done faster by deducing the position in a way that makes the loop faster...
+
+	//This is confusing but dereferencing a vector pointer of tilemap pointers is kinda confusing and difficult....
+	Vector2 nodeStartPos = gameWorldRef->at(0)->getPosition();
+	int closestStartNode = 0;
+
+	Vector2 nodeGoalPos = gameWorldRef->at(0)->getPosition();
+	int closestGoalNode = 0;
+
+	//Naturally looping through this entirely is bad but its ok for now
+	for (auto& i : *gameWorldRef)
+	{
+		float newStartVal = VMath::mag(i->getPosition() - startPosition_);
+		float oldStartVal = VMath::mag(nodeStartPos - startPosition_);
+
+		float newGoalVal = VMath::mag(i->getPosition() - goalPosition_);
+		float oldGoalVal = VMath::mag(nodeGoalPos - goalPosition_);
+
+
+		//If newval is smaller then set the new val to the nodePos... this will be our current closest node...
+		if (newStartVal < oldStartVal)
+		{
+			//Set values
+			nodeStartPos = i->getPosition();
+			closestStartNode = i->getNode();
+
+		}
+
+		if (newGoalVal < oldGoalVal)
+		{
+			nodeGoalPos = i->getPosition();
+			closestGoalNode = i->getNode();
+		}
+
+
+		//Do same thing for goalPosition
+
+
+
+
+
+	}
+
+
+
+
+	return findPathUsingAStar(closestStartNode, closestGoalNode);
 }

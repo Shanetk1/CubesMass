@@ -21,21 +21,25 @@ public:
 	{
 
 	}
-
 	//Pass in our graph address also our path.... or we could actually specify a location rather a node instead..... and then use the graph to calculate closest nodes to location then create a path from that....
-	FollowPath(float satRadius_, float timeTo_, std::vector<TileDemo*>* graph_, std::vector<int> path_)
+	FollowPath(float satRadius_, float timeTo_, std::vector<TileDemo*> path_) : Arrive(satRadius_, timeTo_)
 	{
+		//Personally I think a path of tiledemos works better here.....
+		//The path instead could be the tilemap nodes....
 		//I set time to so it sets the inherited arrives time to....
 
-		//Set up our member variables for our inherited arrive algorithm....
-		Arrive::Arrive(satRadius_, timeTo_);
+		//Arrive 
+		//Arrive::setSatRadius(satRadius_);
+		//Arrive::setTimeTo(timeTo_);
 		Arrive::SteeringHandler = SteeringHandler;
+
+
 
 
 		//Set up our necessary member variables		WIP CHANGE PATH AND GRAPH!
 		radius = satRadius_;
 		path = new Path(path_);
-		graph = graph_;
+		//graph = &graph_;
 		
 	}
 
@@ -49,24 +53,32 @@ public:
 
 		 
 
-		 target_position = path->getCurrentNodePosition(*graph);
+		 target_position = path->getCurrentNodePosition();
 		 SteeringHandler->setTargetLoc(target_position);
 
 		 if (VMath::distance(SteeringHandler->getAIPos(), SteeringHandler->getTargetLoc()) <= radius)
 		 {
-
-			 // incremented for next steering request
-			 
-
-			 //Basically check if we can increment 1 more time before doing so this is weird since we are doing it backwords basically
 			 if (0 < path->currentIndex - 1)
 			 {
-				 path->incrementCurrentNode(1);
+				 path->decrementCurrentNode(1);
 			 }
 			 else
 			 {
+				 //std::cout << "This path has been found" << std::endl;
+				 
+				 std::vector<TileDemo*> newPath;
+				 for (int i = path->vectorList.size() - 1; i >= 0; i--)
+				 {
+					 newPath.push_back(path->vectorList[i]);
+					 //std::cout << path->vectorList[i]->getNode() << std::endl;
+				 }
+				 path->vectorList = newPath;
+				 path->currentIndex = path->vectorList.size() - 1;
 
-				 std::cout << "This path has been found" << std::endl;
+
+
+				 //Now reverse the path so increment other way until the end...
+				 //Nothing happens after path is found... maybe we set this steering to inactive? or loop.....
 			 }
 
 			 
@@ -78,10 +90,6 @@ public:
 
 
 		 SteeringHandler->setTargetLoc(target_position);
-
-
-		 //getSteering(deltaTime);
-		 //Send rest of stuff to arrive
 		 return Arrive::getSteering(deltaTime);
 	 }
 
@@ -91,7 +99,6 @@ public:
 private:
 	//Sat radius default same as arrive
 	float radius = 10.0f;
-	std::vector<TileDemo*>* graph;
 	Path* path = nullptr;
 };
 

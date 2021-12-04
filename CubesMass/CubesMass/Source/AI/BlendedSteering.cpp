@@ -28,6 +28,9 @@ SteeringOutput BlendedSteering::updateAlgorithms(const float deltaTime)
 		//Eventually there will be a weight to it but we shall see
 
 
+
+
+
 		if (i != nullptr)
 		{
 			result += *i->getSteering(deltaTime);

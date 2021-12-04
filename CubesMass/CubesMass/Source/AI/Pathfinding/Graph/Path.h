@@ -9,7 +9,7 @@ struct Path
 	//Contains current 
 
 	//Defaults to 0 
-	std::vector<int> vectorList;
+	std::vector<TileDemo*> vectorList;
 
 	
 
@@ -18,11 +18,20 @@ struct Path
 
 
 
-	Path(std::vector<int> path)
+	Path(std::vector<TileDemo*> path)
 	{
+		//vectorList = path;
+		//currentNode = path[path.size() - 1];
+		//currentIndex = path.size() - 1;
+
+
+		//Now our path its 
 		vectorList = path;
-		currentNode = path[path.size() - 1];
-		currentIndex = path.size() - 1;
+		//currentNode = path.size();
+		currentIndex = vectorList.size() - 1;
+
+
+
 
 
 	}
@@ -30,7 +39,7 @@ struct Path
 
 	
 
-	Vector2 getCurrentNodePosition(std::vector<TileDemo*>& tiles_)
+	Vector2 getCurrentNodePosition()
 	{
 		//This will need to know about the tile map....
 		
@@ -50,7 +59,12 @@ struct Path
 				}
 			}
 		}*/
+
+		return vectorList[currentIndex]->getPosition();
+
+
 		//I think this is redundant since both of the represenations are the same
+		/*
 		for (int i = 0; i < 500; i++)
 		{
 			//Loop thru thing
@@ -58,7 +72,7 @@ struct Path
 			{
 				return tiles_[i]->getPosition();
 			}
-		}
+		}*/
 
 	}
 	
@@ -68,9 +82,25 @@ struct Path
 	{
 		//Meaning go to the next node in the list or path
 
-		if (currentIndex - inc_  < vectorList.size())
+		if (currentIndex + inc_  < vectorList.size())
 		{
-			currentNode = vectorList[currentIndex - inc_];
+			//currentNode = vectorList[currentIndex - inc_];
+			currentIndex = currentIndex + inc_;
+			//Update node as well...
+		}
+		else
+		{
+			printf("Error");
+		}
+	}
+
+	void decrementCurrentNode(int inc_)
+	{
+		//Meaning go to the next node in the list or path
+
+		if (currentIndex - inc_ < vectorList.size())
+		{
+			//currentNode = vectorList[currentIndex - inc_];
 			currentIndex = currentIndex - inc_;
 			//Update node as well...
 		}

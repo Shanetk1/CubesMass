@@ -39,21 +39,22 @@ public:
 	//Returns a light of neighbours connected from this node... Note this just returns node index not weight
 	std::list<int> neighbours(int fromNode_);
 	
-	void addGameWorld(const std::vector<TileDemo*>& ref_);
+	void addGameWorld(std::vector<TileDemo*> ref_);
 	
-	std::vector<TileDemo*>& getGameWorld() { return *gameWorldRef; };
+	std::vector<TileDemo*>* getGameWorld() { return gameWorldRef; };
 
 
 	//Path Finding Functions\\
    ///|||||||||||||||||||||||\\\
 	
 	//Returns a path to get to the goal node from the start node, the path is just node indices to travel to
-	std::vector<int> findPathUsingAStar(int startNode_, int goalNode_);
-
+	std::vector<TileDemo*> findPathUsingAStar(int startNode_, int goalNode_);
+	
 	//Use manhattan product here still needs implementation WIP
 	float heuristic(int node_, int goal_);
 
-
+	//This is a bit different.. however, instead we will send the graph a world position; start position, and goal position
+	std::vector<TileDemo*> findPathUsingAStar(Vector2 startPosition_, Vector2 goalPosition_);
 
 
 	

@@ -20,7 +20,6 @@ Manager manager;
 
 
 Entity& newPlayer(manager.addEntity());
-Entity& wall(manager.addEntity());
 Entity& AITest(manager.addEntity());
 
 auto& tiles(manager.getGroup(Scene1::groupMap));
@@ -28,7 +27,7 @@ auto& players(manager.getGroup(Scene1::groupPlayer));
 auto& colliders(manager.getGroup(Scene1::groupColliders));
 auto& projectiles(manager.getGroup(Scene1::groupProjectiles));
 
-Scene1::Scene1(SDL_Renderer* renderer_)
+Scene1::Scene1(SDL_Renderer* renderer_): map(nullptr), graphLevel(nullptr)
 {
 	renderer = renderer_;
 	
@@ -42,9 +41,9 @@ bool Scene1::OnCreate()
 	//Our map will load our tilemap and crete our tilemap to use with our pathfinding algorithms.... //POINTER ON THIS MAY OR MAY NOT BE CAUSING A DATA LEAK//
 	map = new Map();
 
-
+	//Dummy initialization
 	std::vector<TileDemo*> tiles;
-	tiles = map->loadMap("assets/map.txt", 25.f, 20.f);
+	tiles = map->loadMap("assets/map.txt", 25, 20);
 
 	//Maybe make a constant of max map size....
 	//If I just loop through 
@@ -58,7 +57,7 @@ bool Scene1::OnCreate()
 		for (int j = 0; j < 25; j++)
 		{
 			int currNode = (j) + (i * 25);
-			std::cout << currNode << std::endl;
+			//std::cout << currNode << std::endl;
 
 			//Checks to see if our tiles are traversable this value is set via the map.txt file and loaded up on Map::loadMap();
 			if (tiles[currNode]->getCanTraverse())
@@ -92,7 +91,13 @@ bool Scene1::OnCreate()
 			}
 		}
 	}
-	//Adds our game world to our graph...
+	//Adds our game world to our graph... our graph now will hold a reference to the game world so make it just overall easier to operate..
+	//There is something wierd here with how this is being passed LOOK HERE FOR ANY MAP BUGSSS!!!
+
+	//std::vector<TileDemo*>* tiles2 = new std::vector<TileDemo*>();
+	//tiles2 = &tiles;
+
+
 	graphLevel->addGameWorld(tiles);
 
 
@@ -119,31 +124,13 @@ bool Scene1::OnCreate()
 
 	AITest.addComponent<CircleColliderComponent>("AIPerception");
 	AITest.getComponent<CircleColliderComponent>().SetRadiusSize(100.0f);
-	std::vector<Vector2*> patrol;
 
-	Vector2* pt1 = new Vector2(500.f, 180.f);
-	Vector2* pt2 = new Vector2(500.f, 650.f);
-	
-	patrol.push_back(pt1);
-	patrol.push_back(pt2);
 
 
 
 	//Gives ai information about map and nodes... Bad overall but it gets the pathfinding working...
 	AITest.addComponent<AIController>(graphLevel);
 	AITest.addGroup(groupPlayer);
-
-	wall.addComponent<TransformComponent>(Vector2(300.f,300.f), Vector2(1.f,1.f));
-	wall.addComponent<SpriteComponent>("assets/dirt.png");
-	wall.getComponent<SpriteComponent>().setSize(300.f, 20.f);
-	wall.addComponent<BoxColliderComponent>("wall");
-	wall.getComponent<BoxColliderComponent>().setColliderSize(300.f, 20.f);
-	wall.addGroup(groupPlayer);
-
-	pt1 = nullptr;
-	pt2 = nullptr;
-	delete pt1;
-	delete pt2;
 
 	return true;
 }

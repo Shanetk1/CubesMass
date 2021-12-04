@@ -52,21 +52,9 @@ template <typename T> inline AlgorithmID getAlgorithmTypeID() noexcept
 class BlendedSteering
 {
 private:
-	//Member variables these are used by multiple different steering algorithms...
 
-
-	//Updatable Field Variables\\
-	//These Variables will be updated every tick (or once a frame even works)\\
-
-
-	//Why we add target location here cause no matter what algorithm we use there will be some target location... mainly cause we mainly use arrive...
+	//Global accessed variable, These variables are necessary for most if not all AI algorithms for steering therefore will be stored here so that we can easily access them
 	Vector2 targetLocation, aiPos = Vector2(0.0f);
-
-
-
-	//Non-Updatable Field Variables\\ Utilized by most algorithms...
-	//These variables naturally should never change but it can possibly happen... \\
-
 	float mSpeed = 50.0f;
 
 
@@ -172,6 +160,7 @@ public:
 		auto ptr(algorithmArray[getAlgorithmTypeID<T>()]);
 		return *static_cast<T*>(ptr);
 	}
+
 };
 
 

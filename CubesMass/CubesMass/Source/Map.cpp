@@ -54,6 +54,7 @@ std::vector<TileDemo*> Map::loadMap(std::string path, int columns, int rows)
 			//I want position to be represented different here.... since nodes are represented as 500... i want this as well it makes it very easy....
 			TileDemo* t;
 			Vector2 position = Vector2(col * 64, row * 64);
+			//We add 32 here to the position to have the nodes position be at the cetre of the tile
 			t = new TileDemo(node, 64, 64, position, !srcZ);
 			int tmp = (col) + (row * columns);
 			std::cout << tmp << std::endl;
