@@ -11,7 +11,7 @@ private:
 public:
 	Transition(State* targetState_, Condition* condition_);
 	~Transition();
-	bool isTriggered();
+	inline bool isTriggered() { return true; }
 	State* getTargetState() { return targetState; }
 };
 

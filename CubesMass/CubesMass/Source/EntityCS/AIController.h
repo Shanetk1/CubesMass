@@ -84,11 +84,12 @@ public:
 
 		state->update();
 
+		/*
 		switch (state->)
 		{
 		default:
 			break;
-		}
+		}*/
 		//This value will change based on state
 		//Is our player position... which is updated every frame....
 		//This is plugged into our Blended steering
@@ -102,16 +103,16 @@ public:
 		{
 			State = CHASE;
 		}
+		
 
-
-
+		/*
 		switch (switch_on)
 		{
 		default:
 			break;
 		}
 
-
+		*/
 
 
 

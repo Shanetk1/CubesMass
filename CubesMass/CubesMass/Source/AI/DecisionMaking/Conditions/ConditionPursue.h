@@ -1,18 +1,22 @@
 #ifndef CONDITIONPURSUE_H
 #define CONDITIONPURSUE_H
 
-#include "../Condition.h
+#include "../Condition.h"
+
+
 class ConditionPursue : public Condition
 {
+public:
+	ConditionPursue(AIController* aiController) : Condition(aiController) {}
+
+	~ConditionPursue();
+
+
+
+
+
 private:
 
-public:
-
-
-
-
-
 };
-
 
 #endif // !CONDITIONPURSUE_H

@@ -14,12 +14,15 @@ c:\dev\cubesmass\cubesmass\cubesmass\debug\mouseeventlistener.obj
 c:\dev\cubesmass\cubesmass\cubesmass\debug\blendedsteering.obj
 c:\dev\cubesmass\cubesmass\cubesmass\debug\graph.obj
 c:\dev\cubesmass\cubesmass\cubesmass\debug\prionode.obj
-c:\dev\cubesmass\cubesmass\debug\cubesmass.exe
-c:\dev\cubesmass\cubesmass\cubesmass\debug\cubesmass.ilk
+c:\dev\cubesmass\cubesmass\cubesmass\debug\statemachine.obj
 c:\dev\cubesmass\cubesmass\debug\cubesmass.pdb
 c:\dev\cubesmass\cubesmass\cubesmass\debug\cubesmass.tlog\cl.command.1.tlog
 c:\dev\cubesmass\cubesmass\cubesmass\debug\cubesmass.tlog\cl.read.1.tlog
 c:\dev\cubesmass\cubesmass\cubesmass\debug\cubesmass.tlog\cl.write.1.tlog
+c:\dev\cubesmass\cubesmass\cubesmass\debug\cubesmass.tlog\link-cvtres.read.1.tlog
+c:\dev\cubesmass\cubesmass\cubesmass\debug\cubesmass.tlog\link-cvtres.write.1.tlog
+c:\dev\cubesmass\cubesmass\cubesmass\debug\cubesmass.tlog\link-rc.read.1.tlog
+c:\dev\cubesmass\cubesmass\cubesmass\debug\cubesmass.tlog\link-rc.write.1.tlog
 c:\dev\cubesmass\cubesmass\cubesmass\debug\cubesmass.tlog\link.command.1.tlog
 c:\dev\cubesmass\cubesmass\cubesmass\debug\cubesmass.tlog\link.read.1.tlog
 c:\dev\cubesmass\cubesmass\cubesmass\debug\cubesmass.tlog\link.write.1.tlog

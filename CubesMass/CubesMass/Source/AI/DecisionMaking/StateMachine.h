@@ -6,11 +6,15 @@
 
 class StateMachine
 {
+	//Remember; the entire job of this class is to know about the initial state and current state...
+
+
 public:
 	StateMachine(AIController* owner_);
 	
 	//Return a enum....
-	getCurrentStateName();
+	
+	void getCurrentStateName();
 	~StateMachine();
 	bool Init();
 	void update();
