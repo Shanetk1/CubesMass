@@ -57,7 +57,7 @@ std::vector<TileDemo*> Map::loadMap(std::string path, int columns, int rows)
 			//We add 32 here to the position to have the nodes position be at the cetre of the tile
 			t = new TileDemo(node, 64, 64, position, !srcZ);
 			int tmp = (col) + (row * columns);
-			std::cout << tmp << std::endl;
+			//std::cout << tmp << std::endl;
 			tiles[tmp] = t;
 
 			node++;

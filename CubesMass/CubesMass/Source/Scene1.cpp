@@ -204,13 +204,15 @@ void Scene1::Update(const float deltaTime)
 	{
 		//Super scuffed if value but whatever
 		//Need to continually check since this is between player and AI eventually make this only scroll through the list of AI grouped entities!
-		AITest.getComponent<AIController>().seesPlayer = true;
+		AITest.getComponent<AIController>().myInfo->setSeesPlayer(true);
+
 
 	}
 	else
 	{
 
-		AITest.getComponent<AIController>().seesPlayer = false;
+		AITest.getComponent<AIController>().myInfo->setSeesPlayer(false);
+
 	}
 }
 

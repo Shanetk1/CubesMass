@@ -1,31 +1,51 @@
 #include "StateMachine.h"
 
+#include "State.h"
 
+
+//Conditions!
+#include "Conditions/ConditionPursue.h"
+#include "Conditions/ConditionFollowPath.h"
 //Add a reference to our owner...?
-StateMachine::StateMachine(AIController* owner_)
-{
+StateMachine::StateMachine(AIInfoContainer* info_) : info(info_), currentState(nullptr), initialState(nullptr)
+{}
 
-
-}
+StateMachine::~StateMachine() {}
 
 
 bool StateMachine::Init()
 {
-	
-/*
 	//Create all our states...
-	State* doNothing = new State(do_Nothing);
-	State* followPath2 = new State(follow_a_path_v2);
-	State* followPath2 = new State(follow_mouse);
-	State* pursueTarget = new State(pursue_target);
+	State* doNothing = new State(DoNothing);
+	State* followPath = new State(Path);
+	State* pursueTarget = new State(Chase);
+
 
 
 	//This class inherits from transition class....
-	ConditionFollowMouse* c1;
-	c1 = new ConditionFollowMouse(owner);
-	Transition* t1 = new Transition(followPath2, c1);
+
+	//Adds a transition from doNothing state to the pursue state... //Sets the condition of these state to only change when ConditionPursue becomes true!
+	ConditionPursue* c1;
+	c1 = new ConditionPursue(info);
+	Transition* t1 = new Transition(doNothing, c1);
 	doNothing->addTransition(t1);
-	*/
+	
+	//Add a transition state from doNothing state to the followPath state!
+	ConditionFollowPath* c2;
+	c2 = new ConditionFollowPath(info);
+	Transition* t1 = new Transition(doNothing, c2);
+	
+
+
+
+
+	
+
+
+
+	//Set up our member variables!
+	initialState = doNothing;
+	currentState = initialState;
 
 	return true;
 }
@@ -50,7 +70,14 @@ void StateMachine::update()
 	}
 	else
 	{
-
 	}
 	return;
+}
+
+States StateMachine::getCurrentStateName()
+{
+	return static_cast<States>(currentState->getName());
+
+
+
 }

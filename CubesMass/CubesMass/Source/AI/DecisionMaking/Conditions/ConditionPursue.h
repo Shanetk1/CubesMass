@@ -7,8 +7,7 @@
 class ConditionPursue : public Condition
 {
 public:
-	ConditionPursue(AIController* aiController) : Condition(aiController) {}
-
+	ConditionPursue(AIInfoContainer* info_) : Condition(info_) {};
 	~ConditionPursue();
 
 
@@ -16,7 +15,7 @@ public:
 
 
 private:
-
+	bool test() override;
 };
 
 #endif // !CONDITIONPURSUE_H

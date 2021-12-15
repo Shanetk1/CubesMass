@@ -4,12 +4,13 @@
 #include "Components.h"
 #include "../Vector.h"
 #include "../AI/SteeringOutput.h"
-
-
 #include "../AI/BlendedSteering.h"
 #include "../AI/SteeringHeaders.h"
 #include "../AI/FollowPath.h"
 #include "../AI/DecisionMaking/StateMachine.h"
+
+
+#include "../AI/AIInfoContainer.h"
 
 
 class AIController : public Component
@@ -29,44 +30,40 @@ private:
 	//State Machine pointer
 	StateMachine* state = nullptr;
 
-	enum States
-	{
-		PATROL = 0,
-		WANDER = 1,
-		CHASE = 2
-	};
-	States State = PATROL;
+
+	//Info container for AI...
+	//AIInfoContainer* myInfo = nullptr;
 
 
 public:
-	bool seesPlayer = false;
+	AIInfoContainer* myInfo = nullptr;
 
 	//Setting Default State, Init vector list
 	AIController()
 	{
-		State = WANDER;
 	}
 
 
 	AIController(Graph* graph_)
 	{
 		graph = graph_;
-		State = WANDER;
 
 	}
 
 
 	virtual void Init()
 	{
+		//My info should be set to default false // un true for all decision making...
+		myInfo = new AIInfoContainer();
 		
+
 		transform = &entity->getComponent<TransformComponent>();
 		movement = &entity->getComponent<MovementComponent>();
 
 		SteeringHandler = new BlendedSteering();
 		
-		State = WANDER;
 		
-		state = new StateMachine(this);
+		state = new StateMachine(myInfo);
 		state->Init();
 		
 		
@@ -96,30 +93,43 @@ public:
 		Vector2 target = Scene1::playerPosition;
 
 
+
 		
 
+		//Filter effects for the ai to do based on what i get from this ideally use an enum of states? can filter via const char* but looks ugly 
 
-		if (seesPlayer)
-		{
-			State = CHASE;
-		}
-		
 
-		/*
-		switch (switch_on)
+		//Now issue is lets say I want to dynamically add states? don't think this would be in scope of this engine so i'll stick to an enum
+
+		std::cout << state->getCurrentStateName() << std::endl;
+
+		switch (state->getCurrentStateName())
 		{
+			
+		case Chase:
+
+			std::cout << state->getCurrentStateName() << std::endl;
+
+			break;
+
+		case DoNothing:
+
+			break;
+
+		case Path:
+
+			break;
 		default:
+			std::cout << state->getCurrentStateName() << std::endl;
 			break;
 		}
 
-		*/
 
 
 
-
-
-
+		//Steering here...
 		//First update the necessary updatables after all logic has been done
+		SteeringHandler->updateUpdatables(target, this->transform->position);
 		SteeringHandler->updateUpdatables(target, this->transform->position);
 
 

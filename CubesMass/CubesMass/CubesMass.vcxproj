@@ -85,7 +85,11 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\AI\DecisionMaking\Conditions\ConditionFollowPath.cpp" />
+    <ClCompile Include="Source\AI\DecisionMaking\Conditions\ConditionPursue.cpp" />
+    <ClCompile Include="Source\AI\DecisionMaking\State.cpp" />
     <ClCompile Include="Source\AI\DecisionMaking\StateMachine.cpp" />
+    <ClCompile Include="Source\AI\DecisionMaking\Transition.cpp" />
     <ClCompile Include="Source\AI\Pathfinding\PrioNode.cpp" />
     <ClCompile Include="Source\AI\Pathfinding\Graph\Graph.cpp" />
     <ClCompile Include="Source\AI\BlendedSteering.cpp" />
@@ -103,7 +107,9 @@
     <ClCompile Include="Source\AI\Pathfinding\Graph\TileDemo.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\AI\AIInfoContainer.h" />
     <ClInclude Include="Source\AI\DecisionMaking\Condition.h" />
+    <ClInclude Include="Source\AI\DecisionMaking\Conditions\ConditionFollowPath.h" />
     <ClInclude Include="Source\AI\DecisionMaking\Conditions\ConditionPursue.h" />
     <ClInclude Include="Source\AI\DecisionMaking\State.h" />
     <ClInclude Include="Source\AI\DecisionMaking\StateMachine.h" />

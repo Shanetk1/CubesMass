@@ -64,13 +64,11 @@ public:
 			 }
 			 else
 			 {
-				 //std::cout << "This path has been found" << std::endl;
 				 
 				 std::vector<TileDemo*> newPath;
 				 for (int i = path->vectorList.size() - 1; i >= 0; i--)
 				 {
 					 newPath.push_back(path->vectorList[i]);
-					 //std::cout << path->vectorList[i]->getNode() << std::endl;
 				 }
 				 path->vectorList = newPath;
 				 path->currentIndex = path->vectorList.size() - 1;

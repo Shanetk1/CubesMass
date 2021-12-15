@@ -2,7 +2,20 @@
 #define STATEMACHINE_H
 
 
-#include "State.h"
+enum States
+{
+	Chase = 0,
+	DoNothing = 1,
+	Path = 2
+};
+//Forward declarations... We are including these in cpp
+class State;
+class AIInfoContainer;
+
+
+
+
+
 
 class StateMachine
 {
@@ -10,17 +23,25 @@ class StateMachine
 
 
 public:
-	StateMachine(AIController* owner_);
-	
+	StateMachine(AIInfoContainer* info_);
+
 	//Return a enum....
 	
-	void getCurrentStateName();
+	States getCurrentStateName();
 	~StateMachine();
 	bool Init();
 	void update();
+
+
+	//States here
+
+
+
+
 private:
 	State* initialState;
 	State* currentState;
+	AIInfoContainer* info;
 
 
 

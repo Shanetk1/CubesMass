@@ -63,6 +63,18 @@
     <ClCompile Include="Source\AI\DecisionMaking\StateMachine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Source\AI\DecisionMaking\Conditions\ConditionPursue.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\AI\DecisionMaking\Conditions\ConditionFollowPath.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\AI\DecisionMaking\Transition.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\AI\DecisionMaking\State.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Window.h">
@@ -180,6 +192,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Source\AI\DecisionMaking\Conditions\ConditionPursue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\AI\DecisionMaking\Conditions\ConditionFollowPath.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\AI\AIInfoContainer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

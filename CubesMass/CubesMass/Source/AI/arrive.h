@@ -11,7 +11,6 @@ public:
 	//Defaulted... will use all set default values
 	Arrive()
 	{
-		std::cout << "help me" << std::endl;
 	
 	}
 	
@@ -101,8 +100,8 @@ private:
 
 
 		float mag = sqrtf(result.vel.x * result.vel.x + result.vel.y * result.vel.y);
-		std::cout << mag << std::endl;
-		std::cout << satRadius << std::endl;
+		//std::cout << mag << std::endl;
+		//std::cout << satRadius << std::endl;
 		if (mag < satRadius)
 		{
 

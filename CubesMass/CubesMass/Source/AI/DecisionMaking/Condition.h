@@ -1,15 +1,20 @@
 #ifndef CONDITION_H
 #define CONDITION_H
 
-class AIController;
 
+class AIInfoContainer;
+
+
+
+
+//Virtual class will be inherited by all our conditions....
 class Condition
 {
 protected:
-	AIController* owner;
+	AIInfoContainer* info;
 public:
 	virtual bool test() = 0;
-	Condition(AIController* owner_);
+	Condition(AIInfoContainer* info_) { info = info_; }
 	~Condition();
 
 
