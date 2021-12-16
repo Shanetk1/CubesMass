@@ -71,7 +71,14 @@ public:
 		//This is fine...., eventually these node values need to change and change beased on lets say player position so we would need to deduce a x and y position and then correlate that into a node...
 		//I also think sending it a path is fine.... I could rather send it a path via the game world node list.... but not sure....
 		//For this followpath..... we will have a function that will find a new path every frame perhaps howeber will have a delay....
-		SteeringHandler->addSteering<FollowPath>(10.0f, 0.0f, graph->findPathUsingAStar(28, 179));
+		//This needs to be removed...
+		//Add follow path.... still need to send a path however....
+		SteeringHandler->addSteering<FollowPath>(10.0f, 0.0f);
+
+		//Naturally our steering handler should add steering however... we are going to have just follow path for now maybe...
+		
+		
+		
 		SteeringHandler->setMaxSpeed(150.0f);
 
 	};
@@ -103,24 +110,51 @@ public:
 
 		std::cout << state->getCurrentStateName() << std::endl;
 
+
+
+
 		switch (state->getCurrentStateName())
 		{
+		case S_DoNothing:
+			//std::cout << state->getCurrentStateName() << std::endl;
+			//Do nothing state is quite simple we do nothing....
 			
-		case Chase:
+			
 
-			std::cout << state->getCurrentStateName() << std::endl;
+			break;
+		case S_Chase:
+			//Just chase the player
+			//Check if algorithm exists if it doesn't ad dit to the handler
+
+			SteeringHandler->getAlgorithm<FollowPath>().updatePath(graph->findPathUsingAStar(transform->position, Scene1::playerPosition));
+
+
+
+			if (nullptr != &SteeringHandler->getAlgorithm<Arrive>())
+			{
+				//
+				//Set the arrive algorithm
+			}
+			else
+			{
+
+			}
+			
 
 			break;
 
-		case DoNothing:
+		case S_FollowPath:
 
-			break;
+			//Use pathfinding here... now we only want to pathfind once however.  this depends also on if the path is moving? maybe idk...
+			//Follow path
 
-		case Path:
+			//Enable steering 
+			//std::cout << state->getCurrentStateName() << std::endl;
+
 
 			break;
 		default:
-			std::cout << state->getCurrentStateName() << std::endl;
+			//std::cout << state->getCurrentStateName() << std::endl;
 			break;
 		}
 

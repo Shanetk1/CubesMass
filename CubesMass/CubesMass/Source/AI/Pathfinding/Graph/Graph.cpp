@@ -258,11 +258,6 @@ std::vector<TileDemo*> Graph::findPathUsingAStar(Vector2 startPosition_, Vector2
 
 
 		//Do same thing for goalPosition
-
-
-
-
-
 	}
 
 

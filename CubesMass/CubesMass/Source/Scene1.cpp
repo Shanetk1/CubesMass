@@ -206,6 +206,8 @@ void Scene1::Update(const float deltaTime)
 		//Need to continually check since this is between player and AI eventually make this only scroll through the list of AI grouped entities!
 		AITest.getComponent<AIController>().myInfo->setSeesPlayer(true);
 
+		std::cout << "AI INSIDE CIRCLE" << std::endl;
+
 
 	}
 	else

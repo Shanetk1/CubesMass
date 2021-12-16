@@ -13,7 +13,7 @@ BlendedSteering::BlendedSteering() : mSpeed(50.0f), aiPos(Vector2(0.0f)), target
 BlendedSteering::BlendedSteering(Vector2 targetLoc_, Vector2 aiPos_, float mSpeed_)
 {
 	targetLocation = targetLoc_;
-	aiPos = aiPos_;
+	aiPos = aiPos_;	
 	mSpeed = mSpeed_;
 }
 
@@ -33,7 +33,19 @@ SteeringOutput BlendedSteering::updateAlgorithms(const float deltaTime)
 
 		if (i != nullptr)
 		{
-			result += *i->getSteering(deltaTime);
+			//Check if returned value is null as well cause they can be...
+			if (i->getSteering(deltaTime))
+			{
+				//If this value exists....
+				result += *i->getSteering(deltaTime);
+
+			}
+			else
+			{
+				printf("Value is nullptr therefore not added");
+			}
+
+			//result += *i->getSteering(deltaTime);
 		}
 
 	}

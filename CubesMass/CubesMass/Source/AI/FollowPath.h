@@ -21,6 +21,25 @@ public:
 	{
 
 	}
+
+	FollowPath(float satRadius_, float timeTo_) : Arrive(satRadius_, timeTo_), path(nullptr)
+	{
+		Arrive::SteeringHandler = SteeringHandler;
+		radius = satRadius_;
+		//Path created later in update path function....
+		path = new Path();
+	}
+
+
+	void updatePath(std::vector<TileDemo*> path_)
+	{
+		path->vectorList = path_;
+		//Set up our path....
+
+
+
+	}
+
 	//Pass in our graph address also our path.... or we could actually specify a location rather a node instead..... and then use the graph to calculate closest nodes to location then create a path from that....
 	FollowPath(float satRadius_, float timeTo_, std::vector<TileDemo*> path_) : Arrive(satRadius_, timeTo_)
 	{
@@ -34,11 +53,9 @@ public:
 		Arrive::SteeringHandler = SteeringHandler;
 
 
-
-
 		//Set up our necessary member variables		WIP CHANGE PATH AND GRAPH!
 		radius = satRadius_;
-		path = new Path(path_);
+		//path = new Path(path_);
 		//graph = &graph_;
 		
 	}
@@ -50,6 +67,7 @@ public:
 		 Vector2 target_position;
 
 		 if (path->vectorList.empty()) return nullptr;
+		 
 
 		 
 

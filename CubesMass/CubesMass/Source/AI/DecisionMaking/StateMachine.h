@@ -4,17 +4,13 @@
 
 enum States
 {
-	Chase = 0,
-	DoNothing = 1,
-	Path = 2
+	S_DoNothing = 0,
+	S_Chase = 1,
+	S_FollowPath = 2
 };
 //Forward declarations... We are including these in cpp
 class State;
 class AIInfoContainer;
-
-
-
-
 
 
 class StateMachine

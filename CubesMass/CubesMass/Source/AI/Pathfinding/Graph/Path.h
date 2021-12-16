@@ -18,24 +18,30 @@ struct Path
 
 
 
-	Path(std::vector<TileDemo*> path)
+	Path()
 	{
 		//vectorList = path;
 		//currentNode = path[path.size() - 1];
 		//currentIndex = path.size() - 1;
 
+		vectorList = std::vector<TileDemo*>();
+
 
 		//Now our path its 
-		vectorList = path;
+		//vectorList = path;
 		//currentNode = path.size();
-		currentIndex = vectorList.size() - 1;
+		//currentIndex = vectorList.size() - 1;
 
 
 
-
+		
 
 	}
-
+	void setPathDirection(std::vector<TileDemo*> path)
+	{
+		vectorList = path;
+		currentIndex = vectorList.size() - 1;
+	}
 
 	
 

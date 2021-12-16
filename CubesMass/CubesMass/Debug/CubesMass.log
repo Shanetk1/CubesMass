@@ -1,27 +1,11 @@
-﻿  ConditionFollowPath.cpp
-  ConditionPursue.cpp
-  State.cpp
-  StateMachine.cpp
-D:\dev\CubesMass\CubesMass\CubesMass\Source\AI\DecisionMaking\StateMachine.cpp(36,14): error C2374: 't1': redefinition; multiple initialization
-D:\dev\CubesMass\CubesMass\CubesMass\Source\AI\DecisionMaking\StateMachine.cpp(30): message : see declaration of 't1'
-D:\dev\CubesMass\CubesMass\CubesMass\Source\AI\DecisionMaking\StateMachine.cpp(36,48): error C2664: 'Transition::Transition(State *,Condition *)': cannot convert argument 1 from 'States' to 'State *'
-D:\dev\CubesMass\CubesMass\CubesMass\Source\AI\DecisionMaking\StateMachine.cpp(36,34): message : Conversion from integral type to pointer type requires reinterpret_cast, C-style cast or function-style cast
-D:\dev\CubesMass\CubesMass\CubesMass\Source\AI\DecisionMaking\Transition.h(12,2): message : see declaration of 'Transition::Transition'
-  Transition.cpp
-  PrioNode.cpp
-  Graph.cpp
-  BlendedSteering.cpp
-  MouseEventListener.cpp
-  Collision.cpp
-  Map.cpp
-  EntityCS.cpp
-  Main.cpp
-  Scene1.cpp
-  SceneManager.cpp
-  TextureLoader.cpp
-  Timer.cpp
-  VMath.cpp
-  Window.cpp
-  TileDemo.cpp
-  Generating Code...
-D:\dev\CubesMass\CubesMass\CubesMass\Source\AI\Pathfinding\Graph\Graph.cpp(201): warning C4715: 'Graph::findPathUsingAStar': not all control paths return a value
+﻿  Scene1.cpp
+LINK : warning LNK4044: unrecognized option '/lSDL_mixer'; ignored
+  LINK : 0 new modules and 1 (out of 65) modules have changed since prior linking
+  Searching libraries
+      Searching C:\dev\CubesMass\CubesMass\\Dependencies\SDL2-2.0.12\lib\x86\SDL2.lib:
+  Finished searching libraries
+  Starting pass 2
+       Scene1.obj
+       MSVCRT.lib(loadcfg.obj)
+  Finished pass 2
+  CubesMass.vcxproj -> C:\dev\CubesMass\CubesMass\Debug\CubesMass.exe

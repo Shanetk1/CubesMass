@@ -11,7 +11,7 @@ public:
 	friend class AIController;
 	AIInfoContainer() : seesPlayer(false)
 	{
-
+		
 	}
 
 
